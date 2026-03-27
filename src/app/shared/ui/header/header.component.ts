@@ -16,8 +16,8 @@ export class HeaderComponent {
   public readonly moonIcon = faMoon;
   public readonly sunIcon = faSun;
   public readonly language = new FormControl('en', { nonNullable: true });
-  private readonly translate = inject(TranslateService);
-  private readonly spinner = inject(NgxSpinnerService);
+  private readonly _translateService = inject(TranslateService);
+  private readonly _spinner = inject(NgxSpinnerService);
 
   constructor() {
     const document = inject(DOCUMENT);
@@ -33,10 +33,10 @@ export class HeaderComponent {
 
   switchLang(lang: string) {
     this.language.patchValue(lang);
-    this.translate.use(lang).subscribe({
-      next: () => this.spinner.show(),
+    this._translateService.use(lang).subscribe({
+      next: () => this._spinner.show(),
       error: err => console.error(err),
-      complete: () => this.spinner.hide(),
+      complete: () => this._spinner.hide(),
     });
   }
 }

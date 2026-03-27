@@ -8,7 +8,5 @@ import { CVRoutingModule } from './cv-routing.module';
     CVRoutingModule,
     CVMainModule,
   ],
-  exports: [],
-  providers: [],
 })
 export class CVModule { }

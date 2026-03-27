@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { Experience } from '../../data-access/experiences.service';
 import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Experience } from '../../data-access/experiences.service';
 
 @Component({
   selector: 'cv-stepper-ui',

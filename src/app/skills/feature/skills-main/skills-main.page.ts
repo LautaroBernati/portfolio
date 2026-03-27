@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
-import { combineLatest, concatMap, firstValueFrom, map } from 'rxjs';
-import { IconDefinition, faAngular, faReact, faVuejs, faNodeJs, faNode, faMicrosoft } from '@fortawesome/free-brands-svg-icons';
-import { ToolsService } from '../../data-access/tools.service';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { faAngular, faMicrosoft, faNode, faNodeJs, faReact, faVuejs, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { combineLatest, map } from 'rxjs';
 import { MethodologiesService } from '../../data-access/methodologies.service';
+import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
+import { ToolsService } from '../../data-access/tools.service';
 
 
 @Component({
@@ -13,14 +13,14 @@ import { MethodologiesService } from '../../data-access/methodologies.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SkillsPage implements OnInit {
+  private readonly _skillsService = inject(SkillsService);
+  private readonly _toolsService = inject(ToolsService);
+  private readonly _methodologiesService = inject(MethodologiesService);
+
   public readonly dependencies$;
 
-  constructor(
-    private readonly skillsService: SkillsService,
-    private readonly toolsService: ToolsService,
-    private readonly methodologiesService: MethodologiesService,
-  ) {
-    const angSkills$ = this.skillsService.strippedSkills$.pipe(
+  constructor() {
+    const angSkills$ = this._skillsService.strippedSkills$.pipe(
       map(strippedSkills => {
         return strippedSkills.find(ss => ss.UID === 'ANG')!;
       }),
@@ -29,7 +29,7 @@ export class SkillsPage implements OnInit {
       }),
     );
 
-    const reactSkills$ = this.skillsService.strippedSkills$.pipe(
+    const reactSkills$ = this._skillsService.strippedSkills$.pipe(
       map(strippedSkills => {
         return strippedSkills.find(ss => ss.UID === 'REA')!;
       }),
@@ -38,7 +38,7 @@ export class SkillsPage implements OnInit {
       }),
     );
 
-    const vueSkills$ = this.skillsService.strippedSkills$.pipe(
+    const vueSkills$ = this._skillsService.strippedSkills$.pipe(
       map(strippedSkills => {
         return strippedSkills.find(ss => ss.UID === 'VUE')!;
       }),
@@ -53,15 +53,15 @@ export class SkillsPage implements OnInit {
       vueSkills$,
     ]);
 
-    const nodeSkills$ = this.skillsService.strippedSkills$.pipe(
+    const nodeSkills$ = this._skillsService.strippedSkills$.pipe(
       map(SSs => SSs.find(ss => ss.UID === 'NOD')!),
       map(skill => this.mapearImagenes(skill, faNode)),
     );
-    const nestSkills$ = this.skillsService.strippedSkills$.pipe(
+    const nestSkills$ = this._skillsService.strippedSkills$.pipe(
       map(SSs => SSs.find(ss => ss.UID === 'NES')!),
       map(skill => this.mapearImagenes(skill, faNodeJs)),
     );
-    const netSkills$ = this.skillsService.strippedSkills$.pipe(
+    const netSkills$ = this._skillsService.strippedSkills$.pipe(
       map(SSs => SSs.find(ss => ss.UID === 'NET')!),
       map(skill => this.mapearImagenes(skill, faMicrosoft)),
     );
@@ -75,8 +75,8 @@ export class SkillsPage implements OnInit {
     this.dependencies$ = combineLatest([
       frontEndSkills$,
       backEndSkills$,
-      this.toolsService.tools$,
-      this.methodologiesService.methodologies$,
+      this._toolsService.tools$,
+      this._methodologiesService.methodologies$,
     ]);
   }
 

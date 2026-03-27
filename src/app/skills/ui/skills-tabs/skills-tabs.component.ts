@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
-import { Skill } from '../../data-access/skills.service';
-import { trigger, style, transition, animate } from '@angular/animations';
-import { Tool } from '../../data-access/tools.service';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, input } from '@angular/core';
 import { Methodology } from '../../data-access/methodologies.service';
+import { Skill } from '../../data-access/skills.service';
+import { Tool } from '../../data-access/tools.service';
 
 
 @Component({
@@ -26,8 +26,9 @@ import { Methodology } from '../../data-access/methodologies.service';
   ],
 })
 export class SkillsTabsComponent {
-  @Input() public frontEndSkills: Skill[] = [];
-  @Input() public backEndSkills: Skill[] = [];
-  @Input() public tools: Tool[] = [];
-  @Input() public methodologies: Methodology[] = [];
+  public readonly backEndSkills = input<Skill[]>();
+  public readonly frontEndSkills = input<Skill[]>();
+  public readonly loading = input.required<boolean>();
+  public readonly methodologies = input<Methodology[]>();
+  public readonly tools = input<Tool[]>();
 }

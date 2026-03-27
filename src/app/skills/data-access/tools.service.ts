@@ -10,9 +10,9 @@ export declare type Tool = {
 
 @Injectable()
 export class ToolsService {
-  private readonly fs = inject(Firestore);
-  private readonly toolsColl = collection(this.fs, 'tools');
-  public readonly tools$ = (collectionData(this.toolsColl, { idField: 'UID' }) as Observable<Tool[]>).pipe(
+  private readonly _fs = inject(Firestore);
+  private readonly _toolsColl = collection(this._fs, 'tools');
+  public readonly tools$ = (collectionData(this._toolsColl, { idField: 'UID' }) as Observable<Tool[]>).pipe(
     shareReplay()
   );
 }

@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
-import { ImageDetailDialog, TabDetailComponent } from './tab-detail.component';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatIconModule } from '@angular/material/icon';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
+import { SkeletonLoaderComponent } from 'src/app/shared/skeleton-loader/skeleton-loader.component';
+import { ImageDetailDialog, TabDetailComponent } from './tab-detail.component';
 
 
 @NgModule({
@@ -20,9 +21,9 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     MatDialogModule,
     MatProgressBarModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    SkeletonLoaderComponent,
   ],
   exports: [TabDetailComponent],
-  providers: [],
 })
 export class TabDetailModule { }

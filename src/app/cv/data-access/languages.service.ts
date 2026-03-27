@@ -10,9 +10,9 @@ export type Language = {
 
 @Injectable()
 export class LaguangesService {
-  private readonly fs = inject(Firestore);
-  private readonly expColl = collection(this.fs, 'languages');
-  public readonly langs$ = (collectionData(this.expColl, { idField: 'UID' }) as Observable<Language[]>).pipe(
+  private readonly _fs = inject(Firestore);
+  private readonly _expColl = collection(this._fs, 'languages');
+  public readonly langs$ = (collectionData(this._expColl, { idField: 'UID' }) as Observable<Language[]>).pipe(
     shareReplay()
   );
 }

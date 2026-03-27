@@ -1,0 +1,55 @@
+@switch (type()) {
+  @case ('avatar') {
+    <div
+      [class]="avatarClasses()"
+    ></div>
+  }
+
+  @case ('button') {
+    <div
+      [class]="buttonClasses()"
+    ></div>
+  }
+
+  @case ('icon-button') {
+    <div
+      [class]="iconButtonClasses()"
+    ></div>
+  }
+
+  @case ('header-row') {
+    <div
+      [class]="textClasses()"
+      [style.width]="width() || '200px'"
+    ></div>
+  }
+
+  @case ('body-row') {
+    <div
+      [class]="textClasses()"
+      [style.width]="width() || '300px'"
+    ></div>
+  }
+
+  @case ('paragraph') {
+    <div
+      class="skeleton-paragraph"
+    >
+      @for (lineWidth of widths(); track $index; let last = $last) {
+        <div
+          [class]="textClasses()"
+          [style.width]="lineWidth"
+          [style.margin-bottom]="!last ? '8px' : '0'"
+        ></div>
+      }
+    </div>
+  }
+
+  @default {
+    <div
+      [class]="textClasses()"
+      [style.width]="width() || '100%'"
+      [style.height]="height() || '16px'"
+    ></div>
+  }
+}

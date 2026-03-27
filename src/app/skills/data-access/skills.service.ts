@@ -29,16 +29,16 @@ export type StrippedSkill = Omit<Skill, 'Icon' | 'Examples'> & { Examples: Array
 
 @Injectable()
 export class SkillsService {
+  private readonly _coll = collection(this._firestore, 'skills');
+
+  public readonly strippedSkills$ = (collectionData(this._coll, { idField: 'UID' }) as Observable<StrippedSkill[]>);
+
   constructor(
-    private readonly http: HttpClient,
-    private readonly firestore: Firestore,
+    private readonly _http: HttpClient,
+    private readonly _firestore: Firestore,
   ) { }
 
-  private readonly coll = collection(this.firestore, 'skills');
-
-  public readonly strippedSkills$ = (collectionData(this.coll, { idField: 'UID' }) as Observable<StrippedSkill[]>);
-
-  ObtenerImagen(ruta: string) {
-    return this.http.get(ruta, { responseType: 'blob' });
+  obtenerImagen(ruta: string) {
+    return this._http.get(ruta, { responseType: 'blob' });
   }
 }

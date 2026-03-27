@@ -6,7 +6,7 @@
   </div>
   <hr>
   <div class="contenedor" @fadeIn>
-    <div class="columna">
+    <div class="columna img-section">
       <div class="imagen-botones">
         <img
           alt="image"
@@ -42,16 +42,33 @@
         </div>
       </div>
     </div>
-    <div class="columna">
-      <h3 [translate]="'about.subtitle'"></h3>
-      <p
-        *ngIf="('about.intro' | translate).toString() as text"
-        [title]="(showFullContent ? 'cv.buttons.details.expanded' : 'cv.buttons.details.hidden') | translate"
-        (click)="onToggleReadBtn()"
-        [innerHTML]="
-          (curateText(text) | slice: 0:(showFullContent ? undefined : 350)) + ( !showFullContent ? '...' : '')
-        "
-      ></p>
+    @let aboutData = (about$ | async);
+    @let showMore = (showFullContent$ | async);
+    <div class="columna desc-section">
+      <h2 [translate]="'about.personalTitle'"></h2>
+      <h3 [translate]="'about.personalSubtitle'"></h3>
+      <section>
+        <div *ngIf="('about.intro' | translate).toString() as text">
+          <p>
+            <span
+              [innerHTML]="curateText(text) | slice: 0:(showMore ? undefined : 350)"
+            ></span>
+            <span *ngIf="!showMore">...</span>
+            &nbsp;
+            <button
+              class="more-btn"
+              type="button"
+              (click)="onToggleReadBtn()"
+            >
+              @if (aboutData?.moreButtonText; as btnText) {
+                {{ btnText }}
+              } @else {
+                <app-skeleton-loader-ui height="23px" width="50px" />
+              }
+            </button>
+          </p>
+        </div>
+      </section>
       <div class="items-cv">
         <ul>
           <li>
@@ -66,7 +83,13 @@
           </li>
           <li>
             <fa-icon [icon]="faMapMarker" [border]="false"></fa-icon>
-            <strong>Argentina</strong>
+            @if (aboutData?.country; as country) {
+              <strong>
+                {{ aboutData?.country }}
+              </strong>
+            } @else {
+                <app-skeleton-loader-ui height="24px" width="70px" />
+            }
           </li>
         </ul>
         <ul>

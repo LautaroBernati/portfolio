@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { ContactMePage } from './contact.page';
-import { ContactRoutingModule } from './contact-routing.module';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ContactRoutingModule } from './contact-routing.module';
+import { ContactMePage } from './contact.page';
 
 
 @NgModule({
@@ -13,6 +13,5 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
   ],
   exports: [ContactMePage],
-  providers: [],
 })
 export class ContactModule { }

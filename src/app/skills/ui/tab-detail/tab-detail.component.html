@@ -1,55 +1,118 @@
 <mat-accordion>
-  <mat-expansion-panel>
+  <mat-expansion-panel [expanded]="expanded()">
     <mat-expansion-panel-header style="display: flex; justify-content: space-evenly;">
       <mat-panel-title>
-        {{ skill?.Framework }}
+        @if (loading()) {
+          <app-skeleton-loader-ui
+            height="20px"
+            width="60px"
+          />
+        } @else {
+          {{ skill()?.Framework }}
+        }
       </mat-panel-title>
       <mat-panel-description>
-        <div
-          style="display: flex; flex-direction: column; min-width: 30%; max-width: 70%; width: 100%; align-items: center;">
-          <h3 style="margin-bottom: 0px;">{{ 'skills.progressTitle' | translate }}</h3>
-          <mat-progress-bar [ngStyle]="{'--mdc-linear-progress-active-indicator-color': getColor(skill?.Progress ?? 0)}"
-            [mode]="'determinate'" [value]="skill?.Progress" [bufferValue]="100">
-          </mat-progress-bar>
+        <div style="display: flex; flex-direction: column; min-width: 30%; max-width: 70%; width: 100%; align-items: center;">
+          @if (!loading()) {
+            <h3 style="margin-bottom: 0px;">{{ 'skills.progressTitle' | translate }}</h3>
+            <mat-progress-bar
+              [bufferValue]="100"
+              [ngStyle]="{'--mdc-linear-progress-active-indicator-color': getColor(skill()?.Progress ?? 0)}"
+              [mode]="'determinate'"
+              [value]="skill()?.Progress"
+            />
+          } @else {
+            <app-skeleton-loader-ui height="30px" width="300px"/>
+          }
         </div>
-        <ng-container *ngIf="skill !== null">
-          <fa-icon [icon]="skill.Icon" size="2x"></fa-icon>
-        </ng-container>
+        @if (!loading()) {
+          <fa-icon
+            [icon]="skill()!.Icon"
+            size="2x"
+          />
+        } @else {
+          <app-skeleton-loader-ui type="icon-button" />
+        }
       </mat-panel-description>
     </mat-expansion-panel-header>
     <!-- Content Start -->
-    <ng-container *ngFor="let item of skill?.Examples; last as last; first as first;">
+    @if (loading()) {
       <div class="contenedor">
-        <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%;">
-          <h2>{{ item.Title }}</h2>
-          <small>{{ item.Type | translate }}</small>
+        <div class="card-header-detail">
+          <h2>
+            <app-skeleton-loader-ui
+              width="180px"
+              height="37px"
+            />
+          </h2>
+          <small>
+            <app-skeleton-loader-ui
+              width="80px"
+              height="37px"
+            />
+          </small>
         </div>
-        <div style="display: flex; justify-content: space-between;">
-          <p style="max-width: 65%;">
-            {{ item.Desc | translate }}
+        <div class="card-desc-detail">
+          <p>
+            <app-skeleton-loader-ui
+              height="140px"
+              width="200px"
+            />
           </p>
-          <div style="max-width: 35%; max-height: 35%;">
-            <img [src]="(item.ImgUrl)" alt="imageOfExample" (click)="onImgClick(item.ImgUrl)">
+          <div>
+            <app-skeleton-loader-ui
+              height="140px"
+              width="200px"
+            />
           </div>
         </div>
-        <ng-container *ngIf="item.Urls">
-          <div style="align-self: flex-end; display: flex; flex-direction: row; gap: 5px;">
-            <div *ngIf="item.Urls.Repository" style="align-self: flex-end; margin-top: 1rem;">
-              <a type="button" mat-raised-button color="primary" [href]="item.Urls.Repository" target="_blank">
-                <mat-icon>code</mat-icon>
-                <div>{{ 'skills.buttons.repo' | translate }}</div>
-              </a>
-            </div>
-            <div *ngIf="item.Urls.Deployment" style="align-self: flex-end; margin-top: 1rem;">
-              <a type="button" mat-raised-button color="primary" [href]="item.Urls.Deployment" target="_blank">
-                <mat-icon>launch</mat-icon>
-                <div>{{ 'skills.buttons.deploy' | translate }}</div>
-              </a>
-            </div>
+        <div style="align-self: flex-end; display: flex; flex-direction: row; gap: 5px;">
+          <div style="align-self: flex-end; margin-top: 1rem;">
+            <app-skeleton-loader-ui
+              width="240px"
+              height="37px"
+            />
           </div>
-        </ng-container>
+        </div>
       </div>
-    </ng-container>
+    }
+    @if (skill(); as skill) {
+      @for (item of skill.Examples; track $index) {
+        <div class="contenedor">
+          <div class="card-header-detail">
+            <h2>{{ item.Title }}</h2>
+            <small>{{ item.Type | translate }}</small>
+          </div>
+          <div class="card-desc-detail">
+            <p>
+              {{ item.Desc | translate }}
+            </p>
+            <img
+              #ref
+              [src]="(item.ImgUrl)"
+              alt="imageOfExample"
+              (click)="onImgClick(item.ImgUrl, ref.naturalWidth, ref.naturalHeight)"
+            />
+          </div>
+          <ng-container *ngIf="item.Urls">
+            <div style="align-self: flex-end; display: flex; flex-direction: row; gap: 5px;">
+              <div *ngIf="item.Urls.Repository" style="align-self: flex-end; margin-top: 1rem;">
+                <a type="button" mat-raised-button color="primary" [href]="item.Urls.Repository" target="_blank">
+                  <mat-icon>code</mat-icon>
+                  <div>{{ 'skills.buttons.repo' | translate }}</div>
+                </a>
+              </div>
+              <div *ngIf="item.Urls.Deployment" style="align-self: flex-end; margin-top: 1rem;">
+                <a type="button" mat-raised-button color="primary" [href]="item.Urls.Deployment" target="_blank">
+                  <mat-icon>launch</mat-icon>
+                  <div>{{ 'skills.buttons.deploy' | translate }}</div>
+                </a>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      }
+    }
     <!-- Content End -->
   </mat-expansion-panel>
 </mat-accordion>

@@ -7,9 +7,14 @@
   <hr>
   <div class="row">
     <div class="col">
-      <ng-container *ngIf="(dependencies$ | async) as deps; else loading;">
+      @let dependencies = (dependencies$ | async);
+      <ng-container>
         <sk-tabs-ui
-          [frontEndSkills]="deps[0]" [backEndSkills]="deps[1]" [tools]="deps[2]" [methodologies]="deps[3]">
+          [loading]="!dependencies"
+          [frontEndSkills]="dependencies?.[0]"
+          [backEndSkills]="dependencies?.[1]"
+          [tools]="dependencies?.[2]"
+          [methodologies]="dependencies?.[3]">
         </sk-tabs-ui>
       </ng-container>
     </div>

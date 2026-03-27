@@ -14,12 +14,12 @@ ul {
 
 .items-cv {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  width: 100%;
 
   @media screen and (max-width: 440px) {
     flex-direction: column;
     justify-content: center;
-
   }
 }
 
@@ -31,7 +31,6 @@ ul {
   @media screen and (max-width: 440px) {
     flex-direction: column;
     justify-content: center;
-
   }
 }
 
@@ -54,18 +53,40 @@ ul {
 }
 
 .columna {
-  width: 50%;
   padding: 2rem;
   justify-items: center;
 
-  p {
-    text-align: justify;
-    cursor: pointer;
+  &.img-section {
+    width: 35%;
   }
 
-  @media screen and (max-width: 440px) {
+  &.desc-section {
+    width: 65%;
+  }
+
+  h2, h3 {
+    justify-self: flex-start;
+  }
+
+  p {
+    text-align: justify;
+  }
+
+  @media screen and (max-width: 800px) {
     width: 100%;
     padding: 0.5rem;
+
+    h2, h3 {
+      justify-self: auto;
+    }
+
+    &.img-section {
+      width: 100%;
+    }
+
+    &.desc-section {
+      width: 100%;
+    }
   }
 }
 
@@ -73,4 +94,15 @@ ul {
   max-width: 5rem;
   max-height: 5rem;
   margin: 1rem;
+}
+
+.more-btn {
+  background: none;
+  font-size: .875em;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  font-style: italic;
 }

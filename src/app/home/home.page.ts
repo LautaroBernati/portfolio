@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslateService } from '@ngx-translate/core';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { Subject, startWith, takeUntil } from 'rxjs';
+import { startWith } from 'rxjs';
 import Typed, { TypedOptions } from 'typed.js';
 
 
@@ -12,24 +12,20 @@ import Typed, { TypedOptions } from 'typed.js';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage implements OnInit, OnDestroy {
-  private readonly destroy$ = new Subject<boolean>();
+  private readonly _destroyRef = inject(DestroyRef);
+  private readonly _translateService = inject(TranslateService);
   private typedInstance?: Typed;
 
-  constructor(
-    private readonly translateService: TranslateService,
-    private readonly spinner: NgxSpinnerService,
-  ) { }
+  constructor() { }
 
   ngOnDestroy(): void {
     this.typedInstance?.destroy();
-    this.destroy$.next(true);
-    this.destroy$.complete();
   }
 
   ngOnInit(): void {
-    this.translateService.onLangChange.pipe(
-      startWith({ lang: this.translateService.currentLang }),
-      takeUntil(this.destroy$),
+    this._translateService.onLangChange.pipe(
+      startWith({ lang: this._translateService.currentLang }),
+      takeUntilDestroyed(this._destroyRef),
     ).subscribe(value => {
       switch (value.lang) {
         case 'en':

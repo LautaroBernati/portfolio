@@ -7,12 +7,23 @@
     <!-- start front end -->
     <ng-template matTabContent>
       <div style="padding: 10px;">
-        <ng-container *ngFor="let item of frontEndSkills">
-          <div style="margin-top: 0.5rem;">
-            <sk-tab-detail-ui [skill]="item">
-            </sk-tab-detail-ui>
+        @if (frontEndSkills(); as frontEndSkills) {
+          @for (item of frontEndSkills; track $index) {
+            <div style="margin-top: 0.5rem;">
+              <sk-tab-detail-ui
+                [expanded]="$index === 0"
+                [skill]="item"
+              />
+            </div>
+          }
+        } @else {
+          <div>
+            <sk-tab-detail-ui
+              [expanded]="true"
+              [loading]="true"
+            />
           </div>
-        </ng-container>
+        }
       </div>
     </ng-template>
     <!-- end front end -->
@@ -24,12 +35,23 @@
     </ng-template>
     <!-- start backend content -->
     <div style="padding: 10px;">
-      <ng-container *ngFor="let item of backEndSkills">
-        <div style="margin-top: 0.5rem;">
-          <sk-tab-detail-ui [skill]="item">
-          </sk-tab-detail-ui>
-        </div>
-      </ng-container>
+      @if (backEndSkills(); as skills) {
+          @for (item of skills; track $index) {
+            <div style="margin-top: 0.5rem;">
+              <sk-tab-detail-ui
+                [expanded]="$index === 0"
+                [skill]="item"
+              />
+            </div>
+          }
+        } @else {
+          <div>
+            <sk-tab-detail-ui
+              [expanded]="true"
+              [loading]="true"
+            />
+          </div>
+        }
     </div>
     <!-- end backend content -->
   </mat-tab>
@@ -38,8 +60,8 @@
       <mat-icon style="margin-right: 10px;">build</mat-icon>
       <div>{{ 'skills.tabs.tools' | translate }}</div>
     </ng-template>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <div *ngFor="let item of tools" style="width: 55%; padding: 1rem;">
+    <div class="tab-container-v2">
+      <div *ngFor="let item of tools()" style="width: 55%; padding: 1rem;">
         <sk-tool-met-detail-ui [item]="item">
         </sk-tool-met-detail-ui>
       </div>
@@ -50,8 +72,8 @@
       <mat-icon style="margin-right: 10px;">whatshot</mat-icon>
       <div>{{ 'skills.tabs.metds' | translate }}</div>
     </ng-template>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-      <div *ngFor="let item of methodologies" style="width: 55%; padding: 1rem;">
+    <div class="tab-container-v2">
+      <div *ngFor="let item of methodologies()" style="width: 55%; padding: 1rem;">
         <sk-tool-met-detail-ui [item]="item">
         </sk-tool-met-detail-ui>
       </div>

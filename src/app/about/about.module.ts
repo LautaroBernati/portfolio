@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { AboutPage } from './about.page';
-import { AboutRoutingModule } from './about-routing.module';
 import { CommonModule } from '@angular/common';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
+import { SkeletonLoaderComponent } from '../shared/skeleton-loader/skeleton-loader.component';
+import { AboutRoutingModule } from './about-routing.module';
+import { AboutPage } from './about.page';
 
 
 @NgModule({
@@ -17,8 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatButtonModule,
     FontAwesomeModule,
     TranslateModule.forChild(),
+    SkeletonLoaderComponent
   ],
   exports: [AboutPage],
-  providers: [],
 })
 export class AboutModule { }

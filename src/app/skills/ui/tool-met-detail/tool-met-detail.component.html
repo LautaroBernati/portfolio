@@ -3,9 +3,6 @@
     <h4 style="margin-bottom: 0px;">{{ item?.Desc }}</h4>
     <h4 style="margin-bottom: 0px;">{{ item?.Percent + '%' }}</h4>
   </div>
-  <!-- <mat-progress-bar [ngStyle]="{'--mdc-linear-progress-active-indicator-color': getColor(tool?.Percent ?? 0)}"
-    [mode]="'determinate'" [value]="tool?.Percent" [bufferValue]="100">
-  </mat-progress-bar> -->
   <div class="progress">
     <div class="progress-bar" role="progressbar"
       [ngStyle]="{'width': item?.Percent + '%', 'background-color': getColor(item?.Percent ?? 0)}" aria-valuenow="100"

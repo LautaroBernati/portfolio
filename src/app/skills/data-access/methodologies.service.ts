@@ -10,9 +10,9 @@ export declare type Methodology = {
 
 @Injectable()
 export class MethodologiesService {
-  private readonly fs = inject(Firestore);
-  private readonly methdsColl = collection(this.fs, 'methodologies');
-  public readonly methodologies$ = (collectionData(this.methdsColl, { idField: 'UID' }) as Observable<Methodology[]>).pipe(
+  private readonly _fs = inject(Firestore);
+  private readonly _methdsColl = collection(this._fs, 'methodologies');
+  public readonly methodologies$ = (collectionData(this._methdsColl, { idField: 'UID' }) as Observable<Methodology[]>).pipe(
     shareReplay()
   );
 }

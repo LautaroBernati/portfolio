@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { ExperiencesService } from '../../data-access/experiences.service';
-import { EducationService } from '../../data-access/education.service';
-import { LaguangesService } from '../../data-access/languages.service';
+import { Component, inject } from '@angular/core';
 import { fadeIn } from 'src/app/shared/utils/fade-in.animation';
+import { EducationService } from '../../data-access/education.service';
+import { ExperiencesService } from '../../data-access/experiences.service';
+import { LaguangesService } from '../../data-access/languages.service';
 
 @Component({
   selector: 'cv-main',
@@ -11,17 +11,17 @@ import { fadeIn } from 'src/app/shared/utils/fade-in.animation';
   animations: fadeIn(),
 })
 export class CVMainPage {
+  private readonly _educationService = inject(EducationService);
+  private readonly _experiencesService = inject(ExperiencesService);
+  private readonly _langService = inject(LaguangesService);
+
   public readonly experiences$;
   public readonly education$;
   public readonly languages$;
 
-  constructor(
-    private readonly experiencesService: ExperiencesService,
-    private readonly educationService: EducationService,
-    private readonly langService: LaguangesService,
-  ) {
-    this.experiences$ = this.experiencesService.experiences$;
-    this.education$ = this.educationService.experiences$;
-    this.languages$ = this.langService.langs$
+  constructor() {
+    this.experiences$ = this._experiencesService.experiences$;
+    this.education$ = this._educationService.experiences$;
+    this.languages$ = this._langService.langs$;
   }
 }

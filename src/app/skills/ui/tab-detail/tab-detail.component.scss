@@ -23,10 +23,32 @@
   margin: 1rem;
 }
 
-img {
-  border-radius: 3px;
-  padding: 5px;
-  max-width: 100%;
-  max-height: 100%;
-  cursor: pointer;
+.card-header-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.card-desc-detail {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 2rem;
+
+  img {
+    cursor: pointer;
+    border-radius: 5px;
+    height: 140px;
+    width: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0px;
+  }
 }

@@ -1,6 +1,6 @@
-import { Component, Input, Inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, input, Input } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Skill } from '../../data-access/skills.service';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'sk-tab-detail-ui',
@@ -9,13 +9,15 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabDetailComponent {
-  @Input() public descripcion: string = '';
-  @Input() public skill: Skill | null = null;
+  public readonly descripcion = input<string>();
+  public readonly expanded = input<boolean>();
+  public readonly loading = input<boolean>();
+  public readonly skill = input<Skill>();
 
   constructor(public dialog: MatDialog) { }
 
-  onImgClick(img: string) {
-    this.dialog.open(ImageDetailDialog, { data: img });
+  onImgClick(img: string, width: number, height: number) {
+    this.dialog.open(ImageDetailDialog, <MatDialogConfig><unknown>{ data: img, width: width + 60, height: height + 80 });
   }
 
   getColor(progress: number) {
@@ -30,13 +32,18 @@ export class TabDetailComponent {
 @Component({
   selector: 'sk-tab-detail-dialog-ui',
   template: `
-  <div style="display: flex; flex-direction: column; padding: 0.5rem;">
+  <div style="display: flex; flex-direction: column; padding: 0.5rem; align-items: center">
     <div style="margin-bottom: 0.5rem; align-self: flex-end;">
       <button type="button" mat-icon-button color="warn" aria-label="Button with cross icon" mat-dialog-close>
         <mat-icon>close</mat-icon>
       </button>
     </div>
-    <img [src]="data" alt="Image_detail">
+    <img
+      [style.max-width]="'95%'"
+      [style.max-height]="'80%'"
+      [src]="data"
+      alt="Image_detail"
+    >
   </div>
   `,
 })
