@@ -20,14 +20,14 @@
   @case ('header-row') {
     <div
       [class]="textClasses()"
-      [style.width]="width() || '200px'"
+      [style.width]="'100%'"
     ></div>
   }
 
   @case ('body-row') {
     <div
       [class]="textClasses()"
-      [style.width]="width() || '300px'"
+      [style.width]="'100%'"
     ></div>
   }
 
@@ -48,8 +48,8 @@
   @default {
     <div
       [class]="textClasses()"
-      [style.width]="width() || '100%'"
-      [style.height]="height() || '16px'"
+      [style.width]="'100%'"
+      [style.height]="'100%'"
     ></div>
   }
 }

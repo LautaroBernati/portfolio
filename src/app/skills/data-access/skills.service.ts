@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
-type Example = {
+export type Example = {
   Title: string;
   Desc: string;
   Urls?: {
@@ -13,6 +13,7 @@ type Example = {
   },
   ImgUrl: string;
   Type: string;
+  order?: number;
 };
 
 export type Skill = {
@@ -31,7 +32,16 @@ export type StrippedSkill = Omit<Skill, 'Icon' | 'Examples'> & { Examples: Array
 export class SkillsService {
   private readonly _coll = collection(this._firestore, 'skills');
 
-  public readonly strippedSkills$ = (collectionData(this._coll, { idField: 'UID' }) as Observable<StrippedSkill[]>);
+  public readonly strippedSkills$ = (collectionData(this._coll, { idField: 'UID' }) as Observable<StrippedSkill[]>).pipe(
+    map(skills => skills.map(skill => ({
+      ...skill,
+      Examples: [...skill.Examples].sort((a, b) => {
+        if (a.order === undefined) return 1;
+        if (b.order === undefined) return -1;
+        return a.order - b.order;
+      })
+    })))
+  );
 
   constructor(
     private readonly _http: HttpClient,

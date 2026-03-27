@@ -22,7 +22,7 @@
               [value]="skill()?.Progress"
             />
           } @else {
-            <app-skeleton-loader-ui height="30px" width="300px"/>
+            <app-skeleton-loader-ui height="30px" width="35%"/>
           }
         </div>
         @if (!loading()) {
@@ -39,44 +39,48 @@
     @if (loading()) {
       <div class="contenedor">
         <div class="card-header-detail">
-          <h2>
-            <app-skeleton-loader-ui
-              width="180px"
-              height="37px"
-            />
-          </h2>
-          <small>
-            <app-skeleton-loader-ui
-              width="80px"
-              height="37px"
-            />
-          </small>
+          <!-- info title -->
+          <app-skeleton-loader-ui
+            width="15%"
+            height="37px"
+          />
+          <!-- info title end -->
+          <!-- info type -->
+          <app-skeleton-loader-ui
+            width="10%"
+            height="37px"
+          />
+          <!-- info type end -->
         </div>
         <div class="card-desc-detail">
-          <p>
-            <app-skeleton-loader-ui
-              height="140px"
-              width="200px"
-            />
-          </p>
-          <div>
-            <app-skeleton-loader-ui
-              height="140px"
-              width="200px"
-            />
-          </div>
+          <!-- paragraph -->
+          <app-skeleton-loader-ui
+            height="140px"
+            width="35%"
+          />
+          <!-- paragraph end -->
+          <!-- image -->
+          <app-skeleton-loader-ui
+            height="140px"
+            width="35%"
+          />
+          <!-- image end -->
         </div>
-        <div style="align-self: flex-end; display: flex; flex-direction: row; gap: 5px;">
-          <div style="align-self: flex-end; margin-top: 1rem;">
-            <app-skeleton-loader-ui
-              width="240px"
-              height="37px"
-            />
-          </div>
+        @let isMobile = (isMobile$ | async);
+        <div class="btn-area">
+          <app-skeleton-loader-ui
+            [width]="isMobile ? '35%' : '110px'"
+            height="37px"
+          />
+          <app-skeleton-loader-ui
+            [width]="isMobile ? '32%' : '110px'"
+            height="37px"
+          />
         </div>
       </div>
     }
     @if (skill(); as skill) {
+      @let maxTextLength = (maxLength$ | async)!;
       @for (item of skill.Examples; track $index) {
         <div class="contenedor">
           <div class="card-header-detail">
@@ -85,7 +89,25 @@
           </div>
           <div class="card-desc-detail">
             <p>
-              {{ item.Desc | translate }}
+              @let text = (item.Desc | translate);
+              {{ text | slice: 0:(item.showMore ? undefined : maxTextLength) }}
+              @if (!item.showMore && text.length > maxTextLength) {
+                ...
+              }
+              @if (text.length > maxTextLength) {
+                &nbsp;
+                <button
+                  class="more-btn"
+                  type="button"
+                  (click)="item.showMore = !item.showMore"
+                >
+                  @if (item.showMore) {
+                    {{ 'skills.buttons.showLess' | translate }}
+                  } @else {
+                    {{ 'skills.buttons.showMore' | translate }}
+                  }
+                </button>
+              }
             </p>
             <img
               #ref
@@ -95,19 +117,19 @@
             />
           </div>
           <ng-container *ngIf="item.Urls">
-            <div style="align-self: flex-end; display: flex; flex-direction: row; gap: 5px;">
-              <div *ngIf="item.Urls.Repository" style="align-self: flex-end; margin-top: 1rem;">
+            <div class="btn-area">
+              <ng-container *ngIf="item.Urls.Repository">
                 <a type="button" mat-raised-button color="primary" [href]="item.Urls.Repository" target="_blank">
                   <mat-icon>code</mat-icon>
                   <div>{{ 'skills.buttons.repo' | translate }}</div>
                 </a>
-              </div>
-              <div *ngIf="item.Urls.Deployment" style="align-self: flex-end; margin-top: 1rem;">
+              </ng-container>
+              <ng-container *ngIf="item.Urls.Deployment">
                 <a type="button" mat-raised-button color="primary" [href]="item.Urls.Deployment" target="_blank">
                   <mat-icon>launch</mat-icon>
                   <div>{{ 'skills.buttons.deploy' | translate }}</div>
                 </a>
-              </div>
+              </ng-container>
             </div>
           </ng-container>
         </div>

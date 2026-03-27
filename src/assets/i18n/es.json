@@ -27,7 +27,9 @@
     "progressTitle": "Progreso",
     "buttons": {
       "repo": "Repositorio",
-      "deploy": "Iniciar"
+      "deploy": "Iniciar",
+      "showMore": "Más",
+      "showLess": "Menos"
     },
     "tabs": {
       "tools": "Herramientas",
@@ -44,6 +46,7 @@
       "ang3": "La detección de cambios `OnPush` es una estrategia en Angular que optimiza el rendimiento al activar la detección de cambios solo cuando se cumplen condiciones específicas. Se basa en la idea de que los componentes con esta estrategia solo buscarán cambios y actualizarán su vista cuando sus Inputs cambien o cuando ocurra un evento explícito. Este enfoque reduce la sobrecarga de la detección de cambios y puede mejorar significativamente la eficiencia de una aplicación, particularmente en escenarios donde no son necesarias actualizaciones frecuentes. Se aplica sobre los metadatos del componente, lo que les permite controlar cuándo se ejecuta la detección de cambios, lo que conduce a un mejor rendimiento de la aplicación.",
       "ang4": "Proyecto de Portafolio. Una muestra de mis habilidades, experiencias y más sobre mí. Aquí, uso todas las ideas mencionadas anteriormente, además de mucho más contenido usando RxJs y una estructura de proyecto tipo Nx.",
       "ang5": "El objetivo de este proyecto es crear una plataforma inspirada en Medium (todos los derechos reservados a ellos), mientras se implementan técnicas avanzadas de rendering como lo es zoneless, donde no hacemos uso de zone.js",
+      "ang6": "NgRx es una potente librería de gestión de estado reactiva para aplicaciones Angular, construida sobre RxJS e inspirada en el patrón Redux. Permite contar con un contenedor de estado centralizado y predecible, facilitando la gestión, depuración y escalabilidad de flujos de datos complejos. A través del uso de acciones, reducers, selectores y effects, NgRx promueve un flujo de datos unidireccional y una clara separación de responsabilidades. Este enfoque mejora la mantenibilidad, la testabilidad y la trazabilidad de los cambios de estado, especialmente en aplicaciones de gran escala. Además, herramientas como Store DevTools permiten realizar debugging con “time-travel” y obtener una visión profunda del estado de la aplicación, convirtiendo a NgRx en una pieza clave para arquitecturas Angular robustas y escalables.",
       "rea0": "Una aplicación React productiva, que funciona como un comercio electrónico en línea. Usando Context, Bootstrap, SweetAlert y firebase como base de datos. Alojada en Netlify.",
       "vue0": "Una aplicación Vue 3 deprecada diseñada para un proyecto mío, que se conecta a una API creada con NodeJs y Express con una instancia de MongoDB para almacenamiento. Esta aplicación fue reemplazada posteriormente por una versión portada creada con Angular 15.",
       "node0": "Deprecada. Creada con Node y Express, esta API maneja la gestión de datos del proyecto Vue 3. Experiencia con OAuthstandard, OpenID y tokens de autenticación. Experiencia con transmisiones y buffers también. El repositorio es privado.",

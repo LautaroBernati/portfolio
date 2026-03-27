@@ -16,3 +16,14 @@ body {
 .seccion {
   padding-top: 64px;
 }
+
+.more-btn {
+  background: none;
+  font-size: .875em;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  font-style: italic;
+}

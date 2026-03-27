@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, Inject, input, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Inject, input, Input, Signal } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Skill } from '../../data-access/skills.service';
+import { Example, Skill } from '../../data-access/skills.service';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { distinctUntilChanged, map } from 'rxjs';
 
 @Component({
   selector: 'sk-tab-detail-ui',
@@ -9,12 +11,33 @@ import { Skill } from '../../data-access/skills.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TabDetailComponent {
+  private readonly _breakpointObserver = inject(BreakpointObserver);
+  private static readonly MAX_LENGTH_MOBILE = 150;
+  private static readonly MAX_LENGTH_WEB = 600;
+
   public readonly descripcion = input<string>();
+  public readonly dialog = inject(MatDialog);
   public readonly expanded = input<boolean>();
   public readonly loading = input<boolean>();
-  public readonly skill = input<Skill>();
+  public readonly skill = input<Skill & { Examples: (Example & { showMore: boolean })[] } | undefined, Skill | undefined>(undefined, {
+    transform: (value: Skill | undefined): Skill & { Examples: (Example & { showMore: boolean })[] } | undefined => {
+      return (!value) ? undefined :
+        {
+          ...value,
+          Examples: value.Examples.map((e): Example & { showMore: boolean } => ({ ...e, showMore: false }))
+        };
+    }
+  });
+  public readonly isMobile$ = this._breakpointObserver.observe(Breakpoints.Handset).pipe(
+    map(result => result.matches),
+    distinctUntilChanged(),
+  );
 
-  constructor(public dialog: MatDialog) { }
+  public readonly maxLength$ = this.isMobile$.pipe(
+    map(isMobile => isMobile ? TabDetailComponent.MAX_LENGTH_MOBILE : TabDetailComponent.MAX_LENGTH_WEB),
+  );
+
+  constructor() { }
 
   onImgClick(img: string, width: number, height: number) {
     this.dialog.open(ImageDetailDialog, <MatDialogConfig><unknown>{ data: img, width: width + 60, height: height + 80 });

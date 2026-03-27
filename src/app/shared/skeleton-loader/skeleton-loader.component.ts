@@ -24,6 +24,10 @@ export interface SkeletonConfig {
   standalone: true,
   templateUrl: 'skeleton-loader.component.html',
   styleUrls: ['skeleton-loader.component.scss'],
+  host: {
+    '[style.width]': 'width() ?? "min-content"',
+    '[style.height]': 'height() ?? "16px"',
+  }
 })
 export class SkeletonLoaderComponent {
   type = input<SkeletonType>('text');
