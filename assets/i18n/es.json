@@ -1,0 +1,99 @@
+{
+  "app": {
+    "spinnerText": "Cargando"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca De",
+    "skills": "Habilidades",
+    "contact": "Contacto",
+    "lang": "Idioma",
+    "darkMode": "Modo oscuro"
+  },
+  "about": {
+    "title": "Acerca De",
+    "personalTitle": "Ingeniero Front-End Senior",
+    "personalSubtitle": "Especialista en Angular & RxJs",
+    "intro": "Mi camino como desarrollador comenzó en el ámbito militar, donde pasé un año y medio perfeccionando mis habilidades en desarrollo full-stack bajo condiciones de alta presión mientras completaba mis estudios. Tras graduarme, me uní a Coto CICSA, donde me enfoqué en el desarrollo front-end (luego también en back-end) y en la creación de soluciones web escalables y centradas en el usuario utilizando Angular y tecnologías modernas.\n\nActualmente, trabajo como contractor dev para una empresa tecnológica en Uruguay que atiende a un cliente en Estados Unidos. Me especializo en implementar las últimas funcionalidades de Angular, optimizar el rendimiento y seguir las mejores prácticas, como la arquitectura de componentes inteligentes/tontos, la estrategia OnPush y las señales de Angular. Mi experiencia en código eficiente y mantenible, junto con el diseño responsivo, asegura resultados impactantes adaptados a las necesidades del cliente.\n\nCon pasión por el crecimiento profesional, he realizado certificaciones como React.js para mejorar mi versatilidad y seguir entregando soluciones web excepcionales.",
+    "items": {
+      "years": "años",
+      "growth": "Constante crecimiento",
+      "diploma": "Analista de Sistemas",
+      "ready": "Listo para mudarme"
+    }
+  },
+  "skills": {
+    "title": "Habilidades",
+    "progressTitle": "Progreso",
+    "buttons": {
+      "repo": "Repositorio",
+      "deploy": "Iniciar",
+      "showMore": "Más",
+      "showLess": "Menos"
+    },
+    "tabs": {
+      "tools": "Herramientas",
+      "metds": "Metodologías"
+    },
+    "type": {
+      "project": "Proyecto",
+      "codeFragment": "Fragmento de código"
+    },
+    "examples": {
+      "ang0": "La importancia de Lazy Loading juega un papel crucial en la escalabilidad de una aplicación Angular. La implementación y el diseño adecuados pueden generar importantes mejoras en el rendimiento y una mejora de presupuestos de compilación.",
+      "ang1": "En una aplicación Angular, los componentes smart son responsables de la gestión del estado, la lógica compleja y la comunicación con los servicios, ofreciendo control centralizado para una optimización eficiente del rendimiento. Al gestionar estratégicamente el estado e implementar estrategias de detección de cambios, los componentes smart pueden minimizar las re-renderizaciones innecesarias, lo que genera importantes ganancias de rendimiento. Los componentes dumb, por otro lado, se centran únicamente en la representación de la interfaz de usuario y las interacciones del usuario, lo que promueve la reutilización, la legibilidad, la facilidad de prueba, el aislamiento y el debugging simple. La separación de estos roles mejora la mantenibilidad y la eficiencia del desarrollo, al tiempo que garantiza una separación clara de las preocupaciones en la arquitectura de la aplicación, lo que en última instancia contribuye a una experiencia de usuario más fluida y eficaz.",
+      "ang2": "Renderer2 es un servicio independiente de la plataforma en Angular que facilita la manipulación segura y eficiente del Modelo de objetos de documento (DOM). Abstrae las operaciones DOM, garantiza la seguridad contra vulnerabilidades como XSS, optimiza el rendimiento y se alinea con el sistema de detección de cambios de Angular. Con Renderer2, se puede crear y modificar elementos DOM, establecer atributos, estilos y clases, adjuntar detectores de eventos e integrarse perfectamente con el sistema de animación de Angular, lo que lo convierte en una herramienta esencial para administrar el DOM en aplicaciones Angular.",
+      "ang3": "La detección de cambios `OnPush` es una estrategia en Angular que optimiza el rendimiento al activar la detección de cambios solo cuando se cumplen condiciones específicas. Se basa en la idea de que los componentes con esta estrategia solo buscarán cambios y actualizarán su vista cuando sus Inputs cambien o cuando ocurra un evento explícito. Este enfoque reduce la sobrecarga de la detección de cambios y puede mejorar significativamente la eficiencia de una aplicación, particularmente en escenarios donde no son necesarias actualizaciones frecuentes. Se aplica sobre los metadatos del componente, lo que les permite controlar cuándo se ejecuta la detección de cambios, lo que conduce a un mejor rendimiento de la aplicación.",
+      "ang4": "Proyecto de Portafolio. Una muestra de mis habilidades, experiencias y más sobre mí. Aquí, uso todas las ideas mencionadas anteriormente, además de mucho más contenido usando RxJs y una estructura de proyecto tipo Nx.",
+      "ang5": "El objetivo de este proyecto es crear una plataforma inspirada en Medium (todos los derechos reservados a ellos), mientras se implementan técnicas avanzadas de rendering como lo es zoneless, donde no hacemos uso de zone.js",
+      "ang6": "NgRx es una potente librería de gestión de estado reactiva para aplicaciones Angular, construida sobre RxJS e inspirada en el patrón Redux. Permite contar con un contenedor de estado centralizado y predecible, facilitando la gestión, depuración y escalabilidad de flujos de datos complejos. A través del uso de acciones, reducers, selectores y effects, NgRx promueve un flujo de datos unidireccional y una clara separación de responsabilidades. Este enfoque mejora la mantenibilidad, la testabilidad y la trazabilidad de los cambios de estado, especialmente en aplicaciones de gran escala. Además, herramientas como Store DevTools permiten realizar debugging con “time-travel” y obtener una visión profunda del estado de la aplicación, convirtiendo a NgRx en una pieza clave para arquitecturas Angular robustas y escalables.",
+      "rea0": "Una aplicación React productiva, que funciona como un comercio electrónico en línea. Usando Context, Bootstrap, SweetAlert y firebase como base de datos. Alojada en Netlify.",
+      "vue0": "Una aplicación Vue 3 deprecada diseñada para un proyecto mío, que se conecta a una API creada con NodeJs y Express con una instancia de MongoDB para almacenamiento. Esta aplicación fue reemplazada posteriormente por una versión portada creada con Angular 15.",
+      "node0": "Deprecada. Creada con Node y Express, esta API maneja la gestión de datos del proyecto Vue 3. Experiencia con OAuthstandard, OpenID y tokens de autenticación. Experiencia con transmisiones y buffers también. El repositorio es privado.",
+      "nest0": "API que reemplaza la antigua API de nodejs y utiliza varias herramientas como MongoDB, transacciones y RxJS para admitir completamente operaciones asíncronas. El repositorio es privado.",
+      "nest1": "API web de soporte que ayuda a recuperar información sobre el proyecto (principalmente datos relacionados con el backoffice). Se conecta a un clúster MongoDB Dockerizado y admite transacciones.",
+      "net0": "La API relacionada con el ejército, construida sobre .NET Core usando Entity Framework, sirve como una plataforma central para administrar datos y procesos relacionados con el ejército. Las características clave incluyen:\n1. **Calificación del personal**: la API permite el acceso a datos de calificación del personal militar, incluidos entrenamiento, certificaciones, rangos y especializaciones. Los usuarios pueden ver y actualizar sus registros, mientras que el control de acceso basado en roles garantiza la seguridad de los datos.\n2. **Almacenamiento de datos**: Al utilizar Entity Framework, la API almacena y administra de manera eficiente datos militares, lo que garantiza la integridad de los datos y la consulta fluida de las bases de datos.\n3. **Autenticación y autorización**: existen mecanismos de autenticación seguros y autorización basados en roles para proteger los datos confidenciales, garantizando que solo el personal autorizado pueda acceder y administrar la información.\n5. **Análisis e informes**: la API ofrece funciones de análisis e informes, lo que facilita la toma de decisiones basada en datos y el seguimiento del progreso de las operaciones militares.\n6. **Control de versiones y documentación**: la API está versionada y bien documentada, lo que facilita la integración y el uso para los desarrolladores, al tiempo que garantiza la compatibilidad y la facilidad de mantenimiento."
+    }
+  },
+  "cv": {
+    "subTitles": {
+      "experiences": "Experiencia",
+      "education": "Educación",
+      "languages": "Idiomas"
+    },
+    "exps": {
+      "coto2": "Como Desarrollador Front-End Semi-Senior con especialización en Angular, estoy desempeñando un papel fundamental en liderar y contribuir a diversos proyectos. Además de mentorizar a desarrolladores juniors y fomentar su crecimiento mediante revisiones de código y sesiones de intercambio de conocimientos, he realizado contribuciones significativas para mejorar la eficiencia del código y acelerar la velocidad de las aplicaciones. Me he destacado en la implementación de diseños web receptivos, garantizando una experiencia de usuario superior y un rendimiento optimizado. Mi colaboración con el equipo de diseño ha dado como resultado interfaces web visualmente atractivas y amigables para el usuario. Al participar activamente en las discusiones del equipo, he proporcionado soluciones innovadoras de manera constante. Mi compromiso de mantenerme al día con las últimas tecnologías de Angular y Front-End sigue siendo firme. Estoy entusiasmado por continuar mi rol de mentor y contribuir al éxito continuo del equipo.",
+      "coto": "En este rol, me centré en el desarrollo de aplicaciones Angular, prestando especial atención a garantizar medidas de seguridad sólidas. Implementé las mejores prácticas posibles, como el uso de Renderer2 para la manipulación segura del DOM, y apliqué técnicas de Lazy Loading para mejorar el rendimiento de las aplicaciones y ofrecer una mejor experiencia al usuario. Además de mantener y actualizar aplicaciones Angular existentes, exploré funcionalidades de backend, trabajando con Entity Framework para ampliar mi conjunto de habilidades. También asumí un papel de mentoría, guiando a un compañero en Angular para respaldar su crecimiento y competencia en la tecnología.",
+      "army": "Durante mi paso por este puesto, fui responsable de mejorar, expandir y crear continuamente una gama diversa de herramientas diseñadas para cumplir con los requisitos específicos del Ejército. Este rol multifacético me obligó a trabajar tanto en el backend, incluida la ampliación de las capacidades de tres API web preexistentes, como en el frontend. En particular, para el desarrollo frontend dentro de un proyecto Laravel existente, utilicé principalmente jQuery para implementar funcionalidades adicionales.",
+      "freelance": "Durante mi trabajo como freelancer, colaboré con contactos personales en una variedad de proyectos. Aunque trabajaba principalmente de forma independiente, también tomé la iniciativa de desarrollar dos proyectos propios. Utilicé Vue.js, incluidos Vue 2 y Vue 3, para el desarrollo front-end. Para el backend, empleé MongoDB para gestionar y almacenar datos de forma eficaz. Esta experiencia me permitió obtener conocimientos valiosos sobre el desarrollo web y mostrar mi capacidad para trabajar con diferentes tecnologías y clientes.",
+      "switch": "Como desarrollador experto en Angular, me especializo en desarrollar una aplicación web front-end a gran escala para un cliente basado en los Estados Unidos. Fui contratado específicamente para incorporar las últimas características de Angular en el proyecto y optimizar el código existente, alineándome con mi experiencia en optimización y mejores estándares de codificación. Mi enfoque se centra en implementar componentes escalables utilizando la arquitectura de componentes inteligentes/tontos, la estrategia de detección de cambios OnPush y la nueva API de señales de Angular. Aprovechando herramientas como Angular Material y Tailwind CSS, garantizo diseños receptivos y fáciles de usar. Colaborando con equipos ágiles en diferentes zonas horarias, contribuyo activamente a soluciones de alta calidad mientras me mantengo actualizado con los últimos avances en Angular. Estoy comprometido con la escritura de código limpio y eficiente, y con fomentar las mejores prácticas para lograr el éxito del proyecto."
+    },
+    "education": {
+      "coderhouse": "Este curso intensivo de 4 meses proporciona una exploración integral de React.js, con un enfoque más amplio en el desarrollo front-end y los conceptos fundamentales de JavaScript. A lo largo del programa, participé activamente en el aprendizaje práctico conceptualizando, diseñando y construyendo una aplicación web de comercio electrónico completamente funcional. Esta experiencia práctica incluyó un uso extensivo de React.js para el desarrollo front-end dinámico, junto con Firebase como una solución de base de datos sólida y escalable. Al implementar con éxito esta aplicación web de comercio electrónico, obtuve competencia práctica en la creación de interfaces de usuario interactivas, la gestión de datos en tiempo real y la garantía de una experiencia de compra en línea, solidificando así mi experiencia tanto en React.js como en el desarrollo front-end como tal.",
+      "ort": "El título superior de Análisis de Sistemas con especialización en Desarrollo Web es un programa integral que combina principios básicos de análisis de sistemas con un enfoque especializado en desarrollo web. Los estudiantes obtienen una base sólida en arquitectura, modelado y optimización de sistemas, al mismo tiempo que adquieren competencia en tecnologías web, lenguajes de programación y diseño web. Este título brinda a los graduados las habilidades para trabajar como analistas de sistemas con un énfasis distintivo en tecnologías basadas en web, lo que los convierte en activos valiosos en industrias que van desde el comercio electrónico hasta la atención médica. Se destacan en el desarrollo de sitios web responsivos, la gestión de bases de datos, la garantía de la seguridad web y la integración de funcionalidades de comercio electrónico, todo ello al mismo tiempo que comprenden los fundamentos de la gestión de proyectos para supervisar los proyectos de desarrollo web de principio a fin.",
+      "udemy": {
+        "ang": "Este curso está estructurado para guiar a los estudiantes a través de aplicaciones prácticas en cada sección, facilitando la adquisición y dominio de temas específicos. A medida que avanza el curso, los participantes avanzarán en la creación de aplicaciones cada vez más complejas, desarrollando habilidades de manera fluida en la creación de directivas, componentes, pipes, servicios y rutas. Además de Angular, el curso también aborda diversas tecnologías relevantes, incluyendo Firebase, servicios RESTful de Firebase, funciones en la nube de Firebase, operaciones CRUD, TypeScript, ECMAScript 6, Reactive-Extensions, Sockets, Ionic 5, paquetes de Atom/Extensiones de Visual Studio Code, Angular CLI, AngularFire, almacenamiento local, Bootstrap 4, API de Spotify, API de Youtube y otras tecnologías importantes. Los estudiantes se volverán proficientes en este poderoso y ágil framework, beneficiándose de introducciones exhaustivas al código, lógica de resolución de problemas guiada por las mejores prácticas y la adherencia a la guía de estilo oficial de Angular. Aunque existe alguna teoría introductoria, el curso se centra principalmente en la experiencia práctica en la creación de diversas aplicaciones escalables de tamaño pequeño a mediano, fomentando en última instancia la experiencia en Angular."
+      }
+    },
+    "langs": {
+      "spanish": {
+        "desc": "Español",
+        "level": "Nativo"
+      },
+      "german": {
+        "desc": "Alemán",
+        "level": "Principiante"
+      },
+      "english": {
+        "desc": "Inglés",
+        "level": "Nativo"
+      }
+    },
+    "buttons": {
+      "details": {
+        "expanded": "Menos",
+        "hidden": "Más"
+      }
+    }
+  }
+}
