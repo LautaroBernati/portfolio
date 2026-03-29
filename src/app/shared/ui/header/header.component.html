@@ -1,65 +1,90 @@
 <header>
-    <nav class="navbar fixed-top">
-        <mat-toolbar [color]="'primary'" style="overflow-y: auto;">
-            <div style="display: flex;">
-                <a mat-stroked-button aria-label="Home button" [routerLink]="['/home']"
-                    [routerLinkActive]="'active-link'">
-                    <mat-icon>home</mat-icon>
-                    <span>{{ 'navbar.home' | translate }}</span>
-                </a>
-                <a type="button" mat-stroked-button aria-label="Button to about page" [routerLink]="['/about']"
-                    [routerLinkActive]="'active-link'">
-                    <mat-icon>person</mat-icon>
-                    <span>{{ 'navbar.about' | translate }}</span>
-                </a>
-                <a type="button" mat-stroked-button aria-label="Button to skills page" [routerLink]="['/skills']"
-                    [routerLinkActive]="'active-link'">
-                    <mat-icon>work</mat-icon>
-                    <span>{{ 'navbar.skills' | translate }}</span>
-                </a>
-                <a type="button" mat-stroked-button aria-label="Button to CV page" [routerLink]="['/cv']"
-                    [routerLinkActive]="'active-link'">
-                    <mat-icon>insert_drive_file</mat-icon>
-                    CV
-                </a>
-            </div>
-            <!-- <a type="button" mat-button aria-label="Button to contact me page" [routerLink]="['/contact']"
-                [routerLinkActive]="'active-link'">
-                Contact
-            </a> -->
-            <span mat-button style="margin-left: auto; display: flex; justify-content: center; align-items: center;">
-                <button type="button" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Language menu"
-                    style="margin-right: 10px;" [matTooltip]="'navbar.lang' | translate">
-                    <mat-icon>translate</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu" xPosition="before">
-                    <button type="button" mat-menu-item (click)="switchLang('en')">
-                        <mat-icon *ngIf="language.value === 'en'">radio_button_checked</mat-icon>
-                        <mat-icon *ngIf="language.value !== 'en'">radio_button_unchecked</mat-icon>
-                        <span style="display: flex; align-items: center;">
-                            <img src="assets/images/cv/flags/united-kingdom-flag.png" alt="image" width="20" height="20"
-                                style="border-radius: 50%;">
-                            <div style="padding-left: 5px;">En</div>
-                        </span>
-                    </button>
-                    <button type="button" mat-menu-item (click)="switchLang('es')">
-                        <mat-icon *ngIf="language.value === 'es'">radio_button_checked</mat-icon>
-                        <mat-icon *ngIf="language.value !== 'es'">radio_button_unchecked</mat-icon>
-                        <span style="display: flex; align-items: center;">
-                            <img src="assets/images/cv/flags/spain-flag.png" alt="image" width="20" height="20"
-                                style="border-radius: 50%;">
-                            <div style="padding-left: 5px;">Es</div>
-                        </span>
-                    </button>
-                </mat-menu>
-                <div *ngIf="{ value: (darkMode.valueChanges | async) } as value">
-                    <fa-icon *ngIf="value.value" [icon]="moonIcon" style="color: rgb(159, 1, 173);"></fa-icon>
-                    <fa-icon *ngIf="!value.value" [icon]="sunIcon" style="color: goldenrod;"></fa-icon>
-                </div>
-                <mat-slide-toggle style="margin-left: 0.5rem;" [formControl]="darkMode"
-                    [matTooltip]="'navbar.darkMode' | translate">
-                </mat-slide-toggle>
-            </span>
-        </mat-toolbar>
-    </nav>
+  <nav class="navbar fixed-top">
+    <div
+			class="toolbar"
+			role="banner"
+		>
+      <div class="nav-links">
+				@let isMobile = isMobile$ | async;
+				<ng-container *ngTemplateOutlet="navLinkRef; context: {
+					text: ('navbar.home' | translate), route: '/home', icon: 'home', isMobile
+				}" />
+				<ng-container *ngTemplateOutlet="navLinkRef; context: {
+					text: ('navbar.about' | translate), route: '/about', icon: 'person', isMobile
+				}" />
+				<ng-container *ngTemplateOutlet="navLinkRef; context: {
+					text: ('navbar.skills' | translate), route: '/skills', icon: 'construction', isMobile
+				}" />
+				<ng-container *ngTemplateOutlet="navLinkRef; context: {
+					text: 'CV', route: '/cv', icon: 'list_alt', ariaLabel: 'Curriculum Vitae', isMobile
+				}" />
+      </div>
+
+      <div class="toolbar-right">
+        <button
+          cdkOverlayOrigin
+          #triggerBtn="cdkOverlayOrigin"
+          mat-icon-button
+          [matTooltip]="'navbar.settings.title' | translate"
+          type="button"
+          aria-label="Open settings panel"
+          (click)="isSettingsPanelOpened = !isSettingsPanelOpened"
+        >
+          <mat-icon>settings</mat-icon>
+        </button>
+      </div>
+    </div>
+  </nav>
 </header>
+
+<ng-template #navLinkRef let-route="route" let-text="text" let-icon="icon" let-ariaLabel="ariaLabel" let-isMobile="isMobile">
+  <a
+		mat-stroked-button
+		[attr.aria-label]="ariaLabel ?? text"
+		[routerLink]="[route]"
+		[routerLinkActive]="'active-link'"
+		[matTooltip]="isMobile ? text : undefined"
+	>
+		<mat-icon>{{ icon }}</mat-icon>
+		<span class="nav-link-text">{{ text }}</span>
+	</a>
+</ng-template>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="triggerBtn"
+  [cdkConnectedOverlayOpen]="isSettingsPanelOpened"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  (backdropClick)="isSettingsPanelOpened = false"
+	(overlayOutsideClick)="isSettingsPanelOpened = false"
+  (detach)="isSettingsPanelOpened = false"
+>
+  <div class="settings-panel">
+		@let settingsTitle = ('navbar.settings.title' | translate);
+		<span
+			[attr.aria-label]="settingsTitle"
+			role="heading"
+			class="settings-title"
+		>{{ settingsTitle }}</span>
+		<mat-divider />
+		<div class="field-container">
+			<mat-form-field [appearance]="'outline'">
+				<mat-label>{{ ('navbar.settings.langSelect.label' | translate) }}</mat-label>
+				<mat-select [formControl]="languageControl">
+					@for (item of (langOptions$ | async); track item.value) {
+						<mat-option [value]="item.value">{{ item.label }}</mat-option>
+					}
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field [appearance]="'outline'">
+				<mat-label>{{ ('navbar.settings.themeSelect.label' | translate) }}</mat-label>
+				<mat-select [formControl]="themeControl">
+					@for (item of (themeOptions$ | async); track item.value) {
+						<mat-option [value]="item.value">{{ item.label }}</mat-option>
+					}
+				</mat-select>
+			</mat-form-field>
+		</div>
+	</div>
+</ng-template>

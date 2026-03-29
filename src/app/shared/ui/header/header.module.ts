@@ -1,7 +1,9 @@
+import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,6 +24,7 @@ import { HeaderComponent } from './header.component';
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
+    MatDividerModule,
     MatIconModule,
     MatSlideToggleModule,
     MatSelectModule,
@@ -29,6 +32,7 @@ import { HeaderComponent } from './header.component';
     MatMenuModule,
     FontAwesomeModule,
     TranslateModule.forChild(),
+    OverlayModule,
   ],
   exports: [HeaderComponent],
   providers: [],

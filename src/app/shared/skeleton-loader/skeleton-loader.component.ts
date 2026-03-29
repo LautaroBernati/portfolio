@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, ViewEncapsulation } from '@angular/core';
 
 export type SkeletonSize = 'sm' | 'md' | 'lg';
 export type SkeletonType =
@@ -27,7 +27,8 @@ export interface SkeletonConfig {
   host: {
     '[style.width]': 'width() ?? "min-content"',
     '[style.height]': 'height() ?? "16px"',
-  }
+  },
+  encapsulation: ViewEncapsulation.None
 })
 export class SkeletonLoaderComponent {
   type = input<SkeletonType>('text');

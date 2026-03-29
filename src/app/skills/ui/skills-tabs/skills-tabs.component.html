@@ -1,15 +1,20 @@
 <mat-tab-group [preserveContent]="true" @fadeIn>
+  @let feSkills = frontEndSkills();
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon style="margin-right: 10px;">panorama</mat-icon>
-      Front End
+      @if (feSkills) {
+        <mat-icon class="card-header-icon">panorama</mat-icon>
+        Front End
+      } @else {
+        <ng-container *ngTemplateOutlet="loadingSkeletonRef" />
+      }
     </ng-template>
     <!-- start front end -->
     <ng-template matTabContent>
-      <div style="padding: 10px;">
-        @if (frontEndSkills(); as frontEndSkills) {
-          @for (item of frontEndSkills; track $index) {
-            <div style="margin-top: 0.5rem;">
+      <div class="tab-container">
+        @if (feSkills; as skills) {
+          @for (item of skills; track $index) {
+            <div class="tab-detail-container">
               <sk-tab-detail-ui
                 [expanded]="$index === 0"
                 [skill]="item"
@@ -28,16 +33,21 @@
     </ng-template>
     <!-- end front end -->
   </mat-tab>
+  @let beSkills = backEndSkills();
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon style="margin-right: 10px;">http</mat-icon>
-      Back End
+      @if (beSkills) {
+        <mat-icon class="card-header-icon">http</mat-icon>
+        Back End
+      } @else {
+        <ng-container *ngTemplateOutlet="loadingSkeletonRef" />
+      }
     </ng-template>
     <!-- start backend content -->
-    <div style="padding: 10px;">
-      @if (backEndSkills(); as skills) {
+    <div class="tab-container">
+      @if (beSkills; as skills) {
           @for (item of skills; track $index) {
-            <div style="margin-top: 0.5rem;">
+            <div class="tab-detail-container">
               <sk-tab-detail-ui
                 [expanded]="$index === 0"
                 [skill]="item"
@@ -55,28 +65,47 @@
     </div>
     <!-- end backend content -->
   </mat-tab>
+  @let toolsList = tools();
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon style="margin-right: 10px;">build</mat-icon>
-      <div>{{ 'skills.tabs.tools' | translate }}</div>
+      @if (toolsList) {
+        <mat-icon class="card-header-icon">build</mat-icon>
+        <div>{{ 'skills.tabs.tools' | translate }}</div>
+      } @else {
+        <ng-container *ngTemplateOutlet="loadingSkeletonRef" />
+      }
     </ng-template>
     <div class="tab-container-v2">
-      <div *ngFor="let item of tools()" style="width: 55%; padding: 1rem;">
-        <sk-tool-met-detail-ui [item]="item">
-        </sk-tool-met-detail-ui>
+      <div
+        *ngFor="let item of toolsList"
+        class="tool-detail-container"
+      >
+        <sk-tool-met-detail-ui [item]="item" />
       </div>
     </div>
   </mat-tab>
+  @let methodologiesList = methodologies();
   <mat-tab>
     <ng-template mat-tab-label>
-      <mat-icon style="margin-right: 10px;">whatshot</mat-icon>
-      <div>{{ 'skills.tabs.metds' | translate }}</div>
+      <ng-container *ngIf="methodologiesList; else loadingSkeletonRef">
+        <mat-icon class="card-header-icon">whatshot</mat-icon>
+        <div>{{ 'skills.tabs.metds' | translate }}</div>
+      </ng-container>
     </ng-template>
     <div class="tab-container-v2">
-      <div *ngFor="let item of methodologies()" style="width: 55%; padding: 1rem;">
-        <sk-tool-met-detail-ui [item]="item">
-        </sk-tool-met-detail-ui>
+      <div
+        *ngFor="let item of methodologiesList"
+        class="tool-detail-container"
+      >
+        <sk-tool-met-detail-ui [item]="item" />
       </div>
     </div>
   </mat-tab>
 </mat-tab-group>
+
+<ng-template #loadingSkeletonRef>
+  <app-skeleton-loader-ui
+    height="24px"
+    width="90px"
+  />
+</ng-template>

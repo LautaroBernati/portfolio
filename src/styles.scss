@@ -27,3 +27,13 @@ body {
   color: inherit;
   font-style: italic;
 }
+
+:root {
+  --nav-bg: #b5d5ff;
+  --nav-fg: #ffffff;
+}
+
+.dark-mode {
+  --nav-bg: #0f1f35;
+  --nav-fg: #ffffff;
+}

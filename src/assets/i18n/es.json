@@ -8,7 +8,24 @@
     "skills": "Habilidades",
     "contact": "Contacto",
     "lang": "Idioma",
-    "darkMode": "Modo oscuro"
+    "darkMode": "Modo oscuro",
+    "settings": {
+      "title": "Ajustes",
+      "langSelect": {
+        "label": "Idioma",
+        "values": {
+          "es": "Español",
+          "en": "Inglés"
+        }
+      },
+      "themeSelect": {
+        "label": "Tema",
+        "values": {
+          "light": "Claro",
+          "dark": "Oscuro"
+        }
+      }
+    }
   },
   "about": {
     "title": "Acerca De",

@@ -8,7 +8,24 @@
     "skills": "Skills",
     "contact": "Contact",
     "lang": "Language",
-    "darkMode": "Dark mode"
+    "darkMode": "Dark mode",
+    "settings": {
+      "title": "Settings",
+      "langSelect": {
+        "label": "Language",
+        "values": {
+          "es": "Spanish",
+          "en": "English"
+        }
+      },
+      "themeSelect": {
+        "label": "Theme",
+        "values": {
+          "light": "Light",
+          "dark": "Dark"
+        }
+      }
+    }
   },
   "about": {
     "title": "About",

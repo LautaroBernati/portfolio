@@ -4,3 +4,23 @@
   justify-content: center;
   align-items: center;
 }
+
+.card-header-icon {
+  margin-right: 0.5rem;
+}
+
+.tab-detail-container {
+  margin-top: 0.5rem;
+}
+
+.tool-detail-container {
+  width: 55%;
+  padding: 1rem;
+}
+
+.tab-container {
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

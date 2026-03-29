@@ -22,10 +22,23 @@
     transparent
   );
   animation: shimmer 1.5s infinite;
+
+  .dark-mode & {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(117, 117, 117, 0.6),
+      transparent
+    );
+  }
 }
 
 .skeleton-base {
   background-color: #e5e7eb;
+
+  .dark-mode & {
+    background-color: #1f1f1f;
+  }
 }
 
 .skeleton-avatar {
