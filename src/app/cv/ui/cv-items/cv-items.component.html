@@ -1,32 +1,74 @@
 <mat-card>
-  <mat-card-header (click)="onExpand()" style="cursor: pointer; justify-content: space-between;">
+  <mat-card-header class="custom-card-header" (click)="onExpand()">
     <mat-card-title>
-      {{ experience?.Title }}
+      @if (experience()?.Title; as title) {
+        <span>
+          {{ title }}
+        </span>
+      } @else {
+        <app-skeleton-loader-ui
+          [ngStyle]="{'display': 'block'}"
+          height="21px"
+          width="200px"
+        />
+      }
     </mat-card-title>
     <mat-card-subtitle>
-      <div style="display: flex; flex-direction: column;">
-        <span>{{ experience?.Subtitle }}</span>
-        <span>{{ experience?.From + ' - ' + (experience?.To ?? 'Present') }}</span>
+      <div class="custom-card-subtitle">
+        @if (experience()?.Subtitle; as subtitle) {
+          <span>{{ subtitle }}</span>
+        } @else {
+          <app-skeleton-loader-ui
+            [ngStyle]="{'margin-top': '0.5rem'}"
+            height="21px"
+            width="200px"
+          />
+        }
+        @if (!experience()?.From) {
+          <app-skeleton-loader-ui
+            [ngStyle]="{'margin-top': '0.5rem'}"
+            height="21px"
+            width="200px"
+          />
+        } @else {
+          <span>{{ experience()?.From + " - " + (experience()?.To ?? "Present") }}</span>
+        }
       </div>
     </mat-card-subtitle>
-    <img [src]="experience?.LogoUrl" alt="Image" style="max-width: 80px; max-height: 80px; border-radius: 50%; background-color: white;">
+    @if (experience()?.LogoUrl; as url) {
+      <img
+        class="company-logo"
+        [src]="experience()?.LogoUrl"
+        alt="Image"
+      />
+    } @else {
+      <app-skeleton-loader-ui
+        type="avatar"
+        width="80px"
+        height="80px"
+      />
+    }
   </mat-card-header>
   <mat-card-content>
     <div class="collapsible" [@collapse]="!showDetails">
-      <hr>
-      <p>{{ experience?.Description! | translate }}</p>
-      <p *ngIf="experience?.Tech">
+      <hr />
+      <p>{{ experience()?.Description! | translate }}</p>
+      <p *ngIf="experience()?.Tech">
         <strong>Stack:</strong>
-        {{ experience?.Tech }}
+        {{ experience()?.Tech }}
       </p>
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button type="button" color="primary" mat-stroked-button (click)="onExpand()">
+    <button
+      type="button"
+      [disabled]="!experience()"
+      mat-stroked-button
+      (click)="onExpand()"
+    >
       <mat-icon *ngIf="!showDetails">expand_more</mat-icon>
       <mat-icon *ngIf="showDetails">expand_less</mat-icon>
-      {{ (showDetails ? ('cv.buttons.details.expanded') : ('cv.buttons.details.hidden')) | translate }}
-      <!-- Details -->
+      {{ (showDetails ? "cv.buttons.details.expanded" : "cv.buttons.details.hidden") | translate }}
     </button>
   </mat-card-actions>
 </mat-card>

@@ -1,5 +1,5 @@
 import { AUTO_STYLE, animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, Input } from '@angular/core';
 import { Experience } from '../../data-access/experiences.service';
 
 @Component({
@@ -15,9 +15,13 @@ import { Experience } from '../../data-access/experiences.service';
     ]),
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
+    '[style.max-width]': 'maxWidth() ?? "400px"',
+  }
 })
 export class CVItemComponent {
-  @Input() public experience: Experience | null = null;
+  public readonly experience = input<Experience>();
+  public readonly maxWidth = input<string>();
   public showDetails = false;
 
   onExpand() {

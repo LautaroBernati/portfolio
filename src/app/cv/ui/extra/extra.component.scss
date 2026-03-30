@@ -1,0 +1,14 @@
+
+.mat-mdc-card-header {
+  justify-content: center;
+}
+
+.extra-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  h4 {
+    margin-bottom: 0px;
+  }
+}

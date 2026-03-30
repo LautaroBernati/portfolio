@@ -2,7 +2,8 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Methodology } from '../../data-access/methodologies.service';
-import { Tool } from '../../data-access/tools.service';
+import { Tool } from '../../../shared/services/tools.service';
+import { numberToRgb } from 'src/app/shared/utils/number-to-rgb.function';
 
 
 @Component({
@@ -16,11 +17,7 @@ import { Tool } from '../../data-access/tools.service';
 export class ToolMetDetailComponent {
   @Input('item') item: Tool | Methodology | null = null;
 
-  getColor(progress: number) {
-    const red = Math.min(255, Math.round((100 - progress) * 255 / 50)); // Red component
-    const green = Math.min(200, Math.round((progress) * 200 / 50)); // Green component
-
-    // Return the color as an RGB string
-    return `rgb(${red}, ${green}, 0)`;
+  public getColor(progress: number): string {
+    return numberToRgb(progress);
   }
 }

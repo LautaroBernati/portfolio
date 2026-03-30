@@ -1,3 +1,18 @@
 .progress {
-  background-color: #95b2cf;
+  background-color: var(--surface-container-high);
+}
+
+.tool-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .text-container {
+    display: flex;
+    justify-content: space-between;
+
+    h4 {
+      margin-bottom: 0px;
+    }
+  }
 }

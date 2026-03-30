@@ -5,3 +5,26 @@
 .collapsible {
   overflow: hidden;
 }
+
+.custom-card-header {
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+.custom-card-subtitle {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-logo {
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 12px;
+  background-color: var(--bg-img-color);
+}
+
+.mdc-card {
+  :last-child {
+    margin-top: 0.3rem;
+  }
+}

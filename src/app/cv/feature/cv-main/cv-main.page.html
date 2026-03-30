@@ -1,54 +1,79 @@
 <div class="container-fluid seccion">
   <div class="row mt-5">
     <div class="col text-center">
-      <h1>Curriculum Vitae</h1>
+      <h1>Currículum Vitae</h1>
     </div>
   </div>
-  <hr>
-  <div class="row" @fadeIn>
-    <div class="col">
+  <hr />
+  <div class="row-custom" @fadeIn>
+    <div class="column sm transf-col">
+      <div class="overview-wrapper">
+        <cv-extra-card-ui [setHeader]="false">
+          <div class="overview" @fadeIn>
+            <img
+              alt="image"
+              class="avatar-img"
+              src="assets/images/avatar-pic.png"
+              [height]="120"
+              [width]="120"
+            />
+            <span>
+              Lautaro Bernati
+            </span>
+            <span>Senior Web Developer</span>
+            <span>
+              <a routerLink="/about">
+                {{ 'cv.subTitles.contact' | translate }}
+              </a>
+            </span>
+          </div>
+        </cv-extra-card-ui>
+        @let langList = (languages$ | async);
+        <cv-extra-card-ui
+          [header]="('cv.subTitles.languages' | translate)"
+          [loading]="!langList"
+        >
+          @for (item of langList; track $index) {
+            <cv-lang-item-ui [item]="item" />
+          }
+        </cv-extra-card-ui>
+      </div>
+      @let tools = (tools$ | async);
+      <cv-extra-card-ui
+        [header]="('cv.subTitles.tools' | translate)"
+        [items]="tools"
+        [loading]="!tools"
+      />
+    </div>
+    <div class="column md">
       <div>
         <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
-        <ng-container *ngIf="experiences$ | async as experiences; else loading;">
-          <ul *ngFor="let item of experiences" class="timeline" @fadeIn>
-            <li style="padding: 0.5rem;">
+        <div class="timeline" @fadeIn>
+          @if ((experiences$ | async); as list) {
+            @for (item of list; track $index) {
               <cv-stepper-ui
-                [experience]="item">
-              </cv-stepper-ui>
-            </li>
-          </ul>
-        </ng-container>
+                [experience]="item"
+                maxWidth="100%"
+              />
+            }
+          } @else {
+            <cv-stepper-ui [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+          }
+        </div>
       </div>
     </div>
-    <div class="col">
+  </div>
+  <hr />
+  <div class="row-custom">
+    <div class="column full center">
       <h4><strong>{{ 'cv.subTitles.education' | translate }}</strong></h4>
-      <ng-container *ngIf="education$ | async as education; else loading;">
-        <ul *ngFor="let item of education" class="timeline" @fadeIn>
-          <li style="padding: 0.5rem">
-            <cv-stepper-ui
-              [experience]="item">
-            </cv-stepper-ui>
-          </li>
-        </ul>
-      </ng-container>
-    </div>
-    <div class="col">
-      <h4><strong>{{ 'cv.subTitles.languages' | translate }}</strong></h4>
-      <ng-container *ngIf="(languages$ | async) as langs; else loading;">
-        <ul *ngFor="let item of langs" @fadeIn>
-          <li style="list-style-type: none;">
-            <cv-lang-item-ui
-              [item]="item">
-            </cv-lang-item-ui>
-          </li>
-        </ul>
+      <ng-container *ngIf="education$ | async as educationList;">
+        <div class="timeline md" @fadeIn>
+          @for (item of educationList; track $index) {
+            <cv-stepper-ui [experience]="item" maxWidth="100%" />
+          }
+        </div>
       </ng-container>
     </div>
   </div>
 </div>
-
-<ng-template #loading>
-  <div style="display: flex; justify-content: center; align-items: center;">
-    <mat-spinner></mat-spinner>
-  </div>
-</ng-template>

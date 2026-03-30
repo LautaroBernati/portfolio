@@ -76,7 +76,10 @@
     "subTitles": {
       "experiences": "Experiencia",
       "education": "Educación",
-      "languages": "Idiomas"
+      "languages": "Idiomas",
+      "tools": "Herramientas",
+      "contact": "Contacto",
+      "overview": "Resumen"
     },
     "exps": {
       "coto2": "Como Desarrollador Front-End Semi-Senior con especialización en Angular, estoy desempeñando un papel fundamental en liderar y contribuir a diversos proyectos. Además de mentorizar a desarrolladores juniors y fomentar su crecimiento mediante revisiones de código y sesiones de intercambio de conocimientos, he realizado contribuciones significativas para mejorar la eficiencia del código y acelerar la velocidad de las aplicaciones. Me he destacado en la implementación de diseños web receptivos, garantizando una experiencia de usuario superior y un rendimiento optimizado. Mi colaboración con el equipo de diseño ha dado como resultado interfaces web visualmente atractivas y amigables para el usuario. Al participar activamente en las discusiones del equipo, he proporcionado soluciones innovadoras de manera constante. Mi compromiso de mantenerme al día con las últimas tecnologías de Angular y Front-End sigue siendo firme. Estoy entusiasmado por continuar mi rol de mentor y contribuir al éxito continuo del equipo.",
@@ -97,13 +100,9 @@
         "desc": "Español",
         "level": "Nativo"
       },
-      "german": {
-        "desc": "Alemán",
-        "level": "Principiante"
-      },
       "english": {
         "desc": "Inglés",
-        "level": "Nativo"
+        "level": "C2"
       }
     },
     "buttons": {

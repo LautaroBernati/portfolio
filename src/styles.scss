@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use './theme-config' as config;
+
 html,
 body {
   height: 100%;
@@ -36,4 +39,22 @@ body {
 .dark-mode {
   --nav-bg: #0f1f35;
   --nav-fg: #ffffff;
+}
+
+.btn-tertiary {
+  @include mat.button-color(config.$light-theme, $color-variant: tertiary);
+}
+
+.dark-mode .btn-tertiary {
+  @include mat.button-color(config.$dark-theme, $color-variant: tertiary);
+}
+
+:root {
+  --surface-container-high: #{mat.get-theme-color(config.$light-theme, surface-container-high)};
+  --bg-img-color: #e0e0e0;
+}
+
+.dark-mode {
+  --surface-container-high: #{mat.get-theme-color(config.$dark-theme, surface-container-high)};
+  --bg-img-color: #b9b9b9;
 }

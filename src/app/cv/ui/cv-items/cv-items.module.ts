@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { SkeletonLoaderComponent } from 'src/app/shared/skeleton-loader/skeleton-loader.component';
 import { CVItemComponent } from './cv-items.component';
 
 
@@ -15,6 +16,7 @@ import { CVItemComponent } from './cv-items.component';
     MatIconModule,
     MatButtonModule,
     TranslateModule.forChild(),
+    SkeletonLoaderComponent,
   ],
   exports: [CVItemComponent],
 })

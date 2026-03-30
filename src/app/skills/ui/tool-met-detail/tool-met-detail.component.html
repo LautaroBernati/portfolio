@@ -1,11 +1,19 @@
-<div style="display: flex; flex-direction: column; width: 100%;">
-  <div style="display: flex; justify-content: space-between;">
-    <h4 style="margin-bottom: 0px;">{{ item?.Desc }}</h4>
-    <h4 style="margin-bottom: 0px;">{{ item?.Percent + '%' }}</h4>
+<div class="tool-container">
+  <div class="text-container">
+    <h4>{{ item?.Desc }}</h4>
+    <h4>{{ item?.Percent + "%" }}</h4>
   </div>
   <div class="progress">
-    <div class="progress-bar" role="progressbar"
-      [ngStyle]="{'width': item?.Percent + '%', 'background-color': getColor(item?.Percent ?? 0)}" aria-valuenow="100"
-      aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar"
+      role="progressbar"
+      [ngStyle]="{
+        width: item?.Percent + '%',
+        'background-color': getColor(item?.Percent ?? 0),
+      }"
+      aria-valuenow="100"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    ></div>
   </div>
 </div>

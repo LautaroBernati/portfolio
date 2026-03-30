@@ -1,0 +1,29 @@
+<mat-card>
+  @if (setHeader()) {
+    <mat-card-header>
+      <mat-card-title>
+        <h3>
+          @if (header(); as header) {
+            {{ header }}
+          } @else {
+            <app-skeleton-loader-ui width="100%" />
+          }
+        </h3>
+      </mat-card-title>
+    </mat-card-header>
+    <hr />
+  }
+  <mat-card-content>
+    <ng-content />
+    <div class="extra-items-container">
+      @if (items(); as items) {
+        @for (item of items; track $index) {
+          <span>{{ item }}</span>
+        }
+      }
+      @if (loading()) {
+        <app-skeleton-loader-ui width="100%" />
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

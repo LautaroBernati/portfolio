@@ -3,7 +3,7 @@ import { faAngular, faMicrosoft, faNode, faNodeJs, faReact, faVuejs, IconDefinit
 import { combineLatest, map } from 'rxjs';
 import { MethodologiesService } from '../../data-access/methodologies.service';
 import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
-import { ToolsService } from '../../data-access/tools.service';
+import { ToolsService } from '../../../shared/services/tools.service';
 
 
 @Component({

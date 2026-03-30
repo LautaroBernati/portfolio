@@ -2,7 +2,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, input } from '@angular/core';
 import { Methodology } from '../../data-access/methodologies.service';
 import { Skill } from '../../data-access/skills.service';
-import { Tool } from '../../data-access/tools.service';
+import { Tool } from '../../../shared/services/tools.service';
 
 
 @Component({
