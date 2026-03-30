@@ -10,7 +10,7 @@ import { map } from 'rxjs';
 @Component({
   selector: 'cv-main',
   templateUrl: 'cv-main.page.html',
-  styleUrls: ['cv-main.page.scss'],
+  styleUrls: ['cv-main-rename.page.scss'],
   animations: fadeIn(),
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
