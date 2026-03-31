@@ -3,7 +3,7 @@
     <mat-card-title>
       @if (experience()?.Title; as title) {
         <span>
-          {{ title }}
+          {{ title | translate }}
         </span>
       } @else {
         <app-skeleton-loader-ui
@@ -52,7 +52,14 @@
   <mat-card-content>
     <div class="collapsible" [@collapse]="!showDetails">
       <hr />
-      <p>{{ experience()?.Description! | translate }}</p>
+      <p>
+        <!-- up next -->
+        @if (isEducation()) {
+          {{ experience()?.Description }}
+        } @else {
+          {{ experience()?.Description! | translate }}
+        } 
+      </p>
       <p *ngIf="experience()?.Tech">
         <strong>Stack:</strong>
         {{ experience()?.Tech }}

@@ -37,8 +37,7 @@ h4 {
   gap: 1rem;
 
   @include bp.until(md) {
-    flex-direction: column-reverse;
-    width: fit-content;
+    flex-direction: column;
   }
 
   &:last-child {

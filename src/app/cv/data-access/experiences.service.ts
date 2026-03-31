@@ -1,16 +1,10 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
 import { Observable, shareReplay } from 'rxjs';
+import { Education } from './education.service';
 
-export type Experience = {
-  Title: string;
-  Subtitle: string;
-  Description: string;
-  Tech?: string;
-  From: number;
-  To: number;
-  LogoUrl?: string;
-};
+// next step: replace Experience for a proper type
+export type Experience = Education & { Tech?: string };
 
 @Injectable()
 export class ExperiencesService {

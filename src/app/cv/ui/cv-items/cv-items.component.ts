@@ -21,6 +21,7 @@ import { Experience } from '../../data-access/experiences.service';
 })
 export class CVItemComponent {
   public readonly experience = input<Experience>();
+  public readonly isEducation = input.required<boolean>();
   public readonly maxWidth = input<string>();
   public showDetails = false;
 

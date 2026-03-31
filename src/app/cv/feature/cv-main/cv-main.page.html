@@ -51,13 +51,15 @@
         <div class="timeline" @fadeIn>
           @if ((experiences$ | async); as list) {
             @for (item of list; track $index) {
+              <!-- up next -->
               <cv-stepper-ui
+                [isEducation]="false"
                 [experience]="item"
                 maxWidth="100%"
               />
             }
           } @else {
-            <cv-stepper-ui [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+            <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
           }
         </div>
       </div>
@@ -70,7 +72,8 @@
       <ng-container *ngIf="education$ | async as educationList;">
         <div class="timeline md" @fadeIn>
           @for (item of educationList; track $index) {
-            <cv-stepper-ui [experience]="item" maxWidth="100%" />
+            <!-- up next -->
+            <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
           }
         </div>
       </ng-container>
