@@ -20,10 +20,6 @@ const routes: Routes = [
     loadChildren: () => import('./cv/feature/cv-shell/cv.module').then(m => m.CVModule),
   },
   {
-    path: 'contact', 
-    loadChildren: () => import('./contact/contact.module').then(m => m.ContactModule),
-  },
-  {
     path: '**', redirectTo: '/home',
   }
 ];

@@ -5,6 +5,11 @@
         <span>
           {{ title | translate }}
         </span>
+        @if (experience()?.type; as type) {
+          <span class="educ-type">
+            [{{ type }}]
+          </span>
+        }
       } @else {
         <app-skeleton-loader-ui
           [ngStyle]="{'display': 'block'}"
@@ -31,7 +36,9 @@
             width="200px"
           />
         } @else {
-          <span>{{ experience()?.From + " - " + (experience()?.To ?? "Present") }}</span>
+          <span>
+            {{ experience()?.From + " - " + (experience()?.To ?? "Present") + (!!experience()?.hours ? ' (' + experience()?.hours + ' ' + ('cv.hours' | translate) + ')' : '' ) }}
+          </span>
         }
       </div>
     </mat-card-subtitle>
@@ -62,9 +69,9 @@
           {{ experience()?.Description! | translate }}
         } 
       </p>
-      <p *ngIf="experience()?.Tech">
+      <p *ngIf="experience()?.Tech || experience()?.stack">
         <strong>Stack:</strong>
-        {{ experience()?.Tech }}
+        {{ experience()?.Tech ?? experience()?.stack }}
       </p>
     </div>
   </mat-card-content>

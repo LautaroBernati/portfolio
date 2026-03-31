@@ -12,10 +12,11 @@ type RawEducation = {
   To: number;
   LogoUrl?: string;
   hours?: number;
-  type: 'course' | 'degree';
+  stack?: string;
+  type: TranslatedDocument<string>;
 };
 
-export type Education = Omit<RawEducation, 'Description'> & { Description: string };
+export type Education = Omit<RawEducation, 'Description' | 'type'> & { Description: string; type: string; };
 
 @Injectable()
 export class EducationService {
@@ -38,7 +39,8 @@ export class EducationService {
     shareReplay({ bufferSize: 1, refCount: false }),
     map(({ coll, currLang }): Education[] => coll.map((t) => ({
       ...t,
-      Description: <string>t.Description[(currLang.lang as keyof TranslatedDocument<string>)]
+      Description: <string>t.Description[(currLang.lang as keyof TranslatedDocument<string>)],
+      type: <string>t.type[(currLang.lang as keyof TranslatedDocument<string>)],
     })))
   );
 }
