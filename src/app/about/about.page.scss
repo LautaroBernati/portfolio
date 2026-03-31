@@ -1,15 +1,31 @@
+@use 'breakpoints' as bp;
+
 .ng-fa-icon {
   min-width: 2.5rem;
   color: orange;
 }
 
-li {
-  display: flex;
-  align-items: center;
+.about-description {
+  padding: 0.5rem;
 }
 
-ul {
-  list-style-type: none
+footer {
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #777;
+  border-top: 1px solid #eee;
+}
+
+.row-custom {
+  display: flex;
+  gap: 1rem;
+
+  @include bp.until(md) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+  }
 }
 
 .items-cv {

@@ -29,6 +29,11 @@
   },
   "about": {
     "title": "Acerca De",
+    "subTitle": "Acerca de este Portafolio",
+    "tools": {
+      "title": "Herramientas utilizadas"
+    },
+    "footer": "Hecho con dedicación",
     "personalTitle": "Ingeniero Front-End Senior",
     "personalSubtitle": "Especialista en Angular & RxJs",
     "intro": "Mi camino como desarrollador comenzó en el ámbito militar, donde pasé un año y medio perfeccionando mis habilidades en desarrollo full-stack bajo condiciones de alta presión mientras completaba mis estudios. Tras graduarme, me uní a Coto CICSA, donde me enfoqué en el desarrollo front-end (luego también en back-end) y en la creación de soluciones web escalables y centradas en el usuario utilizando Angular y tecnologías modernas.\n\nActualmente, trabajo como contractor dev para una empresa tecnológica en Uruguay que atiende a un cliente en Estados Unidos. Me especializo en implementar las últimas funcionalidades de Angular, optimizar el rendimiento y seguir las mejores prácticas, como la arquitectura de componentes inteligentes/tontos, la estrategia OnPush y las señales de Angular. Mi experiencia en código eficiente y mantenible, junto con el diseño responsivo, asegura resultados impactantes adaptados a las necesidades del cliente.\n\nCon pasión por el crecimiento profesional, he realizado certificaciones como React.js para mejorar mi versatilidad y seguir entregando soluciones web excepcionales.",
@@ -37,7 +42,8 @@
       "growth": "Constante crecimiento",
       "diploma": "Analista de Sistemas",
       "ready": "Listo para mudarme"
-    }
+    },
+    "description": "Este portfolio está pensado para mostrar parte de mi trabajo, reflejar lo que soy capaz de hacer y dar una idea de quién soy como desarrollador y como persona. Reúne proyectos y experiencias seleccionadas que reflejan mi forma de construir aplicaciones, mi atención al detalle y mi compromiso con escribir código limpio y escalable. El objetivo no es solo demostrar habilidades técnicas, sino también transmitir cómo pienso, cómo resuelvo problemas y cómo busco mejorar constantemente en mi profesión."
   },
   "skills": {
     "title": "Habilidades",
@@ -73,13 +79,14 @@
     }
   },
   "cv": {
+    "title": "Currículum Vitae",
     "subTitles": {
       "experiences": "Experiencia",
       "education": "Educación",
       "languages": "Idiomas",
       "tools": "Herramientas",
       "contact": "Contacto",
-      "overview": "Resumen"
+      "overview": "Info y Contacto"
     },
     "exps": {
       "coto2": "Como Desarrollador Front-End Semi-Senior con especialización en Angular, estoy desempeñando un papel fundamental en liderar y contribuir a diversos proyectos. Además de mentorizar a desarrolladores juniors y fomentar su crecimiento mediante revisiones de código y sesiones de intercambio de conocimientos, he realizado contribuciones significativas para mejorar la eficiencia del código y acelerar la velocidad de las aplicaciones. Me he destacado en la implementación de diseños web receptivos, garantizando una experiencia de usuario superior y un rendimiento optimizado. Mi colaboración con el equipo de diseño ha dado como resultado interfaces web visualmente atractivas y amigables para el usuario. Al participar activamente en las discusiones del equipo, he proporcionado soluciones innovadoras de manera constante. Mi compromiso de mantenerme al día con las últimas tecnologías de Angular y Front-End sigue siendo firme. Estoy entusiasmado por continuar mi rol de mentor y contribuir al éxito continuo del equipo.",
@@ -98,7 +105,7 @@
       },
       "english": {
         "desc": "Inglés",
-        "level": "C2"
+        "level": "C2/Nativo"
       }
     },
     "buttons": {

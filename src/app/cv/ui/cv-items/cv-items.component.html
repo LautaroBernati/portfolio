@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card appearance="outlined">
   <mat-card-header class="custom-card-header" (click)="onExpand()">
     <mat-card-title>
       @if (experience()?.Title; as title) {
@@ -37,9 +37,11 @@
     </mat-card-subtitle>
     @if (experience()?.LogoUrl; as url) {
       <img
-        class="company-logo"
-        [src]="experience()?.LogoUrl"
+        [ngSrc]="experience()?.LogoUrl ?? ''"
         alt="Image"
+        class="company-logo"
+        [height]="80"
+        [width]="80"
       />
     } @else {
       <app-skeleton-loader-ui

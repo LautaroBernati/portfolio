@@ -1,0 +1,130 @@
+<div
+  [ngClass]="{ 'full': (width()==='100%') }"
+  class="main-container"
+  @fadeIn
+>
+  <mat-card appearance="outlined" [style.width]="'100%'">
+    <mat-card-header>
+      <mat-card-title>
+        <strong>
+          Lautaro Bernati
+        </strong>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div class="subtitles">
+          @if (header(); as header) {
+            <span>
+              {{ header }}
+            </span>
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="120px" />
+          }
+          @if (subHeader(); as subHeader) {
+            <span>
+              {{ subHeader }}
+            </span>
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="120px" />
+          }
+        </div>
+      </mat-card-subtitle>
+      <img
+        [style.margin-left]="width() === '100%' ? 'auto' : '3rem'"
+        class="avatar-img"
+        ngSrc="assets/images/avatar-pic.png"
+        [loading]="'eager'"
+        [height]="80"
+        [width]="80"
+      />
+    </mat-card-header>
+    <mat-card-content>
+      <div class="collapsible leftside-container" [@collapse]="!showDetails">
+        <hr />
+        <!-- contacto -->
+        <span class="contact-item">
+          <fa-icon size="1x" [icon]="faEnvelope" />
+          <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
+        </span>
+        <span class="contact-item">
+          @if (phoneNumber(); as phone) {
+            <fa-icon size="1x" [icon]="faPhone" />
+            <a [href]="('tel:' + phone)">{{ phone }}</a>
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="70%" />
+          }
+        </span>
+        <span class="contact-item">
+          <fa-icon size="1x" [icon]="faLinkedinIn" />
+          <a
+            href="https://github.com/LautaroBernati"
+            target="_blank"
+          >LinkedIn</a>
+        </span>
+        <span class="contact-item">
+          <fa-icon size="1x" [icon]="faGithub" />
+          <a
+            href="https://www.linkedin.com/in/lautarobernati/"
+            target="_blank"
+          >GitHub</a>
+        </span>
+        <span class="contact-item">
+          @if (country(); as country) {
+            <fa-icon size="1x" [icon]="faMapMarker" />
+            {{ country }}
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="70%" />
+          }
+        </span>
+        <span class="contact-item">
+          <fa-icon size="1x" [icon]="faBirthdayCake" />
+          {{ birthday | date: 'dd-MM-YYYY' }} {{ '(' + calculateAge(birthday) }} {{ ('about.items.years' | translate) + ')' }}
+        </span>
+        <hr>
+        <div class="leftside-list">
+          @if (languages(); as langs) {
+            <h3>{{ ('cv.subTitles.languages' | translate) }}</h3>
+            @for (item of languages(); track $index) {
+              <cv-lang-item-ui [item]="item" />
+            }
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="30%" />
+            <app-skeleton-loader-ui height="22px" width="70%" />
+          }
+        </div>
+        <hr>
+        <div class="leftside-list">
+          @if (tools(); as tools) {
+            <h3>
+              {{ ('cv.subTitles.tools' | translate) }}
+            </h3>
+            @for (item of tools; track $index) {
+              <div class="tool-detail">
+                <span>{{ item.Desc }}</span>
+                <span>{{ item.level }}</span>
+              </div>
+            }
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="30%" />
+            <app-skeleton-loader-ui height="22px" width="70%" />
+          }
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button
+        type="button"
+        mat-stroked-button
+        (click)="showDetails = !showDetails"
+      >
+        <mat-icon>
+          @if (showDetails) {
+            expand_less
+          } @else {
+            expand_more
+          }
+        </mat-icon>
+        {{ (showDetails ? "cv.buttons.details.expanded" : "cv.buttons.details.hidden") | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

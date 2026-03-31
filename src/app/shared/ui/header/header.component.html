@@ -10,13 +10,13 @@
 					text: ('navbar.home' | translate), route: '/home', icon: 'home', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: ('navbar.about' | translate), route: '/about', icon: 'person', isMobile
+					text: 'CV', route: '/cv', icon: 'list_alt', ariaLabel: 'Curriculum Vitae', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
 					text: ('navbar.skills' | translate), route: '/skills', icon: 'construction', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: 'CV', route: '/cv', icon: 'list_alt', ariaLabel: 'Curriculum Vitae', isMobile
+					text: ('navbar.about' | translate), route: '/about', icon: 'info', isMobile
 				}" />
       </div>
 

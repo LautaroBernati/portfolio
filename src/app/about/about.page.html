@@ -10,10 +10,12 @@
       <div class="imagen-botones">
         <img
           alt="image"
-          src="assets/images/profile-pic.jpg"
-          [height]="300"
-          [width]="300"
+          ngSrc="assets/images/profile-pic.jpg"
+          [loading]="'eager'"
+          [height]="250"
+          [width]="250"
         />
+        <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
         <div class="img-btn-area">
           <a
             mat-fab
@@ -51,7 +53,7 @@
         <div *ngIf="('about.intro' | translate).toString() as text">
           <p>
             <span
-              [innerHTML]="curateText(text) | slice: 0:(showMore ? undefined : 350)"
+              [innerHTML]="curateText(text) | slice: 0:(showMore ? undefined : 200)"
             ></span>
             <span *ngIf="!showMore">...</span>
             &nbsp;
@@ -69,43 +71,41 @@
           </p>
         </div>
       </section>
-      <div class="items-cv">
+    </div>
+  </div>
+  <hr>
+  <h2 [style.text-align]="'center'">
+    {{ ('about.subTitle') | translate }}
+  </h2>
+  <div class="row-custom">
+    <div class="col">
+      <p class="about-description">
+        {{ ('about.description') | translate }}
+      </p>
+    </div>
+    <div class="col">
+      <h3>
+        {{ ('about.tools.title') | translate }}:
+      </h3>
+      <div>
         <ul>
-          <li>
-            <fa-icon [icon]="faBirthdayCake" [border]="false"></fa-icon>
-            <strong>{{ birthday | date: 'dd-MM-YYYY' }} {{ '(' + calculateAge(birthday) }} {{ ('about.items.years' | translate) + ')' }}</strong>
-          </li>
-          <li>
-            <fa-icon [icon]="faEnvelope" [border]="false"></fa-icon>
-            <strong>
-              <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
-            </strong>
-          </li>
-          <li>
-            <fa-icon [icon]="faMapMarker" [border]="false"></fa-icon>
-            @if (aboutData?.country; as country) {
-              <strong>
-                {{ aboutData?.country }}
-              </strong>
-            } @else {
-                <app-skeleton-loader-ui height="24px" width="70px" />
-            }
-          </li>
-        </ul>
-        <ul>
-          <li>
-            <fa-icon [icon]="atomIcon"></fa-icon>
-            <strong>{{ 'about.items.growth' | translate }}</strong>
-          </li>
-          <li>
-            <fa-icon [icon]="capIcon"></fa-icon>
-            <strong>{{ 'about.items.diploma' | translate }}</strong>
-          </li>
+          <li>Angular 18</li>
+          <li>Angular Material</li>
+          <li>Signals</li>
+          <li>Firebase</li>
+          <li>ngx-translate</li>
+          <li>ngx-spinner</li>
+          <li>typed.js</li>
+          <li>Font Awesome Icons</li>
+          <li>GitHub Pages (CI/CD + hosting)</li>
         </ul>
       </div>
     </div>
   </div>
 </div>
+<footer>
+  &copy; 2026 Lautaro Bernati - {{ (('about.footer') | translate) }}.
+</footer>
 
 <ng-template #loadingImage>
   <mat-spinner

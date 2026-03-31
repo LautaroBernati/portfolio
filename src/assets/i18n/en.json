@@ -29,6 +29,11 @@
   },
   "about": {
     "title": "About",
+    "subTitle": "About this Portfolio Project",
+    "tools": {
+      "title": "Tools Used"
+    },
+    "footer": "Crafted with care",
     "personalTitle": "Senior Front-End Engineer",
     "personalSubtitle": "Angular & RxJs Specialist",
     "intro": "My journey as a developer began in the military, where I spent a year and a half mastering full-stack development under high-pressure conditions while completing my studies. After graduating, I joined Coto CICSA, where I focused on front-end development (later expanding to back-end), creating scalable, user-centric web solutions with Angular and modern technologies.\n\nCurrently, as an Angular Developer contractor for a tech company in Uruguay serving a USA-based client, I specialize in implementing the latest Angular features, optimizing performance, and adhering to best practices like smart/dumb components, OnPush strategy, and Signals. My expertise in efficient and scalable code ensures impactful, client-focused results for enterprise-level products.\n\nDriven by a passion for growth, I’ve earned certifications like React.js, as well as many other online courses, to enhance my versatility and continue delivering exceptional web solutions.",
@@ -37,7 +42,8 @@
       "growth": "Constant growth",
       "diploma": "Bachelor's in Systems Analysis",
       "ready": "Ready to move"
-    }
+    },
+    "description": "This portfolio is designed to showcase my work, highlight what I’m capable of, and give a glimpse of who I am as a developer and as a person. It brings together selected projects and experiences that reflect my approach to building applications, my attention to detail, and my commitment to writing clean, scalable code. The goal is not only to demonstrate technical skills, but also to convey how I think, solve problems, and continuously grow in my craft."
   },
   "skills": {
     "title": "Skills",
@@ -73,20 +79,21 @@
     }
   },
   "cv": {
+    "title": "Resume",
     "subTitles": {
       "experiences": "Experiences",
       "education": "Education",
       "languages": "Languages",
       "tools": "Tools",
       "contact": "Contact",
-      "overview": "Overview"
+      "overview": "Info & Contact"
     },
     "exps": {
       "coto2": "As a Semi-Senior Front-End Developer specializing in Angular, I'm playing a vital role in leading and contributing to various projects. In addition to mentoring junior developers and fostering their growth through code reviews and knowledge-sharing, I've made substantial contributions to enhancing code efficiency and improving application speed. I've also excelled in implementing responsive web designs, ensuring a superior user experience and optimized performance. My collaboration with the design team has resulted in visually appealing and user-friendly web interfaces. Actively participating in team discussions, I'm consistently providing innovative solutions. My commitment to staying current with the latest Angular and front-end technologies remains unwavering. I'm enthusiastic about continuing my mentorship role and contributing to the team's sustained success.",
       "coto": "In this role, I focused on developing Angular applications, giving special attention to ensuring robust security measures. I implemented best practices like using Renderer2 for secure DOM manipulation and applied lazy loading techniques for improved application performance and a better user experience. Alongside maintaining and updating existing Angular applications, I explored backend functionalities, collaborating with Entity Framework to broaden my skill set. Additionally, I took on a mentoring role, guiding a coworker in Angular to support their growth and proficiency in the technology.",
       "army": "During my tenure in this role, I was responsible for continuously enhancing, expanding, and creating a diverse array of tools tailored to meet the specific requirements of the Army. This multifaceted role required me to work on both the backend, including extending the capabilities of three pre-existing web APIs, and the frontend. Notably, for frontend development within an existing Laravel project, I primarily utilized jQuery to implement additional functionalities.",
       "freelance": "As a freelancer, I collaborated with personal contacts on a variety of projects. While primarily working independently, I also took the initiative to develop two of my own projects. I used Vue.js, including both Vue 2 and Vue 3, for front-end development. For the backend, I employed MongoDB to manage and store data effectively. This experience allowed me to gain valuable insights into web development and showcase my ability to work with different technologies and clients.",
-      "switch": "As a now expert Angular Developer, I specialize in developing a large-scale front-end web application for a USA-based client. I was specifically hired to bring the latest Angular features into the project and to optimize existing code, aligning with my expertise in optimization and better coding standards. My approach focuses on implementing scalable components using the dumb/smart component architecture, the OnPush change detection strategy, and the new Signals API. Leveraging tools like Angular Material and Tailwind CSS, I ensure responsive, user-friendly designs. Collaborating across time zones with Agile teams, I actively contribute to high-quality solutions while staying updated with the latest Angular advancements. I'm dedicated to clean, efficient code and fostering best practices to achieve project success."
+      "switch": "As a now expert Angular Engineer, I specialize in developing a large-scale front-end web application for a USA-based client. I was specifically hired to bring the latest Angular features into the project and to optimize existing code, aligning with my expertise in optimization and better coding standards. My approach focuses on implementing scalable components using the dumb/smart component architecture, the OnPush change detection strategy, and the new Signals API. Leveraging tools like Angular Material and Tailwind CSS, I ensure responsive, user-friendly designs. Collaborating across time zones with Agile teams, I actively contribute to high-quality solutions while staying updated with the latest Angular advancements. I'm dedicated to clean, efficient code and fostering best practices to achieve project success."
     },
     "education": {
       "ortTitle": "Bachelor's in System Analysis"
@@ -98,7 +105,7 @@
       },
       "english": {
         "desc": "English",
-        "level": "C2"
+        "level": "C2/Native"
       }
     },
     "buttons": {

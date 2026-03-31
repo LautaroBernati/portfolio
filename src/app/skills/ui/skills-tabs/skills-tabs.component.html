@@ -65,25 +65,6 @@
     </div>
     <!-- end backend content -->
   </mat-tab>
-  @let toolsList = tools();
-  <mat-tab>
-    <ng-template mat-tab-label>
-      @if (toolsList) {
-        <mat-icon class="card-header-icon">build</mat-icon>
-        <div>{{ 'skills.tabs.tools' | translate }}</div>
-      } @else {
-        <ng-container *ngTemplateOutlet="loadingSkeletonRef" />
-      }
-    </ng-template>
-    <div class="tab-container-v2">
-      <div
-        *ngFor="let item of toolsList"
-        class="tool-detail-container"
-      >
-        <sk-tool-met-detail-ui [item]="item" />
-      </div>
-    </div>
-  </mat-tab>
   @let methodologiesList = methodologies();
   <mat-tab>
     <ng-template mat-tab-label>

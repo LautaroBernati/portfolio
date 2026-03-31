@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -18,8 +18,9 @@ import { AboutPage } from './about.page';
     MatButtonModule,
     FontAwesomeModule,
     TranslateModule.forChild(),
-    SkeletonLoaderComponent
-  ],
+    SkeletonLoaderComponent,
+    NgOptimizedImage
+],
   exports: [AboutPage],
 })
 export class AboutModule { }

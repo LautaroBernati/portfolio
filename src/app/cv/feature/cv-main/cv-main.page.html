@@ -1,67 +1,39 @@
 <div class="container-fluid seccion">
   <div class="row mt-5">
     <div class="col text-center">
-      <h1>Currículum Vitae</h1>
+      <h1>
+        {{ ('cv.title') | translate }}
+      </h1>
     </div>
   </div>
   <hr />
   <div class="row-custom" @fadeIn>
-    <div class="column sm transf-col">
-      <div class="overview-wrapper">
-        <cv-extra-card-ui [setHeader]="false">
-          <div class="overview" @fadeIn>
-            <img
-              alt="image"
-              class="avatar-img"
-              src="assets/images/avatar-pic.png"
-              [height]="120"
-              [width]="120"
-            />
-            <span>
-              Lautaro Bernati
-            </span>
-            <span>Senior Web Developer</span>
-            <span>
-              <a routerLink="/about">
-                {{ 'cv.subTitles.contact' | translate }}
-              </a>
-            </span>
-          </div>
-        </cv-extra-card-ui>
-        @let langList = (languages$ | async);
-        <cv-extra-card-ui
-          [header]="('cv.subTitles.languages' | translate)"
-          [loading]="!langList"
-        >
-          @for (item of langList; track $index) {
-            <cv-lang-item-ui [item]="item" />
-          }
-        </cv-extra-card-ui>
-      </div>
-      @let tools = (tools$ | async);
-      <cv-extra-card-ui
-        [header]="('cv.subTitles.tools' | translate)"
-        [items]="tools"
-        [loading]="!tools"
+    <div class="column sm">
+      <h4><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h4>
+      <cv-profile-ui
+        [country]="country$ | async"
+        [header]="header$ | async"
+        [subHeader]="subHeader$ | async"
+        [languages]="(languages$ | async)"
+        [phoneNumber]="(phoneNumber$ | async)"
+        [tools]="(tools$ | async)"
       />
     </div>
     <div class="column md">
-      <div>
-        <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
-        <div class="timeline" @fadeIn>
-          @if ((experiences$ | async); as list) {
-            @for (item of list; track $index) {
-              <!-- up next -->
-              <cv-stepper-ui
-                [isEducation]="false"
-                [experience]="item"
-                maxWidth="100%"
-              />
-            }
-          } @else {
-            <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+      <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
+      <div class="timeline" @fadeIn>
+        @if ((experiences$ | async); as list) {
+          @for (item of list; track $index) {
+            <!-- up next -->
+            <cv-stepper-ui
+              [isEducation]="false"
+              [experience]="item"
+              maxWidth="100%"
+            />
           }
-        </div>
+        } @else {
+          <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+        }
       </div>
     </div>
   </div>

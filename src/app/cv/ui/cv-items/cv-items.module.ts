@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -17,7 +17,8 @@ import { CVItemComponent } from './cv-items.component';
     MatButtonModule,
     TranslateModule.forChild(),
     SkeletonLoaderComponent,
-  ],
+    NgOptimizedImage
+],
   exports: [CVItemComponent],
 })
 export class CVItemsModule { }
