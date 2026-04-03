@@ -1,11 +1,12 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
-import { distinctUntilChanged, map, Observable, tap } from 'rxjs';
+import { distinctUntilChanged, map, Observable } from 'rxjs';
 import { StorageService } from '../../services/storage.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { fadeIn } from '../../utils/fade-in.animation';
 
 type Option<T> = {
   label: string;
@@ -17,16 +18,19 @@ type LanguageValue = 'en' | 'es';
 type ThemeValue = 'light' | 'dark';
 
 @Component({
+  animations: [fadeIn()],
   selector: 'app-header',
   templateUrl: 'header.component.html',
   styleUrls: ['header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
+  private readonly _activeSection = signal<string>('home');
   private readonly _breakpointObserver = inject(BreakpointObserver);
   private readonly _translateService = inject(TranslateService);
   private readonly _storageService = inject(StorageService);
 
+  public readonly activeSection = this._activeSection.asReadonly();
   public readonly isMobile$ = this._breakpointObserver.observe(Breakpoints.Handset).pipe(
     map((result) => result.matches),
     distinctUntilChanged(),
@@ -69,11 +73,35 @@ export class HeaderComponent {
 
     if (savedLang) {
       this.languageControl.setValue(savedLang);
+    } else {
+      const browserLang = navigator.language.split('-')[0];
+      const supportedLangs: LanguageValue[] = ['en', 'es'];
+      const lang = (supportedLangs.includes(browserLang as LanguageValue) ? browserLang : 'en') as LanguageValue;
+      this.languageControl.setValue(lang);
     }
 
     if (savedTheme) {
       this.themeControl.setValue(savedTheme);
     }
+  }
+
+  public ngAfterViewInit(): void {
+    const sections = ['home', 'about', 'cv', 'skills'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find(e => e.isIntersecting);
+        if (visible) this._activeSection.set(visible.target.id);
+      },
+      {
+        threshold: 0,
+        rootMargin: '-50% 0px -50% 0px'
+      }
+    );
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
   }
 }
 

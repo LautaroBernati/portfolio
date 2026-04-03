@@ -1,54 +1,63 @@
-<div class="container-fluid seccion">
-  <div class="row mt-5">
-    <div class="col text-center">
-      <h1>
-        {{ ('cv.title') | translate }}
-      </h1>
+@defer (on viewport) {
+  <div class="container-fluid seccion">
+    <div class="row mt-5">
+      <div class="col text-center">
+        <h1>
+          {{ ('cv.title') | translate }}
+        </h1>
+        <!-- up next: download cv as pdf -->
+      </div>
     </div>
-  </div>
-  <hr />
-  <div class="row-custom" @fadeIn>
-    <div class="column sm">
-      <h4><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h4>
-      <cv-profile-ui
-        [country]="country$ | async"
-        [header]="header$ | async"
-        [subHeader]="subHeader$ | async"
-        [languages]="(languages$ | async)"
-        [phoneNumber]="(phoneNumber$ | async)"
-        [tools]="(tools$ | async)"
-      />
-    </div>
-    <div class="column md">
-      <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
-      <div class="timeline" @fadeIn>
-        @if ((experiences$ | async); as list) {
-          @for (item of list; track $index) {
-            <!-- up next -->
-            <cv-stepper-ui
-              [isEducation]="false"
-              [experience]="item"
-              maxWidth="100%"
-            />
+    <hr />
+    <div class="row-custom" @fadeIn>
+      <div class="column sm">
+        <h4><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h4>
+        <cv-profile-ui
+          [country]="country$ | async"
+          [header]="header$ | async"
+          [subHeader]="subHeader$ | async"
+          [languages]="(languages$ | async)"
+          [phoneNumber]="(phoneNumber$ | async)"
+          [tools]="(tools$ | async)"
+        />
+      </div>
+      <div class="column md">
+        <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
+        <div class="timeline" @fadeIn>
+          @if ((experiences$ | async); as list) {
+            @for (item of list; track $index) {
+              <!-- up next -->
+              <cv-stepper-ui
+                [isEducation]="false"
+                [experience]="item"
+                maxWidth="100%"
+              />
+            }
+          } @else {
+            <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
           }
-        } @else {
-          <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
-        }
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row-custom">
+      <div class="column full center">
+        <h4><strong>{{ 'cv.subTitles.education' | translate }}</strong></h4>
+        <ng-container *ngIf="education$ | async as educationList;">
+          <div class="timeline md" @fadeIn>
+            @for (item of educationList; track $index) {
+              <!-- up next -->
+              <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
+            }
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>
-  <hr />
-  <div class="row-custom">
-    <div class="column full center">
-      <h4><strong>{{ 'cv.subTitles.education' | translate }}</strong></h4>
-      <ng-container *ngIf="education$ | async as educationList;">
-        <div class="timeline md" @fadeIn>
-          @for (item of educationList; track $index) {
-            <!-- up next -->
-            <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
-          }
-        </div>
-      </ng-container>
-    </div>
+} @placeholder {
+  <div class="page-placeholder">
+    <mat-spinner mode="indeterminate" />
   </div>
-</div>
+} @error {
+  error loading module
+}

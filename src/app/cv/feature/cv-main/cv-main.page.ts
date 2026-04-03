@@ -1,25 +1,33 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { map, Observable } from 'rxjs';
 import { ToolsService } from 'src/app/shared/services/tools.service';
 import { fadeIn } from 'src/app/shared/utils/fade-in.animation';
 import { numberToRgb } from 'src/app/shared/utils/number-to-rgb.function';
+import { CVService } from '../../data-access/cv.service';
 import { EducationService } from '../../data-access/education.service';
 import { ExperiencesService } from '../../data-access/experiences.service';
-import { LaguangesService, Language } from '../../data-access/languages.service';
-import { combineLatest, map, Observable, startWith, tap } from 'rxjs';
-import { CVService } from '../../data-access/cv.service';
-import { RawTranslatedDoc, TranslatedDocument } from 'src/app/shared/types/translated-coll.type';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-
-function findInColl<T>(rawColl: RawTranslatedDoc<T>[], uid: string): TranslatedDocument<T> {
-  return rawColl.find(t => t.UID === uid)!;
-}
+import { LaguangesService } from '../../data-access/languages.service';
+import { CVItemsModule } from '../../ui/cv-items/cv-items.module';
+import { ProfileComponent } from '../../ui/profile/profile.component';
 
 @Component({
-  selector: 'cv-main',
+  selector: 'app-cv',
   templateUrl: 'cv-main.page.html',
   styleUrls: ['cv-main-rename.page.scss'],
   animations: fadeIn(),
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    CVItemsModule,
+    MatProgressSpinnerModule,
+    ProfileComponent,
+    TranslateModule,
+  ],
+  providers: [ExperiencesService, EducationService, LaguangesService],
 })
 export class CVMainPage {
   private readonly _cvService = inject(CVService);
@@ -28,13 +36,6 @@ export class CVMainPage {
   private readonly _langService = inject(LaguangesService);
   private readonly _toolsServie = inject(ToolsService);
   private readonly _translateService = inject(TranslateService);
-
-  private readonly _currLang$ = this._translateService.store.onLangChange.pipe(
-    startWith(<LangChangeEvent>{
-      lang: this._translateService.currentLang,
-      translations: this._translateService.translations
-    }),
-  );
 
   public readonly experiences$;
   public readonly education$;

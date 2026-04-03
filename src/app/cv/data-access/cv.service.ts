@@ -14,10 +14,9 @@ export class CVService {
 
   public readonly cvItems$: Observable<{ id: string; desc: string }[]> = combineLatest({
     coll: (collectionData(this._cvColl, { idField: 'UID' }) as Observable<RawTranslatedDoc<string>[]>),
-    currLang: this._translateService.store.onLangChange.pipe(
+    currLang: this._translateService.onLangChange.pipe(
       startWith(<LangChangeEvent>{
-        lang: this._translateService.currentLang,
-        translations: this._translateService.translations
+        lang: this._translateService.getCurrentLang()
       }),
     ),
   }).pipe(

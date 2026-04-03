@@ -64,8 +64,6 @@ export class ProfileComponent {
   public readonly faPhone = faPhone;
   public showDetails = true;
 
-  constructor() { }
-
   public calculateAge(birthDate: Date): number {
     const currentDate = new Date();
     const age = currentDate.getFullYear() - birthDate.getFullYear();

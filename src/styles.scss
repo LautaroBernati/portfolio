@@ -11,6 +11,17 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.container-fluid {
+  padding-top: 2.5rem !important;
+}
+
+.page-placeholder {
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  padding-top: 5rem;
+}
+
 .ng-animating .mat-accordion .mat-expansion-panel .mat-expansion-panel-content {
   height: 0px;
   visibility: hidden;

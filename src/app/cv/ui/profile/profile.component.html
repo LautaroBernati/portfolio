@@ -31,7 +31,7 @@
       <img
         [style.margin-left]="width() === '100%' ? 'auto' : '3rem'"
         class="avatar-img"
-        ngSrc="assets/images/avatar-pic.png"
+        ngSrc="assets/images/avatar-pic.jpeg"
         [loading]="'eager'"
         [height]="80"
         [width]="80"
@@ -81,18 +81,6 @@
         </span>
         <hr>
         <div class="leftside-list">
-          @if (languages(); as langs) {
-            <h3>{{ ('cv.subTitles.languages' | translate) }}</h3>
-            @for (item of languages(); track $index) {
-              <cv-lang-item-ui [item]="item" />
-            }
-          } @else {
-            <app-skeleton-loader-ui height="22px" width="30%" />
-            <app-skeleton-loader-ui height="22px" width="70%" />
-          }
-        </div>
-        <hr>
-        <div class="leftside-list">
           @if (tools(); as tools) {
             <h3>
               {{ ('cv.subTitles.tools' | translate) }}
@@ -102,6 +90,18 @@
                 <span>{{ item.Desc }}</span>
                 <span>{{ item.level }}</span>
               </div>
+            }
+          } @else {
+            <app-skeleton-loader-ui height="22px" width="30%" />
+            <app-skeleton-loader-ui height="22px" width="70%" />
+          }
+        </div>
+        <hr>
+        <div class="leftside-list">
+          @if (languages(); as langs) {
+            <h3>{{ ('cv.subTitles.languages' | translate) }}</h3>
+            @for (item of languages(); track $index) {
+              <cv-lang-item-ui [item]="item" />
             }
           } @else {
             <app-skeleton-loader-ui height="22px" width="30%" />

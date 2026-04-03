@@ -1,22 +1,30 @@
-<div class="container seccion">
-  <div class="row mt-5">
-    <div class="col">
-      <h1 class="text-center">Skills</h1>
+@defer (on viewport) {
+  <div class="container-fluid seccion">
+    <div class="row mt-5">
+      <div class="col">
+        <h1 class="text-center">
+          {{ 'skills.title' | translate }}
+        </h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col">
+        @let dependencies = (dependencies$ | async);
+        <ng-container>
+          <sk-tabs-ui
+            [loading]="!dependencies"
+            [frontEndSkills]="dependencies?.[0]"
+            [backEndSkills]="dependencies?.[1]"
+            [tools]="dependencies?.[2]"
+            [methodologies]="dependencies?.[3]">
+          </sk-tabs-ui>
+        </ng-container>
+      </div>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col">
-      @let dependencies = (dependencies$ | async);
-      <ng-container>
-        <sk-tabs-ui
-          [loading]="!dependencies"
-          [frontEndSkills]="dependencies?.[0]"
-          [backEndSkills]="dependencies?.[1]"
-          [tools]="dependencies?.[2]"
-          [methodologies]="dependencies?.[3]">
-        </sk-tabs-ui>
-      </ng-container>
-    </div>
+} @placeholder {
+  <div class="page-placeholder">
+    <mat-spinner mode="indeterminate" />
   </div>
-</div>
+}

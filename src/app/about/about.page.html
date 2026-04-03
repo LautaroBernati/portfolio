@@ -1,115 +1,114 @@
-<div class="container-fluid seccion">
-  <div class="row mt-5">
-    <div class="col">
-      <h1 class="text-center">{{ 'about.title' | translate }}</h1>
-    </div>
-  </div>
-  <hr>
-  <div class="contenedor" @fadeIn>
-    <div class="columna img-section">
-      <div class="imagen-botones">
-        <img
-          alt="image"
-          ngSrc="assets/images/profile-pic.jpg"
-          [loading]="'eager'"
-          [height]="250"
-          [width]="250"
-        />
-        <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
-        <div class="img-btn-area">
-          <a
-            mat-fab
-            color="primary"
-            href="https://www.linkedin.com/in/lautarobernati/"
-            target="_blank"
-            type="button"
-          >
-            <fa-icon
-              size="2x"
-              [icon]="faLinkedinIn"
-            ></fa-icon>
-          </a>
-          <a
-            mat-fab
-            color="primary"
-            href="https://github.com/LautaroBernati"
-            target="_blank"
-            type="button"
-          >
-            <fa-icon
-              size="2x"
-              [icon]="faGithub"
-            ></fa-icon>
-          </a>
-        </div>
+@defer (on viewport) {
+  <div class="container-fluid seccion">
+    <div class="row mt-5">
+      <div class="col">
+        <h1 class="text-center">{{ 'about.title' | translate }}</h1>
       </div>
     </div>
-    @let aboutData = (about$ | async);
-    @let showMore = (showFullContent$ | async);
-    <div class="columna desc-section">
-      <h2 [translate]="'about.personalTitle'"></h2>
-      <h3 [translate]="'about.personalSubtitle'"></h3>
-      <section>
-        <div *ngIf="('about.intro' | translate).toString() as text">
-          <p>
-            <span
-              [innerHTML]="curateText(text) | slice: 0:(showMore ? undefined : 200)"
-            ></span>
-            <span *ngIf="!showMore">...</span>
-            &nbsp;
-            <button
-              class="more-btn"
+    <hr>
+    <div class="contenedor" @fadeIn>
+      <div class="columna img-section">
+        <div class="imagen-botones">
+          <img
+            alt="image"
+            ngSrc="assets/images/profile-pic-2.jpeg"
+            [loading]="'eager'"
+            [height]="250"
+            [width]="250"
+          />
+          <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
+          <div class="img-btn-area">
+            <a
+              mat-fab
+              color="primary"
+              href="https://www.linkedin.com/in/lautarobernati/"
+              target="_blank"
               type="button"
-              (click)="onToggleReadBtn()"
             >
-              @if (aboutData?.moreButtonText; as btnText) {
-                {{ btnText }}
-              } @else {
-                <app-skeleton-loader-ui height="23px" width="50px" />
-              }
-            </button>
-          </p>
+              <fa-icon
+                size="2x"
+                [icon]="faLinkedinIn"
+              ></fa-icon>
+            </a>
+            <a
+              mat-fab
+              color="primary"
+              href="https://github.com/LautaroBernati"
+              target="_blank"
+              type="button"
+            >
+              <fa-icon
+                size="2x"
+                [icon]="faGithub"
+              ></fa-icon>
+            </a>
+          </div>
         </div>
-      </section>
+      </div>
+      @let aboutData = (about$ | async);
+      @let showMore = (showFullContent$ | async);
+      <div class="columna desc-section">
+        <h2 [translate]="'about.personalTitle'"></h2>
+        <h3 [translate]="'about.personalSubtitle'"></h3>
+        <section>
+          <div *ngIf="('about.intro' | translate).toString() as text">
+            <p>
+              <span
+                [innerHTML]="curateText(text) | slice: 0:(showMore ? undefined : 200)"
+              ></span>
+              <span *ngIf="!showMore">...</span>
+              &nbsp;
+              <button
+                class="more-btn"
+                type="button"
+                (click)="onToggleReadBtn()"
+              >
+                @if (aboutData?.moreButtonText; as btnText) {
+                  {{ btnText }}
+                } @else {
+                  <app-skeleton-loader-ui height="23px" width="50px" />
+                }
+              </button>
+            </p>
+          </div>
+        </section>
+      </div>
     </div>
-  </div>
-  <hr>
-  <h2 [style.text-align]="'center'">
-    {{ ('about.subTitle') | translate }}
-  </h2>
-  <div class="row-custom">
-    <div class="col">
-      <p class="about-description">
-        {{ ('about.description') | translate }}
-      </p>
-    </div>
-    <div class="col">
-      <h3>
-        {{ ('about.tools.title') | translate }}:
-      </h3>
-      <div>
-        <ul>
-          <li>Angular 18</li>
-          <li>Angular Material</li>
-          <li>Signals</li>
-          <li>Firebase</li>
-          <li>ngx-translate</li>
-          <li>ngx-spinner</li>
-          <li>typed.js</li>
-          <li>Font Awesome Icons</li>
-          <li>GitHub Pages (CI/CD + hosting)</li>
-        </ul>
+    <hr>
+    <h2 [style.text-align]="'center'">
+      {{ ('about.subTitle') | translate }}
+    </h2>
+    <div class="row-custom">
+      <div class="col">
+        <p class="about-description">
+          {{ ('about.description') | translate }}
+        </p>
+      </div>
+      <div class="col">
+        <h3>
+          {{ ('about.tools.title') | translate }}:
+        </h3>
+        <div>
+          <ul>
+            <li>Angular 18</li>
+            <li>Angular Material</li>
+            <li>Signals</li>
+            <li>Firebase</li>
+            <li>ngx-translate</li>
+            <li>ngx-spinner</li>
+            <li>typed.js</li>
+            <li>Font Awesome Icons</li>
+            <li>GitHub Pages (CI/CD + hosting)</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
-<footer>
-  &copy; 2026 Lautaro Bernati - {{ (('about.footer') | translate) }}.
-</footer>
-
-<ng-template #loadingImage>
-  <mat-spinner
-    class="spinner"
-    [mode]="'indeterminate'"
-  ></mat-spinner>
-</ng-template>
+  <footer>
+    &copy; 2026 Lautaro Bernati - {{ (('about.footer') | translate) }}.
+  </footer>
+} @placeholder {
+  <div class="page-placeholder">
+    <mat-spinner [mode]="'indeterminate'" />
+  </div>
+}

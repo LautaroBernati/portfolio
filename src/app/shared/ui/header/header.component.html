@@ -1,5 +1,5 @@
 <header>
-  <nav class="navbar fixed-top">
+  <nav class="navbar fixed-top" @fadeIn>
     <div
 			class="toolbar"
 			role="banner"
@@ -7,16 +7,16 @@
       <div class="nav-links">
 				@let isMobile = isMobile$ | async;
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: ('navbar.home' | translate), route: '/home', icon: 'home', isMobile
+					text: ('navbar.home' | translate), route: 'home', icon: 'home', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: 'CV', route: '/cv', icon: 'list_alt', ariaLabel: 'Curriculum Vitae', isMobile
+					text: 'CV', route: 'cv', icon: 'list_alt', ariaLabel: 'Curriculum Vitae', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: ('navbar.skills' | translate), route: '/skills', icon: 'construction', isMobile
+					text: ('navbar.skills' | translate), route: 'skills', icon: 'construction', isMobile
 				}" />
 				<ng-container *ngTemplateOutlet="navLinkRef; context: {
-					text: ('navbar.about' | translate), route: '/about', icon: 'info', isMobile
+					text: ('navbar.about' | translate), route: 'about', icon: 'info', isMobile
 				}" />
       </div>
 
@@ -41,9 +41,10 @@
   <a
 		mat-stroked-button
 		[attr.aria-label]="ariaLabel ?? text"
-		[routerLink]="[route]"
-		[routerLinkActive]="'active-link'"
+		[class.active-link]="activeSection() === route"
+		[fragment]="route"
 		[matTooltip]="isMobile ? text : undefined"
+		[routerLink]="['/']"
 	>
 		<mat-icon>{{ icon }}</mat-icon>
 		<span class="nav-link-text">{{ text }}</span>

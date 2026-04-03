@@ -28,10 +28,9 @@ export class EducationService {
   public readonly experiences$ = (
     combineLatest({
       coll: collectionData(this._query, { idField: 'UID' }) as Observable<RawEducation[]>,
-      currLang: this._translateService.store.onLangChange.pipe(
+      currLang: this._translateService.onLangChange.pipe(
         startWith(<LangChangeEvent>{
-          lang: this._translateService.currentLang,
-          translations: this._translateService.translations
+          lang: this._translateService.getCurrentLang()
         }),
       )
     })

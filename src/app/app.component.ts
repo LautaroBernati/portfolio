@@ -1,13 +1,33 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouteConfigLoadEnd, RouteConfigLoadStart, Router } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateService } from '@ngx-translate/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { filter } from 'rxjs';
+import { HomePage } from './home/home.page';
+import { SpinnerModule } from './shared/spinner/spinner.module';
+import { HeaderModule } from './shared/ui/header/header.module';
+import { CVMainPage } from './cv/feature/cv-main/cv-main.page';
+import { AboutPage } from './about/about.page';
+import { SkillsPage } from './skills/feature/skills-main/skills-main.page';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
+  standalone: true,
+  imports: [
+    SpinnerModule,
+    HomePage,
+    MatProgressSpinnerModule,
+    HeaderModule,
+    FontAwesomeModule,
+    CVMainPage,
+    AboutPage,
+    SkillsPage,
+  ]
 })
 export class AppComponent {
   public readonly title = 'app-portfolio-lb';
@@ -16,13 +36,6 @@ export class AppComponent {
   private readonly router = inject(Router);
 
   constructor() {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en').subscribe({
-      next: () => this.spinner.show(),
-      error: () => console.error('Translation load failed'),
-      complete: () => this.spinner.hide(),
-    });
-
     this.router.events.pipe(
       filter(value => (value instanceof RouteConfigLoadStart || value instanceof RouteConfigLoadEnd)),
     ).subscribe((event) => {

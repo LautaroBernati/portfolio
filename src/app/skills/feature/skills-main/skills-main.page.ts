@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { faAngular, faMicrosoft, faNode, faNodeJs, faReact, faVuejs, IconDefinition } from '@fortawesome/free-brands-svg-icons';
+import { TranslateModule } from '@ngx-translate/core';
 import { combineLatest, map } from 'rxjs';
+import { ToolsService } from '../../../shared/services/tools.service';
 import { MethodologiesService } from '../../data-access/methodologies.service';
 import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
-import { ToolsService } from '../../../shared/services/tools.service';
+import { SkillsTabModule } from '../../ui/skills-tabs/skills-tabs.module';
 
 
 @Component({
@@ -11,6 +15,17 @@ import { ToolsService } from '../../../shared/services/tools.service';
   templateUrl: 'skills-main.page.html',
   styleUrls: ['skills-main.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    SkillsTabModule,
+    TranslateModule,
+  ],
+  providers: [
+    SkillsService,
+    MethodologiesService,
+  ]
 })
 export class SkillsPage implements OnInit {
   private readonly _skillsService = inject(SkillsService);

@@ -1,11 +1,18 @@
 <main>
-  <app-spinner></app-spinner>
-  <div style="display: flex; flex-direction: column;">
-    <div>
-      <app-header></app-header>
-    </div>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
+  <app-spinner />
+  <div class="main-container">
+    <app-header />
+    <section id="home">
+      <app-home />
+    </section>
+    <section id="cv">
+      <app-cv />
+    </section>
+    <section id="skills">
+      <app-skills />
+    </section>
+    <section id="about">
+      <app-about />
+    </section>
   </div>
 </main>

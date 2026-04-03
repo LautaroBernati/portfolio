@@ -1,11 +1,16 @@
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faAtom, faBirthdayCake, faEnvelope, faGraduationCap, faMapMarker, faPlane } from '@fortawesome/free-solid-svg-icons';
-import { fadeIn } from '../shared/utils/fade-in.animation';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
-import { BehaviorSubject, combineLatest, map, Observable, startWith, take, withLatestFrom } from 'rxjs';
+import { LangChangeEvent, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
+import { SkeletonLoaderComponent } from '../shared/skeleton-loader/skeleton-loader.component';
 import { RawTranslatedDoc, TranslatedDocument } from '../shared/types/translated-coll.type';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { fadeIn } from '../shared/utils/fade-in.animation';
 
 function findInColl<T>(rawColl: RawTranslatedDoc<T>[], uid: string): TranslatedDocument<T> {
   return rawColl.find(t => t.UID === uid)!;
@@ -17,6 +22,16 @@ function findInColl<T>(rawColl: RawTranslatedDoc<T>[], uid: string): TranslatedD
   styleUrls: ['about.page.scss'],
   animations: fadeIn(),
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    NgOptimizedImage,
+    SkeletonLoaderComponent,
+    TranslateModule,
+  ],
 })
 export class AboutPage {
   private readonly _fs = inject(Firestore);
@@ -35,10 +50,9 @@ export class AboutPage {
         };
       }),
     ),
-    currLang: this._translateService.store.onLangChange.pipe(
+    currLang: this._translateService.onLangChange.pipe(
       startWith(<LangChangeEvent>{
-        lang: this._translateService.currentLang,
-        translations: this._translateService.translations
+        lang: this._translateService.getCurrentLang()
       }),
     ),
     showMore: this._showFullContent$,
