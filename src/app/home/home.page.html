@@ -1,22 +1,17 @@
-<div
-  class="component-background contenedor seccion"
-  [ngStyle]="{backgroundImage: 'url(assets/images/home.jpg)'}"
->
-  <div
-    style="
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100%;
-      color: white;
-    "
-  >
-    <h1 style="font-size: 72px">Lautaro Bernati</h1>
-    <p>
+<div class="home-container">
+  <picture class="home-background">
+    <source srcset="assets/images/1376x768.webp" />
+    <img src="" alt="" role="presentation" />
+  </picture>
+
+  <div class="home-content">
+    <div class="tipeos-container fade-in">
       <span class="tipeo">
         <span class="typed"></span>
       </span>
-    </p>
+      <span class="tipeo tipeo-2">
+        <span class="fixed-typed"></span>
+      </span>
+    </div>
   </div>
 </div>

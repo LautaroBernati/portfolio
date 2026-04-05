@@ -1,32 +1,78 @@
-.component-background {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+@use 'breakpoints' as bp;
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.9s ease forwards;
 }
 
-section {
-  padding-top: 100px;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.contenedor {
-  padding-top: 64px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+.home-container {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
 
-.tipeo {
-  font-size: 40px;
-  font-family: "Poppins", sans-serif;
-  padding-bottom: 4px;
-  letter-spacing: 1px;
-  border-bottom: 3px solid darkred;
-}
+  .home-background {
+    position: absolute;
+    inset: 0;
 
-.iam {
-  font-family: "Poppins", sans-serif;
-  font-style: italic;
-  font-size: 28px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .home-content {
+    height: 100%;
+    position: relative;
+    z-index: 1;
+
+    .tipeos-container {
+      padding-top: 5rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .tipeo {
+        padding-left: 2rem;
+        font-size: 30px;
+        font-family: 'Space Grotesk', sans-serif;
+        padding-bottom: 4px;
+        letter-spacing: 1px;
+        color: white;
+
+        @include bp.from(sm) {
+          font-size: 45px;
+        }
+
+        @include bp.from(md) {
+          font-size: 65px;
+        }
+
+        &.tipeo-2 {
+          font-size: 14px;
+
+          @include bp.from(sm) {
+            font-size: 24px;
+          }
+
+          @include bp.from(md) {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+  }
 }
