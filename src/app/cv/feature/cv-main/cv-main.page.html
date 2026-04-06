@@ -1,11 +1,25 @@
 @defer (on viewport) {
   <div class="container-fluid seccion">
     <div class="row mt-5">
-      <div class="col text-center">
+      <div class="custom-column">
+        <div></div>
         <h1>
           {{ ('cv.title') | translate }}
         </h1>
-        <!-- up next: download cv as pdf -->
+        <div class="action">
+          <button
+            cdkOverlayOrigin
+            #triggerBtn="cdkOverlayOrigin"
+            mat-flat-button
+            class="btn-tertiary"
+            (click)="downloadPanelOpened = !downloadPanelOpened"
+          >
+            <mat-icon>
+              download
+            </mat-icon>
+            {{ 'cv.buttons.download.overlay' | translate }} PDF
+          </button>
+        </div>
       </div>
     </div>
     <hr />
@@ -54,6 +68,39 @@
       </div>
     </div>
   </div>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="triggerBtn"
+    [cdkConnectedOverlayOpen]="downloadPanelOpened"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    [cdkConnectedOverlayOffsetY]="5"
+    [cdkConnectedOverlayOffsetX]="-5"
+    [cdkConnectedOverlayPositions]="[{ originX: 'start', originY: 'bottom', overlayX: 'start', overlayY: 'top' }]"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    (backdropClick)="downloadPanelOpened = false"
+    (overlayOutsideClick)="downloadPanelOpened = false"
+    (detach)="downloadPanelOpened = false"
+  >
+    <div class="download-panel">
+      <button
+        mat-flat-button
+        class="btn-secondary"
+        (click)="onDownloadPdf('es')"
+      >
+        <mat-icon>save</mat-icon>
+        {{ 'cv.buttons.download.es' | translate }}
+      </button>
+      <button
+        mat-flat-button
+        class="btn-secondary"
+        (click)="onDownloadPdf('en')"
+      >
+        <mat-icon>save</mat-icon>
+        {{ 'cv.buttons.download.en' | translate }}
+      </button>
+    </div>
+  </ng-template>
 } @placeholder {
   <div class="page-placeholder">
     <mat-spinner mode="indeterminate" />

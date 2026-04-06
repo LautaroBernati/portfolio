@@ -10,68 +10,108 @@
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.home-container {
-  position: relative;
-  height: 100dvh;
-  overflow: hidden;
+.imagen-botones {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
 
-  .home-background {
-    position: absolute;
-    inset: 0;
+  img {
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
 
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+    @include bp.from(sm) {
+      height: 300px;
+      width: 300px;
     }
   }
 
-  .home-content {
-    height: 100%;
-    position: relative;
-    z-index: 1;
+  .img-btn-area {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
 
-    .tipeos-container {
-      padding-top: 5rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+.full-content {
+  min-height: 100dvh;
+}
 
-      .tipeo {
-        padding-left: 2rem;
+.contenedor {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+
+  @include bp.from(sm) {
+    flex-direction: row;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.columna {
+  justify-items: center;
+
+  p {
+    text-align: justify;
+  }
+
+  width: 100%;
+  padding: 0.5rem;
+
+  h2,
+  h3 {
+    justify-self: auto;
+  }
+
+  &.img-section {
+    width: 100%;
+  }
+
+  &.desc-section {
+    width: 100%;
+  }
+}
+
+.tipeos-container {
+  margin-top: auto;
+
+  .tipeo {
+    padding: 0.5rem;
+    font-size: 30px;
+    font-family: 'Space Grotesk', sans-serif;
+    padding-bottom: 4px;
+    letter-spacing: 1px;
+
+    @include bp.from(sm) {
+      font-size: 45px;
+    }
+
+    @include bp.from(md) {
+      font-size: 65px;
+    }
+
+    &.tipeo-2 {
+      font-size: 14px;
+
+      @include bp.from(sm) {
+        font-size: 24px;
+      }
+
+      @include bp.from(md) {
         font-size: 30px;
-        font-family: 'Space Grotesk', sans-serif;
-        padding-bottom: 4px;
-        letter-spacing: 1px;
-        color: white;
-
-        @include bp.from(sm) {
-          font-size: 45px;
-        }
-
-        @include bp.from(md) {
-          font-size: 65px;
-        }
-
-        &.tipeo-2 {
-          font-size: 14px;
-
-          @include bp.from(sm) {
-            font-size: 24px;
-          }
-
-          @include bp.from(md) {
-            font-size: 30px;
-          }
-        }
       }
     }
   }

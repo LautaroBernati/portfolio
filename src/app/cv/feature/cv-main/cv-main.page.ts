@@ -1,7 +1,10 @@
+import { OverlayModule } from '@angular/cdk/overlay';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatButton } from "@angular/material/button";
+import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { ToolsService } from 'src/app/shared/services/tools.service';
 import { fadeIn } from 'src/app/shared/utils/fade-in.animation';
@@ -26,7 +29,10 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
     MatProgressSpinnerModule,
     ProfileComponent,
     TranslateModule,
-  ],
+    MatButton,
+    MatIcon,
+    OverlayModule,
+],
   providers: [ExperiencesService, EducationService, LaguangesService],
 })
 export class CVMainPage {
@@ -35,8 +41,8 @@ export class CVMainPage {
   private readonly _experiencesService = inject(ExperiencesService);
   private readonly _langService = inject(LaguangesService);
   private readonly _toolsServie = inject(ToolsService);
-  private readonly _translateService = inject(TranslateService);
 
+  public downloadPanelOpened = false;
   public readonly experiences$;
   public readonly education$;
   public readonly header$: Observable<string>;
@@ -62,6 +68,13 @@ export class CVMainPage {
     this.subHeader$ = this._cvService.cvItems$.pipe(
       map((coll): string => coll.find(t => t.id === 'subTitle')!.desc)
     );
+  }
+
+  public onDownloadPdf(version: 'en' | 'es'): void {
+    const link = document.createElement('a');
+    link.href = 'assets/docs/cv_bernati_' + version + '.pdf';
+    link.download = 'CV Bernati Lautaro ' + version.toUpperCase() + '.pdf';
+    link.click();
   }
 
   public numberToRgb = numberToRgb;

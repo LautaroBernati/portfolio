@@ -1,17 +1,57 @@
-<div class="home-container">
-  <picture class="home-background">
-    <source srcset="assets/images/1376x768.webp" />
-    <img src="" alt="" role="presentation" />
-  </picture>
-
-  <div class="home-content">
-    <div class="tipeos-container fade-in">
-      <span class="tipeo">
-        <span class="typed"></span>
-      </span>
-      <span class="tipeo tipeo-2">
-        <span class="fixed-typed"></span>
-      </span>
+<div class="main-container full-content">
+  <div class="contenedor" @fadeIn>
+    <!-- img + links -->
+    <div class="columna img-section">
+      <div class="imagen-botones">
+        <img
+          alt="image"
+          src="assets/images/profile-pic-3.jpeg"
+          aria-label="Author's picture"
+        />
+        <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
+        <div class="img-btn-area">
+          <a
+            mat-fab
+            color="primary"
+            href="https://www.linkedin.com/in/lautarobernati/"
+            target="_blank"
+            type="button"
+          >
+            <fa-icon size="2x" [icon]="faLinkedinIn"></fa-icon>
+          </a>
+          <a
+            mat-fab
+            color="primary"
+            href="https://github.com/LautaroBernati"
+            target="_blank"
+            type="button"
+          >
+            <fa-icon size="2x" [icon]="faGithub"></fa-icon>
+          </a>
+        </div>
+      </div>
     </div>
+    <!-- text -->
+    <div class="columna desc-section">
+      <h2 [translate]="'about.personalTitle'"></h2>
+      <h3 [translate]="'about.personalSubtitle'"></h3>
+      <section>
+        <p>
+          {{ 'home.paragraph1' | translate }}
+        </p>
+        <p>
+          {{ 'home.paragraph2' | translate }}
+        </p>
+      </section>
+    </div>
+  </div>
+  <!-- typed js -->
+  <div class="tipeos-container fade-in">
+    <span class="tipeo">
+      <span class="typed"></span>
+    </span>
+    <span class="tipeo tipeo-2">
+      <span class="fixed-typed"></span>
+    </span>
   </div>
 </div>

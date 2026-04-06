@@ -6,6 +6,7 @@ import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
 import { StorageService } from '../../services/storage.service';
+import { AppTheme, ThemesService } from '../../services/themes.service';
 import { fadeIn } from '../../utils/fade-in.animation';
 
 type Option<T> = {
@@ -15,7 +16,7 @@ type Option<T> = {
 
 type LanguageValue = 'en' | 'es';
 
-type ThemeValue = 'light' | 'dark';
+type ThemeValue = AppTheme;
 
 @Component({
   animations: [fadeIn()],
@@ -27,6 +28,7 @@ type ThemeValue = 'light' | 'dark';
 export class HeaderComponent implements AfterViewInit {
   private readonly _activeSection = signal<string>('home');
   private readonly _breakpointObserver = inject(BreakpointObserver);
+  private readonly _themesService = inject(ThemesService);
   private readonly _translateService = inject(TranslateService);
   private readonly _storageService = inject(StorageService);
 
@@ -52,6 +54,7 @@ export class HeaderComponent implements AfterViewInit {
       } else {
         document.body.classList.remove('dark-mode');
       }
+      this._themesService.setTheme(value);
       this._storageService.set('lb_portfolio.theme', value);
     });
 

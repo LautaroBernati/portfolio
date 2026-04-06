@@ -2,6 +2,10 @@
   "app": {
     "spinnerText": "Loading"
   },
+  "home": {
+    "paragraph1": "Strong background in reactive architectures, scalable design systems, and modern UI engineering practices, with a focus on building performant and maintainable front-end architectures.",
+    "paragraph2": "Demonstrated experience delivering high-quality products for clients across countries, collaborating in diverse environments and adapting to different business needs."
+  },
   "navbar": {
     "home": "Home",
     "about": "About",
@@ -34,7 +38,7 @@
       "title": "Tools Used"
     },
     "footer": "Crafted with care",
-    "personalTitle": "Senior Front-End Engineer",
+    "personalTitle": "Front-End Engineer",
     "personalSubtitle": "Angular & RxJs Specialist",
     "intro": "My journey as a developer began in the military, where I spent a year and a half mastering full-stack development under high-pressure conditions while completing my studies. After graduating, I joined Coto CICSA, where I focused on front-end development (later expanding to back-end), creating scalable, user-centric web solutions with Angular and modern technologies.\n\nCurrently, as an Angular Developer contractor for a tech company in Uruguay serving a USA-based client, I specialize in implementing the latest Angular features, optimizing performance, and adhering to best practices like smart/dumb components, OnPush strategy, and Signals. My expertise in efficient and scalable code ensures impactful, client-focused results for enterprise-level products.\n\nDriven by a passion for growth, I’ve earned certifications like React.js, as well as many other online courses, to enhance my versatility and continue delivering exceptional web solutions.",
     "items": {
@@ -113,6 +117,11 @@
       "details": {
         "expanded": "Less",
         "hidden": "More"
+      },
+      "download": {
+        "overlay": "Download",
+        "en": "English version",
+        "es": "Spanish version"
       }
     }
   }

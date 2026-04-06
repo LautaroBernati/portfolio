@@ -2,6 +2,10 @@
   "app": {
     "spinnerText": "Cargando"
   },
+  "home": {
+    "paragraph1": "Sólida experiencia en arquitectura reactiva, sistemas de diseño escalables y prácticas modernas de ingeniería de interfaces, con foco en crear arquitecturas front-end performantes y mantenibles.",
+    "paragraph2": "Experiencia comprobada desarrollando productos de alta calidad para clientes en distintos países, colaborando en entornos diversos y adaptándome a diferentes necesidades de negocio."
+  },
   "navbar": {
     "home": "Inicio",
     "about": "Acerca De",
@@ -34,7 +38,7 @@
       "title": "Herramientas utilizadas"
     },
     "footer": "Hecho con dedicación",
-    "personalTitle": "Ingeniero Front-End Senior",
+    "personalTitle": "Ingeniero Front-End",
     "personalSubtitle": "Especialista en Angular & RxJs",
     "intro": "Mi camino como desarrollador comenzó en el ámbito militar, donde pasé un año y medio perfeccionando mis habilidades en desarrollo full-stack bajo condiciones de alta presión mientras completaba mis estudios. Tras graduarme, me uní a Coto CICSA, donde me enfoqué en el desarrollo front-end (luego también en back-end) y en la creación de soluciones web escalables y centradas en el usuario utilizando Angular y tecnologías modernas.\n\nActualmente, trabajo como contractor dev para una empresa tecnológica en Uruguay que atiende a un cliente en Estados Unidos. Me especializo en implementar las últimas funcionalidades de Angular, optimizar el rendimiento y seguir las mejores prácticas, como la arquitectura de componentes inteligentes/tontos, la estrategia OnPush y las señales de Angular. Mi experiencia en código eficiente y mantenible, junto con el diseño responsivo, asegura resultados impactantes adaptados a las necesidades del cliente.\n\nCon pasión por el crecimiento profesional, he realizado certificaciones como React.js para mejorar mi versatilidad y seguir entregando soluciones web excepcionales.",
     "items": {
@@ -110,6 +114,11 @@
       }
     },
     "buttons": {
+      "download": {
+        "overlay": "Descargar",
+        "en": "Versión en Inglés",
+        "es": "Versión en Español"
+      },
       "details": {
         "expanded": "Menos",
         "hidden": "Más"

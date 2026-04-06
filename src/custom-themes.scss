@@ -8,7 +8,7 @@ $light-theme: mat.define-theme(
     color: (
       theme-type: light,
       primary: mat.$orange-palette,
-      tertiary: mat.$violet-palette,
+      tertiary: mat.$violet-palette
     ),
     typography: (
       use-system-variables: true,

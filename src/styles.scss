@@ -52,6 +52,14 @@ body {
   --nav-fg: #ffffff;
 }
 
+.btn-secondary {
+  @include mat.button-color(config.$light-theme, $color-variant: secondary);
+}
+
+.dark-mode .btn-secondary {
+  @include mat.button-color(config.$dark-theme, $color-variant: secondary);
+}
+
 .btn-tertiary {
   @include mat.button-color(config.$light-theme, $color-variant: tertiary);
 }
