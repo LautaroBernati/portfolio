@@ -80,7 +80,7 @@ export class HomePage implements OnInit, OnDestroy {
   ngOnInit(): void {
     this._fixedTypedInstahce = this.createTyped(
       '.fixed-typed',
-      ['', 'Component → Action → Reducer → Store → Selector → Component', 'Action → Reducer → Effect → Action', 'Observable → Pipe → Operator → Subscriber'],
+      ['', 'Component → Action → Reducer → Store → Selector', 'Action → Reducer → Effect → Action', 'Observable → Pipe → Operator → Subscriber'],
       3500
     );
   }

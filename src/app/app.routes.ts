@@ -3,7 +3,7 @@ import { HomePage } from './home/home.page';
 
 export const routes: Routes = [
   {
-    path: '', component: HomePage, title: 'Home'
+    path: '', component: HomePage, title: 'Portfolio | Lautaro Bernati'
   },
   {
     path: '**', redirectTo: '/',

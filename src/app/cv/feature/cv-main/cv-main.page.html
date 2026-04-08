@@ -7,9 +7,11 @@
           {{ ('cv.title') | translate }}
         </h1>
         <div class="action">
+          @let btnText = ('cv.buttons.download.overlay' | translate) + ' PDF';
           <button
             cdkOverlayOrigin
             #triggerBtn="cdkOverlayOrigin"
+            [attr.aria-label]="btnText"
             mat-flat-button
             class="btn-tertiary"
             (click)="downloadPanelOpened = !downloadPanelOpened"
@@ -17,7 +19,9 @@
             <mat-icon>
               download
             </mat-icon>
-            {{ 'cv.buttons.download.overlay' | translate }} PDF
+            <span class="download-button-text">
+              {{ btnText }}
+            </span>
           </button>
         </div>
       </div>
