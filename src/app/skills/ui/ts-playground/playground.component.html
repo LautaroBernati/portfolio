@@ -1,0 +1,97 @@
+<div class="playground-wrapper">
+  <p class="runner-description">
+    {{ 'skills.ts-tab.description' | translate }}
+  </p>
+  <div class="toolbar">
+    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+      <mat-label>
+        {{ 'skills.ts-tab.select-label' | translate }}
+      </mat-label>
+      <mat-select
+        [value]="selectedFile()"
+        [compareWith]="compareFiles"
+        (valueChange)="onFileChange($event)"
+      >
+        @for (item of files(); track $index) {
+          <mat-option [value]="item">
+            {{ item.label }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <span class="spacer"></span>
+
+    <button mat-icon-button matTooltip="Clear output" (click)="clearOutput()">
+      <mat-icon>delete_sweep</mat-icon>
+    </button>
+
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="running()"
+      (click)="run()"
+    >
+      <mat-icon>play_arrow</mat-icon>
+      {{ running() ? ('skills.ts-tab.runningBtn' | translate) : ('skills.ts-tab.runBtn' | translate) }}
+    </button>
+  </div>
+
+  <div class="panels">
+    <!-- Editor -->
+    <div class="editor-pane">
+      <div class="pane-label">
+        <mat-icon>code</mat-icon>
+        <span>{{ selectedFile()?.label }}</span>
+      </div>
+      <div
+        #editorWrapEl
+        class="editor-wrap"
+      >
+        <div class="line-numbers" #lineNumbersEl>
+          @for (n of lineNumbers(); track n) {
+            <div class="line-number">{{ n }}</div>
+          }
+        </div>
+        <textarea
+          #editorEl
+          class="code-editor"
+          spellcheck="false"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          [value]="code()"
+          [rows]="lineNumbers().length"
+          (input)="onCodeInput($event)"
+          (keydown)="onKeyDown($event)"
+          (scroll)="syncScroll($event)"
+        >
+        </textarea>
+      </div>
+    </div>
+
+    <!-- Output -->
+    <div class="output-pane">
+      <div class="pane-label">
+        <mat-icon>terminal</mat-icon>
+        <span>{{ 'skills.ts-tab.output' | translate }}</span>
+      </div>
+      <div class="output-scroll" #outputEl>
+        @if (outputLines().length === 0 && !running()) {
+          <span class="output-empty">{{ 'skills.ts-tab.outputEmpty' | translate }}</span>
+        }
+        @for (line of outputLines(); track $index) {
+          <div class="output-line" [class]="'output-line--' + line.type">
+            <span class="output-prefix">{{ prefixFor(line.type) }}</span>
+            <span class="output-text">{{ line.args.join(" ") }}</span>
+          </div>
+        }
+        @if (running()) {
+          <div class="output-running">
+            <span class="dot-pulse"></span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

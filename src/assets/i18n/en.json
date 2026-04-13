@@ -66,6 +66,15 @@
       "project": "Project",
       "codeFragment": "Code Fragment"
     },
+    "ts-tab": {
+      "select-label": "File",
+      "description": "A small TypeScript playground. Whatever you type in the editor gets transpiled to JavaScript and run in a sandboxed iframe, with any console output displayed on the right. This portfolio already contains some common challenges in it that you can load using the Select below.",
+      "runBtn": "Run",
+      "runningBtn": "Running…",
+      "output": "Output",
+      "clearTooltip": "Clear output",
+      "outputEmpty": "Hit Run to see output here…"
+    },
     "examples": {
       "ang0": "The importance of Lazy Loading plays a crucial role in the scalability of an Angular Application. Proper implementation and design can lead to serious performance gains and better compile budgets.",
       "ang1": "In an Angular application, smart components are responsible for state management, complex logic, and communication with services, offering centralized control for efficient performance optimization. By strategically managing state and implementing change detection strategies, smart components can minimize unnecessary re-renders, resulting in significant performance gains. Dumb components, on the other hand, focus solely on UI rendering and user interactions, promoting reusability, readability, ease of testing, isolation, and simplified debugging. Separating these roles enhances maintainability and development efficiency while ensuring a clear separation of concerns in the application architecture, ultimately contributing to a smoother and more performant user experience.",

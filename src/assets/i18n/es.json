@@ -66,6 +66,15 @@
       "project": "Proyecto",
       "codeFragment": "Fragmento de código"
     },
+    "ts-tab": {
+      "select-label": "Archivo",
+      "description": "Un pequeño playground de TypeScript. Lo que escribas en el editor se transpila a JavaScript y se ejecuta en un iframe aislado, mostrando cualquier salida de consola a la derecha. Este portfolio ya contiene algunos ejemplos comunes de ejercicios de TypeScript, los cuales se pueden cargar usando el Select de abajo.",
+      "runBtn": "Ejecutar",
+      "runningBtn": "Ejecutando…",
+      "output": "Salida",
+      "clearTooltip": "Limpiar salida",
+      "outputEmpty": "Presione Ejecutar para ver la salida de consola aquí…"
+    },
     "examples": {
       "ang0": "La importancia de Lazy Loading juega un papel crucial en la escalabilidad de una aplicación Angular. La implementación y el diseño adecuados pueden generar importantes mejoras en el rendimiento y una mejora de presupuestos de compilación.",
       "ang1": "En una aplicación Angular, los componentes smart son responsables de la gestión del estado, la lógica compleja y la comunicación con los servicios, ofreciendo control centralizado para una optimización eficiente del rendimiento. Al gestionar estratégicamente el estado e implementar estrategias de detección de cambios, los componentes smart pueden minimizar las re-renderizaciones innecesarias, lo que genera importantes ganancias de rendimiento. Los componentes dumb, por otro lado, se centran únicamente en la representación de la interfaz de usuario y las interacciones del usuario, lo que promueve la reutilización, la legibilidad, la facilidad de prueba, el aislamiento y el debugging simple. La separación de estos roles mejora la mantenibilidad y la eficiencia del desarrollo, al tiempo que garantiza una separación clara de las preocupaciones en la arquitectura de la aplicación, lo que en última instancia contribuye a una experiencia de usuario más fluida y eficaz.",

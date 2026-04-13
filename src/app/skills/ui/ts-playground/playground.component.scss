@@ -1,0 +1,182 @@
+@use 'breakpoints' as bp;
+
+:host {
+  padding-top: 1rem;
+}
+
+.playground-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 500px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.runner-description {
+  margin-bottom: 0px;
+  padding: 1rem;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: var(--mat-sys-surface-container-low);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  mat-form-field {
+    width: 180px;
+    font-size: 13px;
+  }
+
+  .spacer { flex: 1; }
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-pane,
+.output-pane {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.editor-pane {
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  height: 30rem;
+}
+
+.pane-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--mat-sys-on-surface-variant);
+  background: var(--mat-sys-surface-container);
+  border-bottom: 1px solid var(--mat-sys-outline-variant);
+
+  mat-icon { font-size: 14px; width: 14px; height: 14px; }
+}
+
+.editor-wrap {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  background: var(--mat-sys-surface);
+  font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  overflow-y: scroll;
+  min-height: 0;
+}
+
+.line-numbers {
+  width: 44px;
+  overflow: hidden;
+  background: var(--mat-sys-surface-container);
+  border-right: 1px solid var(--mat-sys-outline-variant);
+  text-align: right;
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.67px;
+  padding-top: 2px;
+  height: max-content;
+}
+
+.line-number {
+  padding: 0 10px 0 0;
+  color: var(--mat-sys-on-surface-variant);
+  opacity: 0.45;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.code-editor {
+  flex: 1;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  resize: none;
+  border: none;
+  outline: none;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  tab-size: 2;
+  overflow-y: hidden;
+  caret-color: var(--mat-sys-primary);
+  height: max-content;
+  white-space: pre;
+}
+
+.output-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px;
+  background: var(--mat-sys-surface);
+  font-family: 'Fira Code', 'Cascadia Code', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.output-empty {
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
+}
+
+.output-line {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2px;
+  word-break: break-all;
+}
+
+.output-prefix {
+  color: var(--mat-sys-on-surface-variant);
+  user-select: none;
+  flex-shrink: 0;
+  width: 12px;
+}
+
+.output-line--log  .output-text { color: var(--mat-sys-on-surface); }
+.output-line--info .output-text { color: var(--mat-sys-primary); }
+.output-line--warn .output-text { color: #d97706; }
+.output-line--error .output-text { color: var(--mat-sys-error); }
+
+.output-running {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
+  font-size: 12px;
+}
+
+.dot-pulse {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.2; }
+  50%       { opacity: 1;   }
+}
+
+@include bp.until(md) {
+  .panels { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+  .editor-pane { border-right: none; border-bottom: 1px solid var(--mat-sys-outline-variant); }
+}

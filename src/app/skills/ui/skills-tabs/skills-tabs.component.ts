@@ -3,6 +3,7 @@ import { Component, input } from '@angular/core';
 import { Methodology } from '../../data-access/methodologies.service';
 import { Skill } from '../../data-access/skills.service';
 import { Tool } from '../../../shared/services/tools.service';
+import { PlaygroundFile } from '../ts-playground/playground.component';
 
 
 @Component({
@@ -30,5 +31,6 @@ export class SkillsTabsComponent {
   public readonly frontEndSkills = input<Skill[]>();
   public readonly loading = input.required<boolean>();
   public readonly methodologies = input<Methodology[]>();
+  public readonly playgroundFiles = input.required<PlaygroundFile[]>();
   public readonly tools = input<Tool[]>();
 }

@@ -71,9 +71,15 @@ body {
 :root {
   --surface-container-high: #{mat.get-theme-color(config.$light-theme, surface-container-high)};
   --bg-img-color: #e0e0e0;
+  --mat-sys-surface-container: #{mat.get-theme-color(config.$light-theme, surface-container)};
+  --mat-sys-surface: #{mat.get-theme-color(config.$light-theme, surface)};
+  --mat-sys-outline-variant: #{mat.get-theme-color(config.$light-theme, outline-variant)};
 }
 
 .dark-mode {
   --surface-container-high: #{mat.get-theme-color(config.$dark-theme, surface-container-high)};
   --bg-img-color: #b9b9b9;
+  --mat-sys-surface-container: #{mat.get-theme-color(config.$dark-theme, surface-container)};
+  --mat-sys-surface: #{mat.get-theme-color(config.$dark-theme, surface)};
+  --mat-sys-outline-variant: #{mat.get-theme-color(config.$dark-theme, outline-variant)};
 }

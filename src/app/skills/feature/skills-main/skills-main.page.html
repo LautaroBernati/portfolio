@@ -13,12 +13,13 @@
         @let dependencies = (dependencies$ | async);
         <ng-container>
           <sk-tabs-ui
-            [loading]="!dependencies"
-            [frontEndSkills]="dependencies?.[0]"
             [backEndSkills]="dependencies?.[1]"
+            [frontEndSkills]="dependencies?.[0]"
+            [loading]="!dependencies"
+            [playgroundFiles]="PLAYGROUND_FILES"
             [tools]="dependencies?.[2]"
-            [methodologies]="dependencies?.[3]">
-          </sk-tabs-ui>
+            [methodologies]="dependencies?.[3]"
+          />
         </ng-container>
       </div>
     </div>

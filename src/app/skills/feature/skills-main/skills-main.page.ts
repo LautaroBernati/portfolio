@@ -8,6 +8,7 @@ import { ToolsService } from '../../../shared/services/tools.service';
 import { MethodologiesService } from '../../data-access/methodologies.service';
 import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
 import { SkillsTabModule } from '../../ui/skills-tabs/skills-tabs.module';
+import { PlaygroundFile } from '../../ui/ts-playground/playground.component';
 
 
 @Component({
@@ -33,6 +34,11 @@ export class SkillsPage implements OnInit {
   private readonly _methodologiesService = inject(MethodologiesService);
 
   public readonly dependencies$;
+  public readonly PLAYGROUND_FILES: PlaygroundFile[] = [
+    { label: 'fibonacci.ts', path: 'assets/playground/fibonacci.ts' },
+    { label: 'subscriber-pattern.ts', path: 'assets/playground/subscriber-pattern.ts' },
+    // { label: 'binary-search.ts', path: 'assets/playground/binary-search.ts' },
+  ];
 
   constructor() {
     const angSkills$ = this._skillsService.strippedSkills$.pipe(
