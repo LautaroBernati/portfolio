@@ -68,7 +68,7 @@
     },
     "ts-tab": {
       "select-label": "File",
-      "description": "A small TypeScript playground. Whatever you type in the editor gets transpiled to JavaScript and run in a sandboxed iframe, with any console output displayed on the right. This portfolio already contains some common challenges in it that you can load using the Select below.",
+      "description": "A small TypeScript playground. Whatever you type in the editor gets transpiled to JavaScript and run in a sandboxed iframe, with any console output displayed to the right (or down below if mobile). This portfolio already contains some common challenges in it that you can load using the Select below.",
       "runBtn": "Run",
       "runningBtn": "Running…",
       "output": "Output",

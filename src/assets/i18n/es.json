@@ -68,7 +68,7 @@
     },
     "ts-tab": {
       "select-label": "Archivo",
-      "description": "Un pequeño playground de TypeScript. Lo que escribas en el editor se transpila a JavaScript y se ejecuta en un iframe aislado, mostrando cualquier salida de consola a la derecha. Este portfolio ya contiene algunos ejemplos comunes de ejercicios de TypeScript, los cuales se pueden cargar usando el Select de abajo.",
+      "description": "Un pequeño playground de TypeScript. Lo que escribas en el editor se transpila a JavaScript y se ejecuta en un iframe aislado, mostrando cualquier salida de consola a la derecha (o abajo en mobile). Este portfolio ya contiene algunos ejemplos comunes de ejercicios de TypeScript, los cuales se pueden cargar usando el Select de abajo.",
       "runBtn": "Ejecutar",
       "runningBtn": "Ejecutando…",
       "output": "Salida",
