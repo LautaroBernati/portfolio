@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { SkeletonLoaderComponent } from 'src/app/shared/skeleton-loader/skeleton-loader.component';
+import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
 
 @Component({
   standalone: true,

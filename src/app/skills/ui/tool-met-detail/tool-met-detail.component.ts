@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { Methodology } from '../../data-access/methodologies.service';
 import { Tool } from '../../../shared/services/tools.service';
-import { numberToRgb } from 'src/app/shared/utils/number-to-rgb.function';
+import { numberToRgb } from '../../../shared/utils/number-to-rgb.function';
 
 
 @Component({

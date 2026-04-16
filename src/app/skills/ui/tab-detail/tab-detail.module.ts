@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslateModule } from '@ngx-translate/core';
-import { SkeletonLoaderComponent } from 'src/app/shared/skeleton-loader/skeleton-loader.component';
+import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
 import { ImageDetailDialog, TabDetailComponent } from './tab-detail.component';
 
 

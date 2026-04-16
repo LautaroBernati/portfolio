@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { combineLatest, map, Observable, shareReplay, startWith } from 'rxjs';
-import { TranslatedDocument } from 'src/app/shared/types/translated-coll.type';
+import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
+import { TranslatedDocument } from '../../shared/types/translated-coll.type';
 
 type RawEducation = {
   Title: string;

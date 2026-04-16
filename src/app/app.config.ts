@@ -7,7 +7,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideRouter, withInMemoryScrolling } from "@angular/router";
 import { provideTranslateService } from "@ngx-translate/core";
 import { provideTranslateHttpLoader } from "@ngx-translate/http-loader";
-import { environment } from "src/environments/environment";
+import { environment } from "../environments/environment";
 import { routes } from "./app.routes";
 
 export const appConfig: ApplicationConfig = {

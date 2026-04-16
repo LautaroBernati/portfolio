@@ -71,5 +71,5 @@ export class TabDetailComponent {
   `,
 })
 export class ImageDetailDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: string) { }
+  public readonly data = inject(MAT_DIALOG_DATA);
 }

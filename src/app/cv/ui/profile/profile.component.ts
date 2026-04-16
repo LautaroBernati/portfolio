@@ -8,9 +8,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faBirthdayCake, faEnvelope, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
-import { Tool } from 'src/app/shared/services/tools.service';
-import { SkeletonLoaderComponent } from 'src/app/shared/skeleton-loader/skeleton-loader.component';
-import { fadeIn } from 'src/app/shared/utils/fade-in.animation';
+import { Tool } from '../../../shared/services/tools.service';
+import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
+import { fadeIn } from '../../../shared/utils/fade-in.animation';
 import { Language } from '../../data-access/languages.service';
 import { LanguageItemComponent } from '../lang-item-ui/lang.component';
 

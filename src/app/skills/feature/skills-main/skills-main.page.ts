@@ -37,8 +37,9 @@ export class SkillsPage implements OnInit {
   public readonly PLAYGROUND_FILES: PlaygroundFile[] = [
     { label: 'fibonacci.ts', path: 'assets/playground/fibonacci.ts' },
     { label: 'subscriber-pattern.ts', path: 'assets/playground/subscriber-pattern.ts' },
+    { label: 'rate-limiter.ts', path: 'assets/playground/rate-limiter.ts' },
     { label: 'form-validator.ts', path: 'assets/playground/form-validator.ts' },
-    { label: 'query-builder.ts', path: 'assets/playground/query-builder.ts' },
+    { label: 'filter-builder.ts', path: 'assets/playground/filter-builder.ts' },
   ];
 
   constructor() {

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
-import { RawTranslatedDoc } from 'src/app/shared/types/translated-coll.type';
+import { RawTranslatedDoc } from '../../shared/types/translated-coll.type';
 
 @Injectable({
   providedIn: 'root'

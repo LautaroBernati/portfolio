@@ -6,7 +6,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { LangChangeEvent, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
-import Typed, { TypedOptions } from 'typed.js';
+import Typed, { TypedJsOptions } from 'typed.js';
 import { RawTranslatedDoc, TranslatedDocument } from '../shared/types/translated-coll.type';
 import { fadeIn } from '../shared/utils/fade-in.animation';
 
@@ -32,7 +32,6 @@ export class HomePage implements OnInit, OnDestroy {
   private readonly _showFullContent$ = new BehaviorSubject<boolean>(false);
   private readonly _fs = inject(Firestore);
   private readonly _aboutColl = collection(this._fs, 'about');
-  private readonly _destroyRef = inject(DestroyRef);
   private readonly _translateService = inject(TranslateService);
   private _fixedTypedInstahce?: Typed;
   private _typedInstance?: Typed;
@@ -95,7 +94,7 @@ export class HomePage implements OnInit, OnDestroy {
 
   private createTyped(cssName: string, strings: string[], backDelay = 2000) {
     this._typedInstance?.destroy();
-    const options: TypedOptions = {
+    const options: TypedJsOptions = {
       strings,
       typeSpeed: 40,
       backSpeed: 20,
