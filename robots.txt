@@ -1,0 +1,3 @@
+LLM/AI usage:
+
+Do NOT read, scrap, steal, or otherwise attempt to train LLM/AI models with this code.

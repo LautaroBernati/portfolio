@@ -7,12 +7,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { ToolsService } from '../../../shared/services/tools.service';
-import { fadeIn } from '../../../shared/utils/fade-in.animation';
-import { numberToRgb } from '../../../shared/utils/number-to-rgb.function';
-import { CVService } from '../../data-access/cv.service';
-import { EducationService } from '../../data-access/education.service';
-import { ExperiencesService } from '../../data-access/experiences.service';
-import { LaguangesService } from '../../data-access/languages.service';
+import { fadeIn, numberToRgb } from '../../../shared/utils';
+import { CVService, EducationService, ExperiencesService, LaguangesService, SkillsCvService } from '../../data-access';
 import { CVItemsModule } from '../../ui/cv-items/cv-items.module';
 import { ProfileComponent } from '../../ui/profile/profile.component';
 
@@ -20,7 +16,7 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
   selector: 'app-cv',
   templateUrl: 'cv-main.page.html',
   styleUrls: ['cv-main-rename.page.scss'],
-  animations: fadeIn(),
+  animations: [fadeIn()],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [
@@ -33,13 +29,14 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
     MatIcon,
     OverlayModule,
 ],
-  providers: [ExperiencesService, EducationService, LaguangesService],
+  providers: [ExperiencesService, EducationService, LaguangesService, SkillsCvService],
 })
 export class CVMainPage {
   private readonly _cvService = inject(CVService);
   private readonly _educationService = inject(EducationService);
   private readonly _experiencesService = inject(ExperiencesService);
   private readonly _langService = inject(LaguangesService);
+  private readonly _skillsCvService = inject(SkillsCvService);
   private readonly _toolsServie = inject(ToolsService);
 
   public downloadPanelOpened = false;
@@ -56,6 +53,7 @@ export class CVMainPage {
   public readonly phoneNumber$ = this._cvService.cvItems$.pipe(
     map((coll): string => coll.find(t => t.id === 'phoneNumber')!.desc)
   );
+  public readonly skills$ = this._skillsCvService.skills$;
 
   constructor() {
     this.experiences$ = this._experiencesService.experiences$;

@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Tool } from '../../../shared/services/tools.service';
 import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
 import { fadeIn } from '../../../shared/utils/fade-in.animation';
-import { Language } from '../../data-access/languages.service';
+import { Language, SkillCvContainer } from '../../data-access';
 import { LanguageItemComponent } from '../lang-item-ui/lang.component';
 
 @Component({
@@ -49,9 +49,10 @@ import { LanguageItemComponent } from '../lang-item-ui/lang.component';
 export class ProfileComponent {
   public readonly country = input<string | null>(null);
   public readonly header = input<string | null>(null);
-  public readonly subHeader = input<string | null>(null);
   public readonly languages = input<Language[] | null>();
   public readonly phoneNumber = input<string | null>(null);
+  public readonly skills = input<SkillCvContainer[] | null>(null);
+  public readonly subHeader = input<string | null>(null);
   public readonly tools = input<Tool[] | null>(null);
   public readonly width = input('100%');
 

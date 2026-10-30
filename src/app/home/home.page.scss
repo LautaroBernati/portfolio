@@ -54,10 +54,23 @@
 .contenedor {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  flex: 1;
+
+  .separator {
+    display: none;
+  }
 
   @include bp.from(sm) {
     flex-direction: row;
+
+    .separator {
+      display: block;
+      width: 3px;
+
+      hr {
+        height: 90%;
+      }
+    }
   }
 }
 
@@ -67,19 +80,14 @@
 }
 
 .columna {
+  width: 100%;
+  padding: 0.5rem;
   justify-items: center;
 
   p {
     text-align: justify;
-    padding: 0.5rem;
-  }
-
-  width: 100%;
-  padding: 0.5rem;
-
-  h2,
-  h3 {
-    justify-self: auto;
+    padding: 0.3rem;
+    font-size: clamp(1rem, 1.2vw, 1.5rem);
   }
 
   &.img-section {
@@ -88,20 +96,41 @@
 
   &.desc-section {
     width: 100%;
+    padding-top: 1rem;
 
-    @include bp.from(sm) {
-      margin-right: 4rem;
+    h1, h2 {
+      text-align: center;
     }
 
-    @include bp.from(md) {
-      margin-right: 6rem;
+    h1 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    h2 {
+      font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+  }
+
+  @include bp.from(sm) {
+    padding: 2rem;
+
+    &.desc-section {
+      padding-top: 2rem;
+    }
+  }
+
+  @include bp.from(md) {
+    padding: 3rem;
+
+    &.desc-section {
+      padding-top: 3rem;
     }
   }
 }
 
 .tipeos-container {
   margin-top: 4rem;
-  margin-bottom: 1rem;;
+  margin-bottom: 1rem;
 
   @include bp.from(sm) {
     margin-top: 5rem;

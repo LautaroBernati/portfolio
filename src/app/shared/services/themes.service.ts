@@ -4,7 +4,7 @@ export type AppTheme = 'light' | 'dark';
 
 @Injectable({ providedIn: 'root' })
 export class ThemesService {
-  private readonly _theme = signal<AppTheme>('dark');
+  private readonly _theme = signal<AppTheme>('light');
 
   public readonly theme = this._theme.asReadonly();
 

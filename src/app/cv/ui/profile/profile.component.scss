@@ -44,3 +44,69 @@
 .collapsible {
   overflow: hidden;
 }
+
+.skill-skeleton-layout {
+  display: flex;
+  flex-direction: column;
+  padding-top: 0.2rem;
+  gap: 0.3rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+
+  ul {
+    list-style: none;
+    margin-left: -17.709px;
+    padding-left: 18px;
+    border-left: 1px solid #ccc;
+  }
+
+  li {
+    position: relative;
+    padding: 5px 0;
+  }
+
+  >li {
+    padding-left: 20px;
+
+    &::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+    }
+  }
+
+  ul li {
+    &::before {
+      content: "";
+      position: absolute;
+      left: -18px;
+      top: 50%;
+      width: 13px;
+      border-top: 1px solid #ccc;
+    }
+
+    &.last-child::after {
+      content: "";
+      position: absolute;
+      left: -19px;
+      top: 50%;
+      bottom: 0;
+      border-left: 1px solid var(--mat-app-background-color);
+    }
+  }
+
+  .inner-bullet-list-item {
+    display: flex;
+    justify-content: space-between;
+  }
+}

@@ -1,7 +1,7 @@
 <div
   [ngClass]="{ 'full': (width()==='100%') }"
   class="main-container"
-  @fadeIn
+  [@fadeIn]="{ value: true, params: { duration: 2000 } }"
 >
   <mat-card appearance="outlined" [style.width]="'100%'">
     <mat-card-header>
@@ -79,6 +79,40 @@
           <fa-icon size="1x" [icon]="faBirthdayCake" />
           {{ birthday | date: 'dd-MM-YYYY' }} {{ '(' + calculateAge(birthday) }} {{ ('about.items.years' | translate) + ')' }}
         </span>
+        <hr>
+        <div class="leftside-list">
+          <h3>
+            {{ ('cv.subTitles.skills' | translate) }}
+          </h3>
+          @if (skills(); as skills) {
+            @for (item of skills; track $index) {
+              <ul class="tree">
+                <li>
+                  <span>{{ item.desc }}</span>
+                  @for (subItem of item.items; track subItem.id; let last = $last) {
+                    <ul>
+                      <li
+                        [class.last-child]="last"
+                        class="inner-bullet-list-item"
+                      >
+                        <span>{{ subItem.name }}</span>
+                        <span>{{ subItem.level }}</span>
+                      </li>
+                    </ul>
+                  }
+                </li>
+              </ul>
+            }
+          } @else {
+            <div class="skill-skeleton-layout">
+              <app-skeleton-loader-ui height="22px" width="28%" />
+              <div>
+                <app-skeleton-loader-ui height="22px" width="14%" />
+                <app-skeleton-loader-ui height="22px" width="16%" />
+              </div>
+            </div>
+          }
+        </div>
         <hr>
         <div class="leftside-list">
           @if (tools(); as tools) {

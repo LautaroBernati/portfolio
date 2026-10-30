@@ -27,21 +27,22 @@
       </div>
     </div>
     <hr />
-    <div class="row-custom" @fadeIn>
+    <div class="row-custom" [@fadeIn]="{ value: true, params: { duration: 300 } }">
       <div class="column sm">
         <h4><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h4>
         <cv-profile-ui
           [country]="country$ | async"
           [header]="header$ | async"
+          [languages]="languages$ | async"
+          [phoneNumber]="phoneNumber$ | async"
+          [skills]="skills$ | async"
           [subHeader]="subHeader$ | async"
-          [languages]="(languages$ | async)"
-          [phoneNumber]="(phoneNumber$ | async)"
-          [tools]="(tools$ | async)"
+          [tools]="tools$ | async"
         />
       </div>
       <div class="column md">
         <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
-        <div class="timeline" @fadeIn>
+        <div class="timeline" [@fadeIn]="{ value: true, params: { duration: 300 } }">
           @if ((experiences$ | async); as list) {
             @for (item of list; track $index) {
               <!-- up next -->
@@ -62,7 +63,7 @@
       <div class="column full center">
         <h4><strong>{{ 'cv.subTitles.education' | translate }}</strong></h4>
         <ng-container *ngIf="education$ | async as educationList;">
-          <div class="timeline md" @fadeIn>
+          <div class="timeline md" [@fadeIn]="{ value: true, params: { duration: 300 } }">
             @for (item of educationList; track $index) {
               <!-- up next -->
               <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />

@@ -9,6 +9,6 @@ export type TranslatedDocument<T> = {
 /**
  * Document that contains translations.
  */
-export type RawTranslatedDoc<T> = {
+export type TranslatedDocWithId<T> = {
   UID: string;
 } & TranslatedDocument<T>;

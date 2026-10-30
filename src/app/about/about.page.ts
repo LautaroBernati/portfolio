@@ -6,13 +6,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faAtom, faBirthdayCake, faEnvelope, faGraduationCap, faMapMarker, faPlane } from '@fortawesome/free-solid-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
-import { fadeIn } from '../shared/utils/fade-in.animation';
 
 @Component({
   selector: 'app-about',
   templateUrl: 'about.page.html',
   styleUrls: ['about.page.scss'],
-  animations: fadeIn(),
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
   imports: [

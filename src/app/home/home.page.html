@@ -5,7 +5,7 @@
       <span class="fixed-typed"></span>
     </span>
   </div>
-  <div class="contenedor" @fadeIn>
+  <div class="contenedor" [@fadeIn]="{ value: true, params: { duration: 800 } }"]="{ value: true, params: { duration: 500 } }">
     <!-- img + links -->
     <div class="columna img-section">
       <div class="imagen-botones">
@@ -37,10 +37,13 @@
         </div>
       </div>
     </div>
+    <div class="separator">
+      <hr>
+    </div>
     <!-- text -->
     <div class="columna desc-section">
-      <h2 [translate]="'about.personalTitle'"></h2>
-      <h3 [translate]="'about.personalSubtitle'"></h3>
+      <h1>{{ 'about.personalTitle' | translate }}</h1>
+      <h2>{{ 'about.personalSubtitle' | translate }}</h2>
       <section>
         <p>
           {{ 'home.paragraph1' | translate }}

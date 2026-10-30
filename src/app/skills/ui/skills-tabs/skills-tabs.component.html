@@ -1,13 +1,4 @@
-<mat-tab-group [preserveContent]="true" @fadeIn>
-  <mat-tab>
-    <ng-template mat-tab-label>
-      <mat-icon class="card-header-icon">javascript</mat-icon>
-      TypeScript
-    </ng-template>
-    <div class="tab-container">
-      <app-playground [files]="playgroundFiles()" />
-    </div>
-  </mat-tab>
+<mat-tab-group [preserveContent]="true" [@fadeIn]="{ value: true, params: { duration: 200 } }">
   @let feSkills = frontEndSkills();
   <mat-tab>
     <ng-template mat-tab-label>
@@ -73,6 +64,15 @@
         }
     </div>
     <!-- end backend content -->
+  </mat-tab>
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon class="card-header-icon">javascript</mat-icon>
+      TypeScript
+    </ng-template>
+    <div class="tab-container">
+      <app-playground [files]="playgroundFiles()" />
+    </div>
   </mat-tab>
   @let methodologiesList = methodologies();
   <mat-tab>

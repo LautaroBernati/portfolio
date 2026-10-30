@@ -7,10 +7,10 @@ import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { LangChangeEvent, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
 import Typed, { TypedJsOptions } from 'typed.js';
-import { RawTranslatedDoc, TranslatedDocument } from '../shared/types/translated-coll.type';
+import { TranslatedDocWithId, TranslatedDocument } from '../shared/types/translated-coll.type';
 import { fadeIn } from '../shared/utils/fade-in.animation';
 
-function findInColl<T>(rawColl: RawTranslatedDoc<T>[], uid: string): TranslatedDocument<T> {
+function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): TranslatedDocument<T> {
   return rawColl.find(t => t.UID === uid)!;
 }
 
@@ -39,7 +39,7 @@ export class HomePage implements OnInit, OnDestroy {
   public readonly about$: Observable<
       { country: string; moreButtonText: string }
     > = combineLatest({
-      aboutData: (collectionData(this._aboutColl, { idField: 'UID' }) as Observable<RawTranslatedDoc<never>[]>).pipe(
+      aboutData: (collectionData(this._aboutColl, { idField: 'UID' }) as Observable<TranslatedDocWithId<never>[]>).pipe(
         map((coll) => {
           return {
             country: findInColl<string>(coll, 'country'),

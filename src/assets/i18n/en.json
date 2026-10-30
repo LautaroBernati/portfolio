@@ -3,8 +3,8 @@
     "spinnerText": "Loading"
   },
   "home": {
-    "paragraph1": "Strong background in reactive architectures, scalable design systems, and modern UI engineering practices, with a focus on building performant and maintainable front-end architectures.",
-    "paragraph2": "Demonstrated experience delivering high-quality products for clients across countries, collaborating in diverse environments and adapting to different business needs."
+    "paragraph1": "I build web solutions with a strong focus on user experience, architecture, and code quality. I'm passionate about creating scalable, maintainable, and efficient software by applying engineering best practices and choosing the right tools for each challenge.",
+    "paragraph2": "I have experience developing and evolving software products within international teams, contributing to technical decisions, designing scalable architectures, building reusable components, and improving development and testing processes. My experience spans both front-end and back-end development, working with technologies such as TypeScript, JavaScript, Angular, React, Node.js, and .NET to deliver reliable, maintainable, and high-quality applications."
   },
   "navbar": {
     "home": "Home",
@@ -38,8 +38,8 @@
       "title": "Tools Used"
     },
     "footer": "Crafted with care",
-    "personalTitle": "Front-End Engineer",
-    "personalSubtitle": "Angular & RxJs Specialist",
+    "personalTitle": "Software Engineer",
+    "personalSubtitle": "Full-Stack Development · Software Architecture · Web Engineering",
     "intro": "My journey as a developer began in the military, where I spent a year and a half mastering full-stack development under high-pressure conditions while completing my studies. After graduating, I joined Coto CICSA, where I focused on front-end development (later expanding to back-end), creating scalable, user-centric web solutions with Angular and modern technologies.\n\nCurrently, as an Angular Developer contractor for a tech company in Uruguay serving a USA-based client, I specialize in implementing the latest Angular features, optimizing performance, and adhering to best practices like smart/dumb components, OnPush strategy, and Signals. My expertise in efficient and scalable code ensures impactful, client-focused results for enterprise-level products.\n\nDriven by a passion for growth, I’ve earned certifications like React.js, as well as many other online courses, to enhance my versatility and continue delivering exceptional web solutions.",
     "items": {
       "years": "years",
@@ -50,7 +50,7 @@
     "description": "This portfolio is designed to showcase my work, highlight what I’m capable of, and give a glimpse of who I am as a developer and as a person. It brings together selected projects and experiences that reflect my approach to building applications, my attention to detail, and my commitment to writing clean, scalable code. The goal is not only to demonstrate technical skills, but also to convey how I think, solve problems, and continuously grow in my craft."
   },
   "skills": {
-    "title": "Skills",
+    "title": "Technical Skills in Detail",
     "progressTitle": "Progress",
     "buttons": {
       "repo": "Repository",
@@ -98,6 +98,7 @@
       "education": "Education",
       "languages": "Languages",
       "tools": "Tools",
+      "skills": "Skills",
       "contact": "Contact",
       "overview": "Info & Contact"
     },
@@ -114,11 +115,11 @@
     },
     "langs": {
       "spanish": {
-        "desc": "Spanish",
+        "desc": "🇪🇸 Spanish",
         "level": "Native"
       },
       "english": {
-        "desc": "English",
+        "desc": "🇬🇧 English",
         "level": "C2/Native"
       }
     },
