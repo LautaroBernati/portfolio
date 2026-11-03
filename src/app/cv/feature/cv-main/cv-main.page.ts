@@ -15,7 +15,7 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
 @Component({
   selector: 'app-cv',
   templateUrl: 'cv-main.page.html',
-  styleUrls: ['cv-main-rename.page.scss'],
+  styleUrls: ['cv-main.page.scss'],
   animations: [fadeIn()],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -28,7 +28,7 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
     MatButton,
     MatIcon,
     OverlayModule,
-],
+  ],
   providers: [ExperiencesService, EducationService, LaguangesService, SkillsCvService],
 })
 export class CVMainPage {

@@ -1,35 +1,33 @@
+<div class="cv-title section-title">
+  <div class="cv-title__wrapper">
+    <div></div>
+    <h1>{{ ('cv.title') | translate }}</h1>
+    <div class="cv-title__actions">
+      @let btnText = ('cv.buttons.download.overlay' | translate) + ' PDF';
+      <button
+        cdkOverlayOrigin
+        #triggerBtn="cdkOverlayOrigin"
+        [attr.aria-label]="btnText"
+        mat-flat-button
+        class="btn-tertiary"
+        (click)="downloadPanelOpened = !downloadPanelOpened"
+      >
+        <mat-icon>
+          download
+        </mat-icon>
+        <span class="cv-title__action-text">
+          {{ btnText }}
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+
 @defer (on viewport) {
   <div class="container-fluid seccion">
-    <div class="row mt-5">
-      <div class="custom-column">
-        <div></div>
-        <h1>
-          {{ ('cv.title') | translate }}
-        </h1>
-        <div class="action">
-          @let btnText = ('cv.buttons.download.overlay' | translate) + ' PDF';
-          <button
-            cdkOverlayOrigin
-            #triggerBtn="cdkOverlayOrigin"
-            [attr.aria-label]="btnText"
-            mat-flat-button
-            class="btn-tertiary"
-            (click)="downloadPanelOpened = !downloadPanelOpened"
-          >
-            <mat-icon>
-              download
-            </mat-icon>
-            <span class="download-button-text">
-              {{ btnText }}
-            </span>
-          </button>
-        </div>
-      </div>
-    </div>
-    <hr />
     <div class="row-custom" [@fadeIn]="{ value: true, params: { duration: 300 } }">
       <div class="column sm">
-        <h4><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h4>
+        <h2><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h2>
         <cv-profile-ui
           [country]="country$ | async"
           [header]="header$ | async"
@@ -41,7 +39,7 @@
         />
       </div>
       <div class="column md">
-        <h4><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h4>
+        <h2><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h2>
         <div class="timeline" [@fadeIn]="{ value: true, params: { duration: 300 } }">
           @if ((experiences$ | async); as list) {
             @for (item of list; track $index) {
@@ -58,10 +56,9 @@
         </div>
       </div>
     </div>
-    <hr />
     <div class="row-custom">
       <div class="column full center">
-        <h4><strong>{{ 'cv.subTitles.education' | translate }}</strong></h4>
+        <h2><strong>{{ 'cv.subTitles.education' | translate }}</strong></h2>
         <ng-container *ngIf="education$ | async as educationList;">
           <div class="timeline md" [@fadeIn]="{ value: true, params: { duration: 300 } }">
             @for (item of educationList; track $index) {

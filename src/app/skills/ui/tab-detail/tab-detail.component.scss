@@ -3,6 +3,10 @@
   align-items: center;
 }
 
+p {
+  white-space: pre-line;
+}
+
 .mat-mdc-progress-bar {
   @mixin number-to-color($number) {
     $green: limegreen;
@@ -28,7 +32,6 @@
 }
 
 .contenedor {
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

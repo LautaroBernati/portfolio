@@ -32,18 +32,4 @@ export class AboutPage {
   public readonly planeIcon = faPlane;
   public readonly birthday = new Date(1997, 8, 20);
   public readonly years = new Date(new Date().getFullYear() - this.birthday.getTime());
-
-  public calculateAge(birthDate: Date): number {
-    const currentDate = new Date();
-    const age = currentDate.getFullYear() - birthDate.getFullYear();
-
-    const hasBirthdayOccurred = currentDate.getMonth() > birthDate.getMonth() ||
-      (currentDate.getMonth() === birthDate.getMonth() && currentDate.getDate() >= birthDate.getDate());
-
-    if (!hasBirthdayOccurred) {
-      return age - 1;
-    }
-
-    return age;
-  }
 }

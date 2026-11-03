@@ -38,7 +38,7 @@ export class EducationService {
     shareReplay({ bufferSize: 1, refCount: false }),
     map(({ coll, currLang }): Education[] => coll.map((t) => ({
       ...t,
-      Description: <string>t.Description[(currLang.lang as keyof TranslatedDocument<string>)],
+      Description: <string>t.Description[(currLang.lang as keyof TranslatedDocument<string>)].replace(/\\n/g, '\n'),
       type: <string>t.type[(currLang.lang as keyof TranslatedDocument<string>)],
     })))
   );

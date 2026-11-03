@@ -1,18 +1,57 @@
 @use '@angular/material' as mat;
 @use './theme-config' as config;
+@use 'breakpoints' as bp;
 
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+}
+
+hr {
+  height: 1px;
+  margin: 1rem 0;
+  color: inherit;
+  background-color: currentColor;
+  border: 0;
+  opacity: .25;
+}
+
+.section-title {
+  width: 100%;
+
+  h1 {
+    text-align: center;
+  }
+}
+
+h2, h3 {
+  margin: 0;
+  margin-bottom: 0.25rem;
 }
 
 .container-fluid {
-  padding-top: 2.5rem !important;
+  width: 100%;
+  padding-right: 0.375rem;
+  padding-left: 0.375rem;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: border-box;
+
+  @include bp.from(sm) {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  @include bp.from(md) {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
 }
 
 .page-placeholder {
@@ -25,10 +64,6 @@ body {
 .ng-animating .mat-accordion .mat-expansion-panel .mat-expansion-panel-content {
   height: 0px;
   visibility: hidden;
-}
-
-.seccion {
-  padding-top: 64px;
 }
 
 .more-btn {

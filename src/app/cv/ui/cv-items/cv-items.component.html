@@ -2,9 +2,7 @@
   <mat-card-header class="custom-card-header" (click)="onExpand()">
     <mat-card-title>
       @if (experience()?.Title; as title) {
-        <span>
-          {{ title | translate }}
-        </span>
+        <span><strong>{{ title | translate }}</strong></span>
         @if (experience()?.type; as type) {
           <span class="educ-type">
             &mdash; &#91;{{ type }}&#93;
@@ -37,7 +35,7 @@
           />
         } @else {
           <span>
-            {{ experience()?.From + " - " + (experience()?.To ?? "Present") + (!!experience()?.hours ? ' (' + experience()?.hours + ' ' + ('cv.hours' | translate) + ')' : '' ) }}
+            {{ experience()?.From + " — " + (experience()?.To ?? "Present") + (!!experience()?.hours ? ' (' + experience()?.hours + ' ' + ('cv.hours' | translate) + ')' : '' ) }}
           </span>
         }
       </div>

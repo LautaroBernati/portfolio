@@ -1,17 +1,22 @@
 <main [class.dark-mode]="appTheme() === 'dark'">
   <div class="main-container">
     <app-header />
-    <section id="home">
-      <app-home />
-    </section>
-    <section id="cv">
-      <app-cv />
-    </section>
-    <section id="skills">
-      <app-skills />
-    </section>
-    <section id="about">
-      <app-about />
-    </section>
+    <div class="main-container__content">
+      <section id="home">
+        <app-home />
+      </section>
+      <hr>
+      <section id="cv">
+        <app-cv />
+      </section>
+      <hr>
+      <section id="skills">
+        <app-skills />
+      </section>
+      <hr>
+      <section id="about">
+        <app-about />
+      </section>
+    </div>
   </div>
 </main>

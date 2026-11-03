@@ -2,6 +2,14 @@
 
 :host {
   min-height: 100dvh;
+
+  h1 {
+    padding-top: 1rem;
+  }
+
+  h2 {
+    text-align: center;
+  }
 }
 
 .ng-fa-icon {
@@ -54,4 +62,12 @@ footer {
   margin: 1rem;
 }
 
+.tools-list ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 8px;
 
+  @include bp.from(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
@@ -31,6 +31,7 @@ export class HeaderComponent implements AfterViewInit {
   private readonly _themesService = inject(ThemesService);
   private readonly _translateService = inject(TranslateService);
   private readonly _storageService = inject(StorageService);
+  private readonly _viewPortScroller = inject(ViewportScroller);
 
   public readonly activeSection = this._activeSection.asReadonly();
   public readonly isMobile$ = this._breakpointObserver.observe(Breakpoints.Handset).pipe(
@@ -86,6 +87,8 @@ export class HeaderComponent implements AfterViewInit {
     if (savedTheme) {
       this.themeControl.setValue(savedTheme);
     }
+
+    this._viewPortScroller.setOffset([0, 64]);
   }
 
   public ngAfterViewInit(): void {

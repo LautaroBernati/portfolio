@@ -1,13 +1,12 @@
+<div class="row mt-5 section-title">
+  <div class="col">
+    <h1 class="text-center">
+      {{ 'skills.title' | translate }}
+    </h1>
+  </div>
+</div>
 @defer (on viewport) {
   <div class="container-fluid seccion">
-    <div class="row mt-5">
-      <div class="col">
-        <h1 class="text-center">
-          {{ 'skills.title' | translate }}
-        </h1>
-      </div>
-    </div>
-    <hr>
     <div class="row">
       <div class="col">
         @let dependencies = (dependencies$ | async);

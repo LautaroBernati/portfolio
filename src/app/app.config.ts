@@ -15,7 +15,7 @@ export const appConfig: ApplicationConfig = {
     provideAnimationsAsync(),
     provideRouter(routes , withInMemoryScrolling({
       anchorScrolling: 'enabled',
-      scrollPositionRestoration: 'disabled',
+      scrollPositionRestoration: 'enabled',
     })),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
