@@ -11,7 +11,7 @@ import {
   computed,
   input,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
@@ -34,15 +34,14 @@ export interface OutputLine {
 @Component({
     selector: 'app-playground',
     imports: [
-        CommonModule,
-        FormsModule,
-        MatButtonModule,
-        MatSelectModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatTooltipModule,
-        TranslateModule,
-    ],
+    FormsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatTooltipModule,
+    TranslateModule
+],
     templateUrl: 'playground.component.html',
     styleUrl: 'playground.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush

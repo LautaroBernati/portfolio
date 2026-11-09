@@ -18,7 +18,7 @@
               <sk-tab-detail-ui
                 [expanded]="$index === 0"
                 [skill]="item"
-              />
+                />
             </div>
           }
         } @else {
@@ -26,7 +26,7 @@
             <sk-tab-detail-ui
               [expanded]="true"
               [loading]="true"
-            />
+              />
           </div>
         }
       </div>
@@ -46,22 +46,22 @@
     <!-- start backend content -->
     <div class="tab-container">
       @if (beSkills; as skills) {
-          @for (item of skills; track $index) {
-            <div class="tab-detail-container">
-              <sk-tab-detail-ui
-                [expanded]="$index === 0"
-                [skill]="item"
-              />
-            </div>
-          }
-        } @else {
-          <div>
+        @for (item of skills; track $index) {
+          <div class="tab-detail-container">
             <sk-tab-detail-ui
-              [expanded]="true"
-              [loading]="true"
-            />
+              [expanded]="$index === 0"
+              [skill]="item"
+              />
           </div>
         }
+      } @else {
+        <div>
+          <sk-tab-detail-ui
+            [expanded]="true"
+            [loading]="true"
+            />
+        </div>
+      }
     </div>
     <!-- end backend content -->
   </mat-tab>
@@ -77,18 +77,22 @@
   @let methodologiesList = methodologies();
   <mat-tab>
     <ng-template mat-tab-label>
-      <ng-container *ngIf="methodologiesList; else loadingSkeletonRef">
+      @if (methodologiesList) {
         <mat-icon class="card-header-icon">whatshot</mat-icon>
         <div>{{ 'skills.tabs.metds' | translate }}</div>
-      </ng-container>
+      } @else {
+        <app-skeleton-loader-ui
+          height="24px"
+          width="90px"
+          />
+      }
     </ng-template>
     <div class="tab-container-v2">
-      <div
-        *ngFor="let item of methodologiesList"
-        class="tool-detail-container"
-      >
-        <sk-tool-met-detail-ui [item]="item" />
-      </div>
+      @for (item of methodologiesList; track item) {
+        <div class="tool-detail-container">
+          <sk-tool-met-detail-ui [item]="item" />
+        </div>
+      }
     </div>
   </mat-tab>
 </mat-tab-group>
@@ -97,5 +101,5 @@
   <app-skeleton-loader-ui
     height="24px"
     width="90px"
-  />
+    />
 </ng-template>

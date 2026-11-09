@@ -11,7 +11,7 @@
         mat-flat-button
         class="btn-tertiary"
         (click)="downloadPanelOpened = !downloadPanelOpened"
-      >
+        >
         <mat-icon>
           download
         </mat-icon>
@@ -24,89 +24,89 @@
 </div>
 
 @defer (on viewport) {
-  <div class="container-fluid seccion">
-    <div class="row-custom" [@fadeIn]="{ value: true, params: { duration: 300 } }">
-      <div class="column sm">
-        <h2><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h2>
-        <cv-profile-ui
-          [country]="country$ | async"
-          [header]="header$ | async"
-          [languages]="languages$ | async"
-          [phoneNumber]="phoneNumber$ | async"
-          [skills]="skills$ | async"
-          [subHeader]="subHeader$ | async"
-          [tools]="tools$ | async"
+<div class="container-fluid seccion">
+  <div class="row-custom" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+    <div class="column sm">
+      <h2><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h2>
+      <cv-profile-ui
+        [country]="country$ | async"
+        [header]="header$ | async"
+        [languages]="languages$ | async"
+        [phoneNumber]="phoneNumber$ | async"
+        [skills]="skills$ | async"
+        [subHeader]="subHeader$ | async"
+        [tools]="tools$ | async"
         />
-      </div>
-      <div class="column md">
-        <h2><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h2>
-        <div class="timeline" [@fadeIn]="{ value: true, params: { duration: 300 } }">
-          @if ((experiences$ | async); as list) {
-            @for (item of list; track $index) {
-              <!-- up next -->
-              <cv-stepper-ui
-                [isEducation]="false"
-                [experience]="item"
-                maxWidth="100%"
+    </div>
+    <div class="column md">
+      <h2><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h2>
+      <div class="timeline" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+        @if ((experiences$ | async); as list) {
+          @for (item of list; track $index) {
+            <!-- up next -->
+            <cv-stepper-ui
+              [isEducation]="false"
+              [experience]="item"
+              maxWidth="100%"
               />
-            }
-          } @else {
-            <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+          }
+        } @else {
+          <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
+        }
+      </div>
+    </div>
+  </div>
+  <div class="row-custom">
+    <div class="column full center">
+      <h2><strong>{{ 'cv.subTitles.education' | translate }}</strong></h2>
+      @if (education$ | async; as educationList;) {
+        <div class="timeline md" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+          @for (item of educationList; track $index) {
+            <!-- up next -->
+            <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
           }
         </div>
-      </div>
-    </div>
-    <div class="row-custom">
-      <div class="column full center">
-        <h2><strong>{{ 'cv.subTitles.education' | translate }}</strong></h2>
-        <ng-container *ngIf="education$ | async as educationList;">
-          <div class="timeline md" [@fadeIn]="{ value: true, params: { duration: 300 } }">
-            @for (item of educationList; track $index) {
-              <!-- up next -->
-              <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
-            }
-          </div>
-        </ng-container>
-      </div>
+      }
     </div>
   </div>
+</div>
 
-  <ng-template
-    cdkConnectedOverlay
-    [cdkConnectedOverlayOrigin]="triggerBtn"
-    [cdkConnectedOverlayOpen]="downloadPanelOpened"
-    [cdkConnectedOverlayHasBackdrop]="true"
-    [cdkConnectedOverlayOffsetY]="5"
-    [cdkConnectedOverlayOffsetX]="-5"
-    [cdkConnectedOverlayPositions]="[{ originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' }]"
-    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-    (backdropClick)="downloadPanelOpened = false"
-    (overlayOutsideClick)="downloadPanelOpened = false"
-    (detach)="downloadPanelOpened = false"
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="triggerBtn"
+  [cdkConnectedOverlayOpen]="downloadPanelOpened"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayOffsetY]="5"
+  [cdkConnectedOverlayOffsetX]="-5"
+  [cdkConnectedOverlayPositions]="[{ originX: 'end', originY: 'bottom', overlayX: 'end', overlayY: 'top' }]"
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  (backdropClick)="downloadPanelOpened = false"
+  (overlayOutsideClick)="downloadPanelOpened = false"
+  (detach)="downloadPanelOpened = false"
   >
-    <div class="download-panel">
-      <button
-        mat-flat-button
-        class="btn-secondary"
-        (click)="onDownloadPdf('es')"
+  <div class="download-panel">
+    <button
+      mat-flat-button
+      class="btn-secondary"
+      (click)="onDownloadPdf('es')"
       >
-        <mat-icon>save</mat-icon>
-        {{ 'cv.buttons.download.es' | translate }}
-      </button>
-      <button
-        mat-flat-button
-        class="btn-secondary"
-        (click)="onDownloadPdf('en')"
+      <mat-icon>save</mat-icon>
+      {{ 'cv.buttons.download.es' | translate }}
+    </button>
+    <button
+      mat-flat-button
+      class="btn-secondary"
+      (click)="onDownloadPdf('en')"
       >
-        <mat-icon>save</mat-icon>
-        {{ 'cv.buttons.download.en' | translate }}
-      </button>
-    </div>
-  </ng-template>
-} @placeholder {
-  <div class="page-placeholder">
-    <mat-spinner mode="indeterminate" />
+      <mat-icon>save</mat-icon>
+      {{ 'cv.buttons.download.en' | translate }}
+    </button>
   </div>
+</ng-template>
+} @placeholder {
+<div class="page-placeholder">
+  <mat-spinner mode="indeterminate" />
+</div>
 } @error {
-  error loading module
+error loading module
 }

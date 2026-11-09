@@ -1,6 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { DOCUMENT, ViewportScroller } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ViewportScroller } from '@angular/common';
+import { AfterViewInit, ChangeDetectionStrategy, Component, inject, signal, DOCUMENT } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { TranslateService } from '@ngx-translate/core';

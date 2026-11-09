@@ -6,7 +6,7 @@
           <app-skeleton-loader-ui
             height="20px"
             width="60px"
-          />
+            />
         } @else {
           {{ skill()?.Framework }}
         }
@@ -20,7 +20,7 @@
               [ngStyle]="{'--mdc-linear-progress-active-indicator-color': getColor(skill()?.Progress ?? 0)}"
               [mode]="'determinate'"
               [value]="skill()?.Progress"
-            />
+              />
           } @else {
             <app-skeleton-loader-ui height="30px" width="35%"/>
           }
@@ -29,7 +29,7 @@
           <fa-icon
             [icon]="skill()!.Icon"
             size="2x"
-          />
+            />
         } @else {
           <app-skeleton-loader-ui type="icon-button" />
         }
@@ -43,13 +43,13 @@
           <app-skeleton-loader-ui
             width="15%"
             height="37px"
-          />
+            />
           <!-- info title end -->
           <!-- info type -->
           <app-skeleton-loader-ui
             width="10%"
             height="37px"
-          />
+            />
           <!-- info type end -->
         </div>
         <div class="card-desc-detail">
@@ -57,13 +57,13 @@
           <app-skeleton-loader-ui
             height="140px"
             width="35%"
-          />
+            />
           <!-- paragraph end -->
           <!-- image -->
           <app-skeleton-loader-ui
             height="140px"
             width="35%"
-          />
+            />
           <!-- image end -->
         </div>
         @let isMobile = (isMobile$ | async);
@@ -71,11 +71,11 @@
           <app-skeleton-loader-ui
             [width]="isMobile ? '35%' : '110px'"
             height="37px"
-          />
+            />
           <app-skeleton-loader-ui
             [width]="isMobile ? '32%' : '110px'"
             height="37px"
-          />
+            />
         </div>
       </div>
     }
@@ -101,7 +101,7 @@
                     class="more-btn"
                     type="button"
                     (click)="item.showMore = !item.showMore"
-                  >
+                    >
                     @if (item.showMore) {
                       {{ 'skills.buttons.showLess' | translate }}
                     } @else {
@@ -115,11 +115,11 @@
                 [src]="(item.ImgUrl)"
                 alt="imageOfExample"
                 (click)="onImgClick(item.ImgUrl, ref.naturalWidth, ref.naturalHeight)"
-              />
+                />
             </div>
-            <ng-container *ngIf="item.Urls">
+            @if (item.Urls) {
               <div class="btn-area">
-                <ng-container *ngIf="item.Urls.Repository">
+                @if (item.Urls.Repository) {
                   <a
                     class="btn-tertiary"
                     role="button"
@@ -127,12 +127,12 @@
                     mat-stroked-button
                     [href]="item.Urls.Repository"
                     target="_blank"
-                  >
+                    >
                     <mat-icon>code</mat-icon>
                     <div>{{ 'skills.buttons.repo' | translate }}</div>
                   </a>
-                </ng-container>
-                <ng-container *ngIf="item.Urls.Deployment">
+                }
+                @if (item.Urls.Deployment) {
                   <a
                     class="btn-tertiary"
                     role="button"
@@ -140,13 +140,13 @@
                     mat-stroked-button
                     [href]="item.Urls.Deployment"
                     target="_blank"
-                  >
+                    >
                     <mat-icon>launch</mat-icon>
                     <div>{{ 'skills.buttons.deploy' | translate }}</div>
                   </a>
-                </ng-container>
+                }
               </div>
-            </ng-container>
+            }
           </div>
         }
       </div>

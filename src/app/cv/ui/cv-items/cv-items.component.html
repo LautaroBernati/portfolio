@@ -13,7 +13,7 @@
           [ngStyle]="{'display': 'block'}"
           height="21px"
           width="200px"
-        />
+          />
       }
     </mat-card-title>
     <mat-card-subtitle>
@@ -25,14 +25,14 @@
             [ngStyle]="{'margin-top': '0.5rem'}"
             height="21px"
             width="200px"
-          />
+            />
         }
         @if (!experience()?.From) {
           <app-skeleton-loader-ui
             [ngStyle]="{'margin-top': '0.5rem'}"
             height="21px"
             width="200px"
-          />
+            />
         } @else {
           <span>
             {{ experience()?.From + " — " + (experience()?.To ?? "Present") + (!!experience()?.hours ? ' (' + experience()?.hours + ' ' + ('cv.hours' | translate) + ')' : '' ) }}
@@ -47,13 +47,13 @@
         class="company-logo"
         [height]="80"
         [width]="80"
-      />
+        />
     } @else {
       <app-skeleton-loader-ui
         type="avatar"
         width="80px"
         height="80px"
-      />
+        />
     }
   </mat-card-header>
   <mat-card-content>
@@ -65,12 +65,14 @@
           {{ experience()?.Description }}
         } @else {
           {{ experience()?.Description! | translate }}
-        } 
+        }
       </p>
-      <p *ngIf="experience()?.Tech || experience()?.stack">
-        <strong>Stack:</strong>
-        {{ experience()?.Tech ?? experience()?.stack }}
-      </p>
+      @if (experience()?.Tech || experience()?.stack) {
+        <p>
+          <strong>Stack:</strong>
+          {{ experience()?.Tech ?? experience()?.stack }}
+        </p>
+      }
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
@@ -79,9 +81,13 @@
       [disabled]="!experience()"
       mat-stroked-button
       (click)="onExpand()"
-    >
-      <mat-icon *ngIf="!showDetails">expand_more</mat-icon>
-      <mat-icon *ngIf="showDetails">expand_less</mat-icon>
+      >
+      @if (!showDetails) {
+        <mat-icon>expand_more</mat-icon>
+      }
+      @if (showDetails) {
+        <mat-icon>expand_less</mat-icon>
+      }
       {{ (showDetails ? "cv.buttons.details.expanded" : "cv.buttons.details.hidden") | translate }}
     </button>
   </mat-card-actions>

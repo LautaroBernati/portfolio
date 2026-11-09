@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -13,12 +13,11 @@ import { TranslateModule } from '@ngx-translate/core';
     styleUrls: ['about.page.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        CommonModule,
-        FontAwesomeModule,
-        MatProgressSpinnerModule,
-        MatButtonModule,
-        TranslateModule,
-    ]
+    FontAwesomeModule,
+    MatProgressSpinnerModule,
+    MatButtonModule,
+    TranslateModule
+]
 })
 export class AboutPage {
   public readonly faBirthdayCake = faBirthdayCake;

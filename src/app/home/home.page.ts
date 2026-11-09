@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,11 +20,10 @@ function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): Translat
     styleUrls: ['home.page.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-        CommonModule,
-        FontAwesomeModule,
-        MatButtonModule,
-        TranslateModule,
-    ],
+    FontAwesomeModule,
+    MatButtonModule,
+    TranslateModule
+],
     animations: [fadeIn()]
 })
 export class HomePage implements OnInit, OnDestroy {

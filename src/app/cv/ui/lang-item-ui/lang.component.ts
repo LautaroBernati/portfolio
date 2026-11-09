@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { Language } from '../../data-access/languages.service';
@@ -7,7 +7,7 @@ import { Language } from '../../data-access/languages.service';
     selector: 'cv-lang-item-ui',
     templateUrl: 'lang.component.html',
     styleUrls: ['lang.component.scss'],
-    imports: [CommonModule, TranslateModule],
+    imports: [TranslateModule],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LanguageItemComponent {
