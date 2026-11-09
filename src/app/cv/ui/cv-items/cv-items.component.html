@@ -2,18 +2,18 @@
   <mat-card-header class="custom-card-header" (click)="onExpand()">
     <mat-card-title>
       @if (experience()?.Title; as title) {
-        <span><strong>{{ title | translate }}</strong></span>
+        <span><strong>
+          {{ title | translate }}
+        </strong></span>
         @if (experience()?.type; as type) {
-          <span class="educ-type">
-            &mdash; &#91;{{ type }}&#93;
-          </span>
+          <span class="educ-type"> &mdash; &#91;{{ type }}&#93; </span>
         }
       } @else {
         <app-skeleton-loader-ui
-          [ngStyle]="{'display': 'block'}"
+          [ngStyle]="{ display: 'block' }"
           height="21px"
           width="200px"
-          />
+        />
       }
     </mat-card-title>
     <mat-card-subtitle>
@@ -22,20 +22,31 @@
           <span>{{ subtitle }}</span>
         } @else {
           <app-skeleton-loader-ui
-            [ngStyle]="{'margin-top': '0.5rem'}"
+            [ngStyle]="{ 'margin-top': '0.5rem' }"
             height="21px"
             width="200px"
-            />
+          />
         }
         @if (!experience()?.From) {
           <app-skeleton-loader-ui
-            [ngStyle]="{'margin-top': '0.5rem'}"
+            [ngStyle]="{ 'margin-top': '0.5rem' }"
             height="21px"
             width="200px"
-            />
+          />
         } @else {
           <span>
-            {{ experience()?.From + " — " + (experience()?.To ?? "Present") + (!!experience()?.hours ? ' (' + experience()?.hours + ' ' + ('cv.hours' | translate) + ')' : '' ) }}
+            {{
+              experience()?.From +
+                ' — ' +
+                (experience()?.To ?? 'Present') +
+                (!!experience()?.hours
+                  ? ' (' +
+                    experience()?.hours +
+                    ' ' +
+                    ('cv.hours' | translate) +
+                    ')'
+                  : '')
+            }}
           </span>
         }
       </div>
@@ -47,13 +58,9 @@
         class="company-logo"
         [height]="80"
         [width]="80"
-        />
+      />
     } @else {
-      <app-skeleton-loader-ui
-        type="avatar"
-        width="80px"
-        height="80px"
-        />
+      <app-skeleton-loader-ui type="avatar" width="80px" height="80px" />
     }
   </mat-card-header>
   <mat-card-content>
@@ -64,7 +71,7 @@
         @if (isEducation()) {
           {{ experience()?.Description }}
         } @else {
-          {{ experience()?.Description! | translate }}
+          {{ $safeNavigationMigration(experience()?.Description)! | translate }}
         }
       </p>
       @if (experience()?.Tech || experience()?.stack) {
@@ -81,14 +88,19 @@
       [disabled]="!experience()"
       mat-stroked-button
       (click)="onExpand()"
-      >
+    >
       @if (!showDetails) {
         <mat-icon>expand_more</mat-icon>
       }
       @if (showDetails) {
         <mat-icon>expand_less</mat-icon>
       }
-      {{ (showDetails ? "cv.buttons.details.expanded" : "cv.buttons.details.hidden") | translate }}
+      {{
+        (showDetails
+          ? 'cv.buttons.details.expanded'
+          : 'cv.buttons.details.hidden'
+        ) | translate
+      }}
     </button>
   </mat-card-actions>
 </mat-card>

@@ -1,27 +1,25 @@
 import { animate, style, transition, trigger } from '@angular/animations';
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { Methodology } from '../../data-access/methodologies.service';
 import { Skill } from '../../data-access/skills.service';
 import { Tool } from '../../../shared/services/tools.service';
 import { PlaygroundFile } from '../ts-playground/playground.component';
 
-
 @Component({
-    selector: 'sk-tabs-ui',
-    templateUrl: 'skills-tabs.component.html',
-    styleUrls: ['skills-tabs.component.scss'],
-    animations: [
-        trigger('fadeIn', [
-            transition('void => *', [
-                style({ opacity: 0 }),
-                animate('200ms', style({ opacity: 1 }))
-            ]),
-            transition('* => void', [
-                animate('500ms', style({ opacity: 0 }))
-            ])
-        ])
-    ],
-    standalone: false
+  selector: 'sk-tabs-ui',
+  templateUrl: 'skills-tabs.component.html',
+  styleUrls: ['skills-tabs.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition('void => *', [
+        style({ opacity: 0 }),
+        animate('200ms', style({ opacity: 1 })),
+      ]),
+      transition('* => void', [animate('500ms', style({ opacity: 0 }))]),
+    ]),
+  ],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  standalone: false,
 })
 export class SkillsTabsComponent {
   public readonly backEndSkills = input<Skill[]>();

@@ -1,13 +1,17 @@
 <div class="tool-container">
   <div class="text-container">
     <strong>{{ item?.Desc }}</strong>
-    <strong>{{ item?.Percent + "%" }}</strong>
+    <strong>{{ item?.Percent + '%' }}</strong>
   </div>
   <div class="progress">
     <mat-progress-bar
-      [ngStyle]="{'--mdc-linear-progress-active-indicator-color': getColor(item?.Percent ?? 0)}"
+      [ngStyle]="{
+        '--mdc-linear-progress-active-indicator-color': getColor(
+          item?.Percent ?? 0
+        ),
+      }"
       mode="determinate"
-      [value]="item?.Percent"
+      [value]="$safeNavigationMigration(item?.Percent)"
     />
   </div>
 </div>

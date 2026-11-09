@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AboutPage } from './about/about.page';
@@ -9,18 +9,19 @@ import { HeaderModule } from './shared/ui/header/header.module';
 import { SkillsPage } from './skills/feature/skills-main/skills-main.page';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: 'app.component.html',
-    styleUrls: ['app.component.scss'],
-    imports: [
-        AboutPage,
-        CVMainPage,
-        FontAwesomeModule,
-        HeaderModule,
-        HomePage,
-        MatProgressSpinnerModule,
-        SkillsPage
-    ]
+  selector: 'app-root',
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [
+    AboutPage,
+    CVMainPage,
+    FontAwesomeModule,
+    HeaderModule,
+    HomePage,
+    MatProgressSpinnerModule,
+    SkillsPage,
+  ],
 })
 export class AppComponent {
   public readonly title = 'app-portfolio-lb';
