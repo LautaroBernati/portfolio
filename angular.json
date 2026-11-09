@@ -15,12 +15,13 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/portfolio",
+            "outputPath": {
+              "base": "dist/portfolio"
+            },
             "index": "src/index.html",
             "baseHref": "/portfolio/",
-            "main": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
@@ -37,9 +38,11 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src"
+                "src",
+                "."
               ]
-            }
+            },
+            "browser": "src/main.ts"
           },
           "configurations": {
             "production": {
@@ -63,17 +66,13 @@
               ],
               "outputHashing": "all",
               "optimization": true,
-              "vendorChunk": false,
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "buildOptimizer": true,
               "aot": true
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": false,
