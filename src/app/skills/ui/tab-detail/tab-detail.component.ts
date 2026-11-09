@@ -5,10 +5,11 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, map } from 'rxjs';
 
 @Component({
-  selector: 'sk-tab-detail-ui',
-  templateUrl: 'tab-detail.component.html',
-  styleUrls: ['tab-detail.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sk-tab-detail-ui',
+    templateUrl: 'tab-detail.component.html',
+    styleUrls: ['tab-detail.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TabDetailComponent {
   private readonly _breakpointObserver = inject(BreakpointObserver);
@@ -53,8 +54,8 @@ export class TabDetailComponent {
 }
 
 @Component({
-  selector: 'sk-tab-detail-dialog-ui',
-  template: `
+    selector: 'sk-tab-detail-dialog-ui',
+    template: `
   <div style="display: flex; flex-direction: column; padding: 0.5rem; align-items: center">
     <div style="margin-bottom: 0.5rem; align-self: flex-end;">
       <button type="button" mat-icon-button color="warn" aria-label="Button with cross icon" mat-dialog-close>
@@ -69,6 +70,7 @@ export class TabDetailComponent {
     >
   </div>
   `,
+    standalone: false
 })
 export class ImageDetailDialog {
   public readonly data = inject(MAT_DIALOG_DATA);

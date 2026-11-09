@@ -13,23 +13,22 @@ import { CVItemsModule } from '../../ui/cv-items/cv-items.module';
 import { ProfileComponent } from '../../ui/profile/profile.component';
 
 @Component({
-  selector: 'app-cv',
-  templateUrl: 'cv-main.page.html',
-  styleUrls: ['cv-main.page.scss'],
-  animations: [fadeIn()],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
-    CVItemsModule,
-    MatProgressSpinnerModule,
-    ProfileComponent,
-    TranslateModule,
-    MatButton,
-    MatIcon,
-    OverlayModule,
-  ],
-  providers: [ExperiencesService, EducationService, LaguangesService, SkillsCvService],
+    selector: 'app-cv',
+    templateUrl: 'cv-main.page.html',
+    styleUrls: ['cv-main.page.scss'],
+    animations: [fadeIn()],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        CVItemsModule,
+        MatProgressSpinnerModule,
+        ProfileComponent,
+        TranslateModule,
+        MatButton,
+        MatIcon,
+        OverlayModule,
+    ],
+    providers: [ExperiencesService, EducationService, LaguangesService, SkillsCvService]
 })
 export class CVMainPage {
   private readonly _cvService = inject(CVService);

@@ -7,12 +7,11 @@ import { numberToRgb } from '../../../shared/utils/number-to-rgb.function';
 
 
 @Component({
-  selector: 'sk-tool-met-detail-ui',
-  templateUrl: 'tool-met-detail.component.html',
-  styleUrls: ['tool-met-detail.component.scss'],
-  standalone: true,
-  imports: [CommonModule, MatProgressBarModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'sk-tool-met-detail-ui',
+    templateUrl: 'tool-met-detail.component.html',
+    styleUrls: ['tool-met-detail.component.scss'],
+    imports: [CommonModule, MatProgressBarModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolMetDetailComponent {
   @Input('item') item: Tool | Methodology | null = null;

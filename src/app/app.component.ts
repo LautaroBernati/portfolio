@@ -9,19 +9,18 @@ import { HeaderModule } from './shared/ui/header/header.module';
 import { SkillsPage } from './skills/feature/skills-main/skills-main.page';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
-  standalone: true,
-  imports: [
-    AboutPage,
-    CVMainPage,
-    FontAwesomeModule,
-    HeaderModule,
-    HomePage,
-    MatProgressSpinnerModule,
-    SkillsPage
-  ]
+    selector: 'app-root',
+    templateUrl: 'app.component.html',
+    styleUrls: ['app.component.scss'],
+    imports: [
+        AboutPage,
+        CVMainPage,
+        FontAwesomeModule,
+        HeaderModule,
+        HomePage,
+        MatProgressSpinnerModule,
+        SkillsPage
+    ]
 })
 export class AppComponent {
   public readonly title = 'app-portfolio-lb';

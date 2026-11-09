@@ -7,24 +7,21 @@ import { PlaygroundFile } from '../ts-playground/playground.component';
 
 
 @Component({
-  selector: 'sk-tabs-ui',
-  templateUrl: 'skills-tabs.component.html',
-  styleUrls: ['skills-tabs.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate('200ms',
-          style({ opacity: 1 })
-        )
-      ]),
-      transition('* => void', [
-        animate('500ms',
-          style({ opacity: 0 })
-        )
-      ])
-    ])
-  ],
+    selector: 'sk-tabs-ui',
+    templateUrl: 'skills-tabs.component.html',
+    styleUrls: ['skills-tabs.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            transition('void => *', [
+                style({ opacity: 0 }),
+                animate('200ms', style({ opacity: 1 }))
+            ]),
+            transition('* => void', [
+                animate('500ms', style({ opacity: 0 }))
+            ])
+        ])
+    ],
+    standalone: false
 })
 export class SkillsTabsComponent {
   public readonly backEndSkills = input<Skill[]>();

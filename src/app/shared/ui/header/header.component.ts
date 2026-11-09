@@ -19,11 +19,12 @@ type LanguageValue = 'en' | 'es';
 type ThemeValue = AppTheme;
 
 @Component({
-  animations: [fadeIn()],
-  selector: 'app-header',
-  templateUrl: 'header.component.html',
-  styleUrls: ['header.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [fadeIn()],
+    selector: 'app-header',
+    templateUrl: 'header.component.html',
+    styleUrls: ['header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HeaderComponent implements AfterViewInit {
   private readonly _activeSection = signal<string>('home');

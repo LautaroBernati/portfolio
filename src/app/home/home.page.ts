@@ -15,18 +15,17 @@ function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): Translat
 }
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    MatButtonModule,
-    TranslateModule,
-  ],
-  animations: [fadeIn()]
+    selector: 'app-home',
+    templateUrl: 'home.page.html',
+    styleUrls: ['home.page.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        MatButtonModule,
+        TranslateModule,
+    ],
+    animations: [fadeIn()]
 })
 export class HomePage implements OnInit, OnDestroy {
   private readonly _showFullContent$ = new BehaviorSubject<boolean>(false);

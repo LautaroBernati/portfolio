@@ -12,21 +12,20 @@ import { PlaygroundFile } from '../../ui/ts-playground/playground.component';
 
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: 'skills-main.page.html',
-  styleUrls: ['skills-main.page.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatProgressSpinnerModule,
-    SkillsTabModule,
-    TranslateModule,
-  ],
-  providers: [
-    SkillsService,
-    MethodologiesService,
-  ]
+    selector: 'app-skills',
+    templateUrl: 'skills-main.page.html',
+    styleUrls: ['skills-main.page.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        MatProgressSpinnerModule,
+        SkillsTabModule,
+        TranslateModule,
+    ],
+    providers: [
+        SkillsService,
+        MethodologiesService,
+    ]
 })
 export class SkillsPage implements OnInit {
   private readonly _skillsService = inject(SkillsService);

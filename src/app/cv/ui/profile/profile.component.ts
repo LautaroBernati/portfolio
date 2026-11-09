@@ -15,35 +15,34 @@ import { Language, SkillCvContainer } from '../../data-access';
 import { LanguageItemComponent } from '../lang-item-ui/lang.component';
 
 @Component({
-  animations: [
-    trigger('collapse', [
-      state('false', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
-      state('true', style({ height: '0', visibility: 'hidden' })),
-      transition('false => true', animate(150 + 'ms ease-in')),
-      transition('true => false', animate(150 + 'ms ease-out')),
-    ]),
-    fadeIn(),
-  ],
-  standalone: true,
-  selector: 'cv-profile-ui',
-  templateUrl: 'profile.component.html',
-  styleUrls: ['profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgClass,
-    DatePipe,
-    FontAwesomeModule,
-    LanguageItemComponent,
-    MatButtonModule,
-    MatCardModule,
-    MatIconModule,
-    SkeletonLoaderComponent,
-    TranslateModule,
-    NgOptimizedImage,
-],
-  host: {
-    '[style.width]': 'width()',
-  },
+    animations: [
+        trigger('collapse', [
+            state('false', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
+            state('true', style({ height: '0', visibility: 'hidden' })),
+            transition('false => true', animate(150 + 'ms ease-in')),
+            transition('true => false', animate(150 + 'ms ease-out')),
+        ]),
+        fadeIn(),
+    ],
+    selector: 'cv-profile-ui',
+    templateUrl: 'profile.component.html',
+    styleUrls: ['profile.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgClass,
+        DatePipe,
+        FontAwesomeModule,
+        LanguageItemComponent,
+        MatButtonModule,
+        MatCardModule,
+        MatIconModule,
+        SkeletonLoaderComponent,
+        TranslateModule,
+        NgOptimizedImage,
+    ],
+    host: {
+        '[style.width]': 'width()',
+    }
 })
 
 export class ProfileComponent {

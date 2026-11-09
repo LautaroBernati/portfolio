@@ -32,21 +32,20 @@ export interface OutputLine {
 }
 
 @Component({
-  selector: 'app-playground',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatButtonModule,
-    MatSelectModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatTooltipModule,
-    TranslateModule,
-  ],
-  templateUrl: 'playground.component.html',
-  styleUrl: 'playground.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-playground',
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatTooltipModule,
+        TranslateModule,
+    ],
+    templateUrl: 'playground.component.html',
+    styleUrl: 'playground.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlaygroundComponent implements OnInit, OnDestroy {
   private readonly _http = inject(HttpClient);

@@ -8,18 +8,17 @@ import { faAtom, faBirthdayCake, faEnvelope, faGraduationCap, faMapMarker, faPla
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: 'about.page.html',
-  styleUrls: ['about.page.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    CommonModule,
-    FontAwesomeModule,
-    MatProgressSpinnerModule,
-    MatButtonModule,
-    TranslateModule,
-  ],
+    selector: 'app-about',
+    templateUrl: 'about.page.html',
+    styleUrls: ['about.page.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        CommonModule,
+        FontAwesomeModule,
+        MatProgressSpinnerModule,
+        MatButtonModule,
+        TranslateModule,
+    ]
 })
 export class AboutPage {
   public readonly faBirthdayCake = faBirthdayCake;
