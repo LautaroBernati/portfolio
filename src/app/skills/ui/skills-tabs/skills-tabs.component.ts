@@ -1,4 +1,3 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { Methodology } from '../../data-access/methodologies.service';
 import { Skill } from '../../data-access/skills.service';
@@ -9,16 +8,7 @@ import { PlaygroundFile } from '../ts-playground/playground.component';
   selector: 'sk-tabs-ui',
   templateUrl: 'skills-tabs.component.html',
   styleUrls: ['skills-tabs.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition('void => *', [
-        style({ opacity: 0 }),
-        animate('200ms', style({ opacity: 1 })),
-      ]),
-      transition('* => void', [animate('500ms', style({ opacity: 0 }))]),
-    ]),
-  ],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
 })
 export class SkillsTabsComponent {

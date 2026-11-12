@@ -1,11 +1,12 @@
 <mat-card appearance="outlined">
+  @let exp = item();
   <mat-card-header class="custom-card-header" (click)="onExpand()">
     <mat-card-title>
-      @if (experience()?.Title; as title) {
+      @if (exp?.Title; as title) {
         <span><strong>
           {{ title | translate }}
         </strong></span>
-        @if (experience()?.type; as type) {
+        @if (exp?.type; as type) {
           <span class="educ-type"> &mdash; &#91;{{ type }}&#93; </span>
         }
       } @else {
@@ -18,7 +19,7 @@
     </mat-card-title>
     <mat-card-subtitle>
       <div class="custom-card-subtitle">
-        @if (experience()?.Subtitle; as subtitle) {
+        @if (exp?.Subtitle; as subtitle) {
           <span>{{ subtitle }}</span>
         } @else {
           <app-skeleton-loader-ui
@@ -27,7 +28,7 @@
             width="200px"
           />
         }
-        @if (!experience()?.From) {
+        @if (!exp?.From) {
           <app-skeleton-loader-ui
             [ngStyle]="{ 'margin-top': '0.5rem' }"
             height="21px"
@@ -36,12 +37,12 @@
         } @else {
           <span>
             {{
-              experience()?.From +
+              exp?.From +
                 ' — ' +
-                (experience()?.To ?? 'Present') +
-                (!!experience()?.hours
+                (exp?.To ?? 'Present') +
+                (!!exp?.hours
                   ? ' (' +
-                    experience()?.hours +
+                    exp?.hours +
                     ' ' +
                     ('cv.hours' | translate) +
                     ')'
@@ -51,9 +52,9 @@
         }
       </div>
     </mat-card-subtitle>
-    @if (experience()?.LogoUrl; as url) {
+    @if (exp) {
       <img
-        [ngSrc]="experience()?.LogoUrl ?? ''"
+        [ngSrc]="imgSrc()"
         alt="Image"
         class="company-logo"
         [height]="80"
@@ -63,21 +64,21 @@
       <app-skeleton-loader-ui type="avatar" width="80px" height="80px" />
     }
   </mat-card-header>
-  <mat-card-content>
-    <div class="collapsible" [@collapse]="!showDetails">
+  <mat-card-content class="collapsible" [class.collapsible--collapsed]="!showDetails">
+    <div class="collapsible__content">
       <hr />
       <p>
         <!-- up next -->
         @if (isEducation()) {
-          {{ experience()?.Description }}
+          {{ exp?.Description }}
         } @else {
-          {{ $safeNavigationMigration(experience()?.Description)! | translate }}
+          {{ $safeNavigationMigration(exp?.Description)! | translate }}
         }
       </p>
-      @if (experience()?.Tech || experience()?.stack) {
+      @if (exp?.Tech || exp?.stack) {
         <p>
           <strong>Stack:</strong>
-          {{ experience()?.Tech ?? experience()?.stack }}
+          {{ exp?.Tech ?? exp?.stack }}
         </p>
       }
     </div>
@@ -85,7 +86,7 @@
   <mat-card-actions align="end">
     <button
       type="button"
-      [disabled]="!experience()"
+      [disabled]="!exp"
       mat-stroked-button
       (click)="onExpand()"
     >

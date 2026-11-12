@@ -1,5 +1,5 @@
 
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -7,8 +7,8 @@ import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { LangChangeEvent, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
 import Typed, { TypedJsOptions } from 'typed.js';
-import { TranslatedDocWithId, TranslatedDocument } from '../shared/types/translated-coll.type';
-import { fadeIn } from '../shared/utils/fade-in.animation';
+import { TranslatedDocument, TranslatedDocWithId } from '../shared/types/translated-coll.type';
+import { environment } from '../../environments/environment';
 
 function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): TranslatedDocument<T> {
   return rawColl.find(t => t.UID === uid)!;
@@ -20,11 +20,10 @@ function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): Translat
     styleUrls: ['home.page.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
-    FontAwesomeModule,
-    MatButtonModule,
-    TranslateModule
-],
-    animations: [fadeIn()]
+      FontAwesomeModule,
+      MatButtonModule,
+      TranslateModule
+    ],
 })
 export class HomePage implements OnInit, OnDestroy {
   private readonly _showFullContent$ = new BehaviorSubject<boolean>(false);
@@ -64,6 +63,7 @@ export class HomePage implements OnInit, OnDestroy {
     );
   public readonly faGithub = faGithub;
   public readonly faLinkedinIn = faLinkedinIn;
+  public readonly imgSrc = environment.origin + 'assets/images/profile-pic-3.jpeg';
   public readonly showFullContent$ = this._showFullContent$.asObservable();
 
   constructor() { }

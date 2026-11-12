@@ -1,22 +1,5 @@
 @use 'breakpoints' as bp;
 
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 1.9s ease forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .imagen-botones {
   display: flex;
   flex-direction: column;

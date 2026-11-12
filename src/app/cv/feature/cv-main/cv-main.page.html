@@ -25,7 +25,7 @@
 
 @defer (on viewport) {
 <div class="container-fluid seccion">
-  <div class="row-custom" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+  <div class="row-custom fade-in fade-in--sm" animate.enter="fade-in--visible">
     <div class="column sm">
       <h2><strong>{{ 'cv.subTitles.overview' | translate }}</strong></h2>
       <cv-profile-ui
@@ -40,13 +40,13 @@
     </div>
     <div class="column md">
       <h2><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h2>
-      <div class="timeline" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+      <div class="timeline fade-in fade-in--md" animate.enter="fade-in--visible">
         @if ((experiences$ | async); as list) {
           @for (item of list; track $index) {
             <!-- up next -->
             <cv-stepper-ui
               [isEducation]="false"
-              [experience]="item"
+              [item]="item"
               maxWidth="100%"
               />
           }
@@ -60,10 +60,10 @@
     <div class="column full center">
       <h2><strong>{{ 'cv.subTitles.education' | translate }}</strong></h2>
       @if (education$ | async; as educationList;) {
-        <div class="timeline md" [@fadeIn]="{ value: true, params: { duration: 300 } }">
+        <div class="timeline md fade-in fade-in--lg" animate.enter="fade-in--visible">
           @for (item of educationList; track $index) {
             <!-- up next -->
-            <cv-stepper-ui [experience]="item" [isEducation]="true" maxWidth="100%" />
+            <cv-stepper-ui [item]="item" [isEducation]="true" maxWidth="100%" />
           }
         </div>
       }

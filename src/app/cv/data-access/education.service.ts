@@ -14,6 +14,7 @@ type RawEducation = {
   hours?: number;
   stack?: string;
   type: TranslatedDocument<string>;
+  Tech?: string;
 };
 
 export type Education = Omit<RawEducation, 'Description' | 'type'> & { Description: string; type: string; };
@@ -25,7 +26,7 @@ export class EducationService {
   private readonly _query = query(this._expColl, orderBy('Order', 'asc'));
   private readonly _translateService = inject(TranslateService);
 
-  public readonly experiences$ = (
+  public readonly educationItems$ = (
     combineLatest({
       coll: collectionData(this._query, { idField: 'UID' }) as Observable<RawEducation[]>,
       currLang: this._translateService.onLangChange.pipe(

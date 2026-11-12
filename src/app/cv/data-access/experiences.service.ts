@@ -4,7 +4,13 @@ import { Observable, shareReplay } from 'rxjs';
 import { Education } from './education.service';
 
 // next step: replace Experience for a proper type
-export type Experience = Education & { Tech?: string };
+export type Experience = Omit<Education, 'LogoUrl'> & {
+  Tech?: string;
+  logo: {
+    external: boolean;
+    url: string;
+  };
+};
 
 @Injectable()
 export class ExperiencesService {
@@ -14,7 +20,7 @@ export class ExperiencesService {
 
   public readonly experiences$ = (
     collectionData(this._query, { idField: 'UID' }) as Observable<Experience[]>)
-      .pipe(
-        shareReplay()
-      );
+    .pipe(
+      shareReplay()
+    );
 }

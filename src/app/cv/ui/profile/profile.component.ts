@@ -1,5 +1,4 @@
-import { animate, AUTO_STYLE, state, style, transition, trigger } from '@angular/animations';
-import { DatePipe, NgClass, NgOptimizedImage } from '@angular/common';
+import { NgClass, NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -10,27 +9,17 @@ import { faBirthdayCake, faEnvelope, faMapMarker, faPhone } from '@fortawesome/f
 import { TranslateModule } from '@ngx-translate/core';
 import { Tool } from '../../../shared/services/tools.service';
 import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
-import { fadeIn } from '../../../shared/utils/fade-in.animation';
 import { Language, SkillCvContainer } from '../../data-access';
 import { LanguageItemComponent } from '../lang-item-ui/lang.component';
+import { environment } from '../../../../environments/environment';
 
 @Component({
-    animations: [
-        trigger('collapse', [
-            state('false', style({ height: AUTO_STYLE, visibility: AUTO_STYLE })),
-            state('true', style({ height: '0', visibility: 'hidden' })),
-            transition('false => true', animate(150 + 'ms ease-in')),
-            transition('true => false', animate(150 + 'ms ease-out')),
-        ]),
-        fadeIn(),
-    ],
     selector: 'cv-profile-ui',
     templateUrl: 'profile.component.html',
     styleUrls: ['profile.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     imports: [
         NgClass,
-        DatePipe,
         FontAwesomeModule,
         LanguageItemComponent,
         MatButtonModule,
@@ -62,6 +51,7 @@ export class ProfileComponent {
   public readonly faLinkedinIn = faLinkedinIn;
   public readonly faMapMarker = faMapMarker;
   public readonly faPhone = faPhone;
+  public readonly imgSrc = environment.origin + 'assets/images/avatar-pic.jpeg';
   public showDetails = true;
 
   public calculateAge(birthDate: Date): number {

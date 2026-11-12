@@ -7,7 +7,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
 import { StorageService } from '../../services/storage.service';
 import { AppTheme, ThemesService } from '../../services/themes.service';
-import { fadeIn } from '../../utils/fade-in.animation';
 
 type Option<T> = {
   label: string;
@@ -19,7 +18,6 @@ type LanguageValue = 'en' | 'es';
 type ThemeValue = AppTheme;
 
 @Component({
-    animations: [fadeIn()],
     selector: 'app-header',
     templateUrl: 'header.component.html',
     styleUrls: ['header.component.scss'],

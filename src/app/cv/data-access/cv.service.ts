@@ -4,9 +4,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
 import { TranslatedDocWithId } from '../../shared/types/translated-coll.type';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CVService {
   private readonly _fs = inject(Firestore);
   private readonly _cvColl = collection(this._fs, 'cv');

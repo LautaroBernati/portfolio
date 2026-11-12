@@ -25,6 +25,7 @@ import { PlaygroundFile } from '../../ui/ts-playground/playground.component';
     providers: [
         SkillsService,
         MethodologiesService,
+        ToolsService
     ]
 })
 export class SkillsPage implements OnInit {

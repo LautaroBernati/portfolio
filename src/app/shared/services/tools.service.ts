@@ -14,9 +14,7 @@ export type Tool = Omit<RawTool, 'level'> & {
   level: string
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ToolsService {
   private readonly _fs = inject(Firestore);
   private readonly _toolsColl = collection(this._fs, 'tools');

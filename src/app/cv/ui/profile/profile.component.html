@@ -1,7 +1,7 @@
 <div
   [ngClass]="{ 'full': (width()==='100%') }"
-  class="main-container"
-  [@fadeIn]="{ value: true, params: { duration: 2000 } }"
+  animate.enter="fade-in--visible fade-in--sm"
+  class="main-container fade-in"
 >
   <mat-card appearance="outlined" [style.width]="'100%'">
     <mat-card-header>
@@ -31,14 +31,14 @@
       <img
         [style.margin-left]="width() === '100%' ? 'auto' : '3rem'"
         class="avatar-img"
-        ngSrc="assets/images/avatar-pic.jpeg"
+        [ngSrc]="imgSrc"
         [loading]="'eager'"
         [height]="80"
         [width]="80"
       />
     </mat-card-header>
-    <mat-card-content>
-      <div class="collapsible leftside-container" [@collapse]="!showDetails">
+    <mat-card-content class="collapsible" [class.collapsible--collapsed]="!showDetails">
+      <div class="collapsible__content leftside-container">
         <hr />
         <!-- contacto -->
         <span class="contact-item">

@@ -7,28 +7,27 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { ToolsService } from '../../../shared/services/tools.service';
-import { fadeIn, numberToRgb } from '../../../shared/utils';
+import { numberToRgb } from '../../../shared/utils';
 import { CVService, EducationService, ExperiencesService, LaguangesService, SkillsCvService } from '../../data-access';
 import { CVItemsModule } from '../../ui/cv-items/cv-items.module';
 import { ProfileComponent } from '../../ui/profile/profile.component';
 
 @Component({
-    selector: 'app-cv',
-    templateUrl: 'cv-main.page.html',
-    styleUrls: ['cv-main.page.scss'],
-    animations: [fadeIn()],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        CommonModule,
-        CVItemsModule,
-        MatProgressSpinnerModule,
-        ProfileComponent,
-        TranslateModule,
-        MatButton,
-        MatIcon,
-        OverlayModule,
-    ],
-    providers: [ExperiencesService, EducationService, LaguangesService, SkillsCvService]
+  selector: 'app-cv',
+  templateUrl: 'cv-main.page.html',
+  styleUrls: ['cv-main.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    CVItemsModule,
+    MatButton,
+    MatIcon,
+    MatProgressSpinnerModule,
+    OverlayModule,
+    ProfileComponent,
+    TranslateModule,
+  ],
+  providers: [CVService, ExperiencesService, EducationService, LaguangesService, SkillsCvService, ToolsService]
 })
 export class CVMainPage {
   private readonly _cvService = inject(CVService);
@@ -56,7 +55,7 @@ export class CVMainPage {
 
   constructor() {
     this.experiences$ = this._experiencesService.experiences$;
-    this.education$ = this._educationService.experiences$;
+    this.education$ = this._educationService.educationItems$;
     this.languages$ = this._langService.langs$;
     this.tools$ = this._toolsServie.tools$;
     this.header$ = this._cvService.cvItems$.pipe(

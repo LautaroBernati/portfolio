@@ -8,4 +8,6 @@ export const environment = {
     authDomain: 'lb-portfolio-d0a8f.firebaseapp.com',
     messagingSenderId: '593463546939',
     measurementId: 'G-4PVS38GMPM',
-  },};
+  },
+  origin: 'http://localhost:4201/'
+};

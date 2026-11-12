@@ -5,13 +5,13 @@
       <span class="fixed-typed"></span>
     </span>
   </div>
-  <div class="contenedor" [@fadeIn]="{ value: true, params: { duration: 500 } }">
+  <div class="contenedor fade-in fade-in--md" animate.enter="fade-in--visible">
     <!-- img + links -->
     <div class="columna img-section">
       <div class="imagen-botones">
         <img
           alt="image"
-          src="assets/images/profile-pic-3.jpeg"
+          [src]="imgSrc"
           aria-label="Author's picture"
         />
         <a href="mailto:lautarobernati@gmail.com">lautarobernati&#64;gmail.com</a>
