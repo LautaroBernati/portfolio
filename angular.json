@@ -74,6 +74,7 @@
 							"base": "dist/portfolio"
 						},
 						"index": "src/index.html",
+            "baseHref": "/portfolio/",
 						"polyfills": [
 							"es-module-shims"
 						],
