@@ -6,6 +6,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TranslateModule } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { ToolsService } from '../../../shared/services/tools.service';
 import { numberToRgb } from '../../../shared/utils';
 import { CVService, EducationService, ExperiencesService, LaguangesService, SkillsCvService } from '../../data-access';
@@ -68,7 +69,7 @@ export class CVMainPage {
 
   public onDownloadPdf(version: 'en' | 'es'): void {
     const link = document.createElement('a');
-    link.href = 'assets/docs/cv_bernati_' + version + '.pdf';
+    link.href = environment.origin + 'assets/docs/cv_bernati_' + version + '.pdf';
     link.download = 'CV Bernati Lautaro ' + version.toUpperCase() + '.pdf';
     link.click();
   }

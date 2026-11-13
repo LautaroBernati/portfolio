@@ -19,7 +19,7 @@ export class CVItemComponent {
     const item = this.item();
 
     if (this.isEducation()) {
-      return (item as Education)?.LogoUrl ?? '';
+      return (environment.origin + (item as Education)?.LogoUrl);
     } else {
       return ((item as Experience).logo.external ? (item as Experience).logo.url : (environment.origin + (item as Experience).logo.url));
     }

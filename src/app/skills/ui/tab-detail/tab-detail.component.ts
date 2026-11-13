@@ -1,20 +1,20 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  Inject,
-  input,
-  Input,
-  Signal,
+  input
 } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogConfig,
 } from '@angular/material/dialog';
-import { Example, Skill } from '../../data-access/skills.service';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { distinctUntilChanged, map } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { Example, Skill } from '../../data-access/skills.service';
+
+type CustomType = Example & { showMore: boolean };
 
 @Component({
   selector: 'sk-tab-detail-ui',
@@ -33,25 +33,25 @@ export class TabDetailComponent {
   public readonly expanded = input<boolean>();
   public readonly loading = input<boolean>();
   public readonly skill = input<
-    (Skill & { Examples: (Example & { showMore: boolean })[] }) | undefined,
+    (Skill & { Examples: CustomType[] }) | undefined,
     Skill | undefined
   >(undefined, {
     transform: (
       value: Skill | undefined,
     ):
-      | (Skill & { Examples: (Example & { showMore: boolean })[] })
+      | (Skill & { Examples: CustomType[] })
       | undefined => {
       return !value
         ? undefined
         : {
-            ...value,
-            Examples: value.Examples.map(
-              (e): Example & { showMore: boolean } => ({
-                ...e,
-                showMore: false,
-              }),
-            ),
-          };
+          ...value,
+          Examples: value.Examples.map(
+            (e): CustomType => ({
+              ...e,
+              showMore: false,
+            }),
+          ),
+        };
     },
   });
   public readonly isMobile$ = this._breakpointObserver
@@ -69,20 +69,22 @@ export class TabDetailComponent {
     ),
   );
 
-  constructor() {}
-
-  onImgClick(img: string, width: number, height: number) {
-    this.dialog.open(ImageDetailDialog, <MatDialogConfig>(
-      (<unknown>{ data: img, width: width + 60, height: height + 80 })
-    ));
-  }
-
-  getColor(progress: number) {
+  public getColor(progress: number) {
     const red = Math.min(255, Math.round(((100 - progress) * 255) / 50)); // Red component
     const green = Math.min(255, Math.round((progress * 255) / 50)); // Green component
 
     // Return the color as an RGB string
     return `rgb(${red}, ${green}, 0)`;
+  }
+
+  public getImgSrc(item: CustomType): string {
+    return (environment.origin + item.ImgUrl);
+  }
+
+  public onImgClick(img: string, width: number, height: number) {
+    this.dialog.open(ImageDetailDialog, <MatDialogConfig>(
+      (<unknown>{ data: img, width: width + 60, height: height + 80 })
+    ));
   }
 }
 

@@ -100,12 +100,13 @@
                   </button>
                 }
               </p>
+              @let imgUrl = getImgSrc(item);
               <img
                 #ref
-                [src]="item.ImgUrl"
+                [src]="imgUrl"
                 alt="imageOfExample"
                 (click)="
-                  onImgClick(item.ImgUrl, ref.naturalWidth, ref.naturalHeight)
+                  onImgClick(imgUrl, ref.naturalWidth, ref.naturalHeight)
                 "
               />
             </div>

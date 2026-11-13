@@ -4,6 +4,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { faAngular, faMicrosoft, faNode, faNodeJs, faReact, faVuejs, IconDefinition } from '@fortawesome/free-brands-svg-icons';
 import { TranslateModule } from '@ngx-translate/core';
 import { combineLatest, map } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 import { ToolsService } from '../../../shared/services/tools.service';
 import { MethodologiesService } from '../../data-access/methodologies.service';
 import { Skill, SkillsService, StrippedSkill } from '../../data-access/skills.service';
@@ -35,11 +36,11 @@ export class SkillsPage implements OnInit {
 
   public readonly dependencies$;
   public readonly PLAYGROUND_FILES: PlaygroundFile[] = [
-    { label: 'fibonacci.ts', path: 'assets/playground/fibonacci.ts' },
-    { label: 'subscriber-pattern.ts', path: 'assets/playground/subscriber-pattern.ts' },
-    { label: 'rate-limiter.ts', path: 'assets/playground/rate-limiter.ts' },
-    { label: 'form-validator.ts', path: 'assets/playground/form-validator.ts' },
-    { label: 'filter-builder.ts', path: 'assets/playground/filter-builder.ts' },
+    { label: 'fibonacci.ts', path: (environment.origin + ('assets/playground/fibonacci.ts')) },
+    { label: 'subscriber-pattern.ts', path: (environment.origin + ('assets/playground/subscriber-pattern.ts')) },
+    { label: 'rate-limiter.ts', path: (environment.origin + ('assets/playground/rate-limiter.ts')) },
+    { label: 'form-validator.ts', path: (environment.origin + ('assets/playground/form-validator.ts')) },
+    { label: 'filter-builder.ts', path: (environment.origin + ('assets/playground/filter-builder.ts')) },
   ];
 
   constructor() {
