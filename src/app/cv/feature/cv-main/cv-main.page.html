@@ -11,7 +11,7 @@
         mat-flat-button
         class="btn-tertiary"
         (click)="downloadPanelOpened = !downloadPanelOpened"
-        >
+      >
         <mat-icon>
           download
         </mat-icon>
@@ -36,7 +36,7 @@
         [skills]="skills$ | async"
         [subHeader]="subHeader$ | async"
         [tools]="tools$ | async"
-        />
+      />
     </div>
     <div class="column md">
       <h2><strong>{{ 'cv.subTitles.experiences' | translate }}</strong></h2>
@@ -48,7 +48,7 @@
               [isEducation]="false"
               [item]="item"
               maxWidth="100%"
-              />
+            />
           }
         } @else {
           <cv-stepper-ui [isEducation]="false" [ngStyle]="{'width': '100%'}" maxWidth="100%" />
@@ -83,13 +83,13 @@
   (backdropClick)="downloadPanelOpened = false"
   (overlayOutsideClick)="downloadPanelOpened = false"
   (detach)="downloadPanelOpened = false"
-  >
+>
   <div class="download-panel">
     <button
       mat-flat-button
       class="btn-secondary"
       (click)="onDownloadPdf('es')"
-      >
+    >
       <mat-icon>save</mat-icon>
       {{ 'cv.buttons.download.es' | translate }}
     </button>
@@ -97,7 +97,7 @@
       mat-flat-button
       class="btn-secondary"
       (click)="onDownloadPdf('en')"
-      >
+     >
       <mat-icon>save</mat-icon>
       {{ 'cv.buttons.download.en' | translate }}
     </button>

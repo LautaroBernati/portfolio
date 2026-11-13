@@ -7,6 +7,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
 import { StorageService } from '../../services/storage.service';
 import { AppTheme, ThemesService } from '../../services/themes.service';
+import en from '../../../../assets/i18n/en.json';
+import es from '../../../../assets/i18n/es.json';
 
 type Option<T> = {
   label: string;
@@ -46,6 +48,10 @@ export class HeaderComponent implements AfterViewInit {
   public readonly langOptions$: Observable<Option<LanguageValue>[]>;
 
   constructor() {
+    // TODO: Decouple from header.
+    this._translateService.setTranslation('en', en);
+    this._translateService.setTranslation('es', es);
+
     const document = inject(DOCUMENT);
     document.body.classList.add('mat-app-background');
     this.themeControl.valueChanges.subscribe((value) => {

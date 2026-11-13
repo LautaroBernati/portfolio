@@ -1,6 +1,7 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AboutPage } from './about/about.page';
 import { CVMainPage } from './cv/feature/cv-main/cv-main.page';
 import { HomePage } from './home/home.page';
