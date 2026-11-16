@@ -4,11 +4,12 @@ import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { LangChangeEvent, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent, TranslateModule } from '@ngx-translate/core';
 import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
 import Typed, { TypedJsOptions } from 'typed.js';
-import { TranslatedDocument, TranslatedDocWithId } from '../shared/types/translated-coll.type';
 import { environment } from '../../environments/environment';
+import { LanguageService } from '../shared/services';
+import { TranslatedDocument, TranslatedDocWithId } from '../shared/types/translated-coll.type';
 
 function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): TranslatedDocument<T> {
   return rawColl.find(t => t.UID === uid)!;
@@ -29,7 +30,7 @@ export class HomePage implements OnInit, OnDestroy {
   private readonly _showFullContent$ = new BehaviorSubject<boolean>(false);
   private readonly _fs = inject(Firestore);
   private readonly _aboutColl = collection(this._fs, 'about');
-  private readonly _translateService = inject(TranslateService);
+  private readonly _langService = inject(LanguageService);
   private _fixedTypedInstahce?: Typed;
   private _typedInstance?: Typed;
 
@@ -44,9 +45,9 @@ export class HomePage implements OnInit, OnDestroy {
           };
         }),
       ),
-      currLang: this._translateService.onLangChange.pipe(
+      currLang: this._langService.onLangChange.pipe(
         startWith(<LangChangeEvent>{
-          lang: this._translateService.getCurrentLang()
+          lang: this._langService.appLanguage()
         }),
       ),
       showMore: this._showFullContent$,

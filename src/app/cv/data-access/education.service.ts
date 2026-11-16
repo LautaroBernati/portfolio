@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent } from '@ngx-translate/core';
 import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
-import { TranslatedDocument } from '../../shared/types/translated-coll.type';
+import { LanguageService } from '../../shared/services';
+import { TranslatedDocument } from '../../shared/types';
 
 type RawEducation = {
   Title: string;
@@ -24,14 +25,14 @@ export class EducationService {
   private readonly _fs = inject(Firestore);
   private readonly _expColl = collection(this._fs, 'education');
   private readonly _query = query(this._expColl, orderBy('Order', 'asc'));
-  private readonly _translateService = inject(TranslateService);
+  private readonly _langservice = inject(LanguageService);
 
   public readonly educationItems$ = (
     combineLatest({
       coll: collectionData(this._query, { idField: 'UID' }) as Observable<RawEducation[]>,
-      currLang: this._translateService.onLangChange.pipe(
+      currLang: this._langservice.onLangChange.pipe(
         startWith(<LangChangeEvent>{
-          lang: this._translateService.getCurrentLang()
+          lang: this._langservice.appLanguage()
         }),
       )
     })

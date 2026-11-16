@@ -1,20 +1,21 @@
 import { Injectable, inject } from '@angular/core';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
+import { LangChangeEvent } from '@ngx-translate/core';
 import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
+import { LanguageService } from '../../shared/services';
 import { TranslatedDocWithId } from '../../shared/types/translated-coll.type';
 
 @Injectable()
 export class CVService {
   private readonly _fs = inject(Firestore);
   private readonly _cvColl = collection(this._fs, 'cv');
-  private readonly _translateService = inject(TranslateService);
+  private readonly _translateService = inject(LanguageService);
 
   public readonly cvItems$: Observable<{ id: string; desc: string }[]> = combineLatest({
     coll: (collectionData(this._cvColl, { idField: 'UID' }) as Observable<TranslatedDocWithId<string>[]>),
     currLang: this._translateService.onLangChange.pipe(
       startWith(<LangChangeEvent>{
-        lang: this._translateService.getCurrentLang()
+        lang: this._translateService.appLanguage()
       }),
     ),
   }).pipe(

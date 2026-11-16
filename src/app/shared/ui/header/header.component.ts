@@ -1,36 +1,27 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ViewportScroller } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject, signal, DOCUMENT } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, DOCUMENT, inject, signal } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
-import { TranslateService } from '@ngx-translate/core';
 import { distinctUntilChanged, map, Observable } from 'rxjs';
-import { StorageService } from '../../services/storage.service';
-import { AppTheme, ThemesService } from '../../services/themes.service';
-import en from '../../../../assets/i18n/en.json';
-import es from '../../../../assets/i18n/es.json';
-
-type Option<T> = {
-  label: string;
-  value: T;
-}
-
-type LanguageValue = 'en' | 'es';
+import { LanguageService, StorageService, ThemesService } from '../../services';
+import { AppTheme, LanguageValue, Option } from '../../types';
+import { optionMapper } from '../../utils';
 
 type ThemeValue = AppTheme;
 
 @Component({
-    selector: 'app-header',
-    templateUrl: 'header.component.html',
-    styleUrls: ['header.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-header',
+  templateUrl: 'header.component.html',
+  styleUrls: ['header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HeaderComponent implements AfterViewInit {
   private readonly _activeSection = signal<string>('home');
   private readonly _breakpointObserver = inject(BreakpointObserver);
+  private readonly _languageService = inject(LanguageService);
   private readonly _themesService = inject(ThemesService);
-  private readonly _translateService = inject(TranslateService);
   private readonly _storageService = inject(StorageService);
   private readonly _viewPortScroller = inject(ViewportScroller);
 
@@ -39,59 +30,35 @@ export class HeaderComponent implements AfterViewInit {
     map((result) => result.matches),
     distinctUntilChanged(),
   );
-  public readonly themeControl = new FormControl<ThemeValue>('light', { nonNullable: true });
+  public readonly themeControl = new FormControl<ThemeValue>(this._themesService.theme(), { nonNullable: true });
   public readonly themeOptions$: Observable<Option<ThemeValue>[]>;
   public isSettingsPanelOpened = false;
   public readonly moonIcon = faMoon;
   public readonly sunIcon = faSun;
-  public readonly languageControl = new FormControl<LanguageValue>('en', { nonNullable: true });
+  public readonly languageControl = new FormControl<LanguageValue>(this._languageService.appLanguage(), { nonNullable: true });
   public readonly langOptions$: Observable<Option<LanguageValue>[]>;
 
   constructor() {
-    // TODO: Decouple from header.
-    this._translateService.setTranslation('en', en);
-    this._translateService.setTranslation('es', es);
-
     const document = inject(DOCUMENT);
     document.body.classList.add('mat-app-background');
+
     this.themeControl.valueChanges.subscribe((value) => {
-      if (value === 'dark') {
-        document.body.classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
-      }
       this._themesService.setTheme(value);
       this._storageService.set('lb_portfolio.theme', value);
     });
 
-    this.langOptions$ = this._translateService.stream('navbar.settings.langSelect.values').pipe(
+    this.langOptions$ = this._languageService.langOptions$.pipe(
       map(optionMapper<LanguageValue>)
     );
 
-    this.themeOptions$ = this._translateService.stream('navbar.settings.themeSelect.values').pipe(
-      map(optionMapper<ThemeValue>)
+    this.themeOptions$ = this._languageService.themeOptions$.pipe(
+      map(optionMapper<ThemeValue>),
     );
 
     this.languageControl.valueChanges.subscribe((value) => {
-      this._translateService.use(value);
+      this._languageService.setAppLanguage(value);
       this._storageService.set('lb_portfolio.language', value);
     });
-
-    const savedLang = this._storageService.get<LanguageValue>('lb_portfolio.language');
-    const savedTheme = this._storageService.get<ThemeValue>('lb_portfolio.theme');
-
-    if (savedLang) {
-      this.languageControl.setValue(savedLang);
-    } else {
-      const browserLang = navigator.language.split('-')[0];
-      const supportedLangs: LanguageValue[] = ['en', 'es'];
-      const lang = (supportedLangs.includes(browserLang as LanguageValue) ? browserLang : 'en') as LanguageValue;
-      this.languageControl.setValue(lang);
-    }
-
-    if (savedTheme) {
-      this.themeControl.setValue(savedTheme);
-    }
 
     this._viewPortScroller.setOffset([0, 64]);
   }
@@ -114,13 +81,4 @@ export class HeaderComponent implements AfterViewInit {
       if (el) observer.observe(el);
     });
   }
-}
-
-function optionMapper<T>(obj: Record<string, string>): Option<T>[] {
-  return Object.entries(obj).map((t): Option<T> => {
-    return {
-      value: <T>t[0],
-      label: t[1]
-    };
-  });
 }

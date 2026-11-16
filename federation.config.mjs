@@ -6,11 +6,9 @@ import {
 
 export default withNativeFederation({
 	name: 'appPortfolio',
-
 	exposes: {
 		'./Routes': './src/app/app.routes.ts',
 	},
-
 	shared: {
 		...shareAll(
 			{
@@ -46,7 +44,6 @@ export default withNativeFederation({
 			},
 		),
 	},
-
 	skip: [
 		'rxjs/ajax',
 		'rxjs/fetch',
@@ -62,7 +59,6 @@ export default withNativeFederation({
 		/^firebase\//,
 		'typed.js',
 	],
-
 	features: {
 		denseChunking: true,
 		denseExternals: true,
