@@ -12,7 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideChildTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { HeaderComponent } from './header.component';
 
 
@@ -20,21 +20,21 @@ import { HeaderComponent } from './header.component';
   declarations: [HeaderComponent],
   imports: [
     CommonModule,
-    RouterModule,
-    ReactiveFormsModule,
-    MatToolbarModule,
+    FontAwesomeModule,
     MatButtonModule,
     MatDividerModule,
     MatIconModule,
-    MatSlideToggleModule,
     MatSelectModule,
+    MatSlideToggleModule,
+    MatToolbarModule,
     MatTooltipModule,
     MatMenuModule,
-    FontAwesomeModule,
-    TranslateModule.forChild(),
     OverlayModule,
+    RouterModule,
+    ReactiveFormsModule,
+    TranslatePipe
   ],
   exports: [HeaderComponent],
-  providers: [],
+  providers: [provideChildTranslateService()],
 })
 export class HeaderModule { }

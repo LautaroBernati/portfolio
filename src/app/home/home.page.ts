@@ -1,78 +1,37 @@
 
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
-import { LangChangeEvent, TranslateModule } from '@ngx-translate/core';
-import { BehaviorSubject, combineLatest, map, Observable, startWith, take } from 'rxjs';
+import { TranslatePipe } from '@ngx-translate/core';
 import Typed, { TypedJsOptions } from 'typed.js';
 import { environment } from '../../environments/environment';
-import { LanguageService } from '../shared/services';
-import { TranslatedDocument, TranslatedDocWithId } from '../shared/types/translated-coll.type';
 
-function findInColl<T>(rawColl: TranslatedDocWithId<T>[], uid: string): TranslatedDocument<T> {
-  return rawColl.find(t => t.UID === uid)!;
-}
 
 @Component({
-    selector: 'app-home',
-    templateUrl: 'home.page.html',
-    styleUrls: ['home.page.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-      FontAwesomeModule,
-      MatButtonModule,
-      TranslateModule
-    ],
+  selector: 'app-home',
+  templateUrl: 'home.page.html',
+  styleUrls: ['home.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    FontAwesomeModule,
+    MatButtonModule,
+    TranslatePipe
+  ],
 })
 export class HomePage implements OnInit, OnDestroy {
-  private readonly _showFullContent$ = new BehaviorSubject<boolean>(false);
-  private readonly _fs = inject(Firestore);
-  private readonly _aboutColl = collection(this._fs, 'about');
-  private readonly _langService = inject(LanguageService);
   private _fixedTypedInstahce?: Typed;
   private _typedInstance?: Typed;
 
-  public readonly about$: Observable<
-      { country: string; moreButtonText: string }
-    > = combineLatest({
-      aboutData: (collectionData(this._aboutColl, { idField: 'UID' }) as Observable<TranslatedDocWithId<never>[]>).pipe(
-        map((coll) => {
-          return {
-            country: findInColl<string>(coll, 'country'),
-            moreBtnText: findInColl<{ less: string; more: string }>(coll, 'moreBtnText')
-          };
-        }),
-      ),
-      currLang: this._langService.onLangChange.pipe(
-        startWith(<LangChangeEvent>{
-          lang: this._langService.appLanguage()
-        }),
-      ),
-      showMore: this._showFullContent$,
-    }).pipe(
-      map(({ aboutData, currLang, showMore }) => {
-        const lang = currLang.lang as 'en' | 'es';
-        const moreOrLess = showMore ? 'less' : 'more';
-  
-        return {
-          country: aboutData['country'][lang],
-          moreButtonText: aboutData.moreBtnText[lang][moreOrLess]
-        };
-      }),
-    );
   public readonly faGithub = faGithub;
   public readonly faLinkedinIn = faLinkedinIn;
   public readonly imgSrc = environment.origin + 'assets/images/profile-pic-3.jpeg';
-  public readonly showFullContent$ = this._showFullContent$.asObservable();
 
   constructor() { }
 
   ngOnDestroy(): void {
     this._typedInstance?.destroy();
     this._fixedTypedInstahce?.destroy();
-    this._showFullContent$.complete();
   }
 
   ngOnInit(): void {
@@ -85,10 +44,6 @@ export class HomePage implements OnInit, OnDestroy {
 
   public curateText(text: string): string {
     return text.replace(/\n/g, '<br>');
-  }
-
-  public onToggleReadBtn(): void {
-    this._showFullContent$.pipe(take(1)).subscribe(state => this._showFullContent$.next(!state));
   }
 
   private createTyped(cssName: string, strings: string[], backDelay = 2000) {

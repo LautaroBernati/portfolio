@@ -6,34 +6,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faBirthdayCake, faEnvelope, faMapMarker, faPhone } from '@fortawesome/free-solid-svg-icons';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
+import { environment } from '../../../../environments/environment';
 import { Tool } from '../../../shared/services/tools.service';
 import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
 import { Language, SkillCvContainer } from '../../data-access';
 import { LanguageItemComponent } from '../lang-item-ui/lang.component';
-import { environment } from '../../../../environments/environment';
 
 @Component({
-    selector: 'cv-profile-ui',
-    templateUrl: 'profile.component.html',
-    styleUrls: ['profile.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        NgClass,
-        FontAwesomeModule,
-        LanguageItemComponent,
-        MatButtonModule,
-        MatCardModule,
-        MatIconModule,
-        SkeletonLoaderComponent,
-        TranslateModule,
-        NgOptimizedImage,
-    ],
-    host: {
-        '[style.width]': 'width()',
-    }
+  selector: 'cv-profile-ui',
+  templateUrl: 'profile.component.html',
+  styleUrls: ['profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    NgClass,
+    FontAwesomeModule,
+    LanguageItemComponent,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+    SkeletonLoaderComponent,
+    TranslatePipe,
+    NgOptimizedImage,
+  ],
+  host: {
+    '[style.width]': 'width()',
+  }
 })
-
 export class ProfileComponent {
   public readonly country = input<string | null>(null);
   public readonly header = input<string | null>(null);

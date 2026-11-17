@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { faAngular, faMicrosoft, faNode, faNodeJs, faReact, faVuejs, IconDefinition } from '@fortawesome/free-brands-svg-icons';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { combineLatest, map } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ToolsService } from '../../../shared/services/tools.service';
@@ -13,23 +13,23 @@ import { PlaygroundFile } from '../../ui/ts-playground/playground.component';
 
 
 @Component({
-    selector: 'app-skills',
-    templateUrl: 'skills-main.page.html',
-    styleUrls: ['skills-main.page.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
-        CommonModule,
-        MatProgressSpinnerModule,
-        SkillsTabModule,
-        TranslateModule,
-    ],
-    providers: [
-        SkillsService,
-        MethodologiesService,
-        ToolsService
-    ]
+  selector: 'app-skills',
+  templateUrl: 'skills-main.page.html',
+  styleUrls: ['skills-main.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    CommonModule,
+    MatProgressSpinnerModule,
+    SkillsTabModule,
+    TranslatePipe,
+  ],
+  providers: [
+    SkillsService,
+    MethodologiesService,
+    ToolsService
+  ]
 })
-export class SkillsPage implements OnInit {
+export class SkillsPage {
   private readonly _skillsService = inject(SkillsService);
   private readonly _toolsService = inject(ToolsService);
   private readonly _methodologiesService = inject(MethodologiesService);
@@ -107,6 +107,4 @@ export class SkillsPage implements OnInit {
   private mapearImagenes(array: StrippedSkill, iconDef: IconDefinition) {
     return <Skill>{ ...array, Icon: iconDef };
   }
-
-  ngOnInit() { }
 }

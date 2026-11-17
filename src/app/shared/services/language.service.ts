@@ -1,4 +1,4 @@
-import { effect, inject, Injectable, Service, signal, Signal } from '@angular/core';
+import { effect, inject, Service, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import en from '../../../assets/i18n/en.json';
@@ -12,7 +12,6 @@ export class LanguageService {
 
   public readonly appLanguage = this._appLanguage.asReadonly();
   public readonly langOptions$: Observable<Record<string, string>> = this._translateService.stream('navbar.settings.langSelect.values');
-  public readonly onLangChange = this._translateService.onLangChange;
   public readonly themeOptions$: Observable<Record<string, string>> = this._translateService.stream('navbar.settings.themeSelect.values');
 
   constructor() {

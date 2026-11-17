@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButton } from "@angular/material/button";
 import { MatIcon } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { map, Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { ToolsService } from '../../../shared/services/tools.service';
@@ -26,7 +26,7 @@ import { ProfileComponent } from '../../ui/profile/profile.component';
     MatProgressSpinnerModule,
     OverlayModule,
     ProfileComponent,
-    TranslateModule,
+    TranslatePipe,
   ],
   providers: [CVService, ExperiencesService, EducationService, LaguangesService, SkillsCvService, ToolsService]
 })

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslateModule } from '@ngx-translate/core';
+import { provideChildTranslateService, TranslatePipe } from '@ngx-translate/core';
 import { SkeletonLoaderComponent } from '../../../shared/ui/skeleton-loader/skeleton-loader.component';
 import { CVItemComponent } from './cv-items.component';
 
@@ -15,10 +15,11 @@ import { CVItemComponent } from './cv-items.component';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    TranslateModule.forChild(),
+    NgOptimizedImage,
     SkeletonLoaderComponent,
-    NgOptimizedImage
-],
+    TranslatePipe,
+  ],
   exports: [CVItemComponent],
+  providers: [provideChildTranslateService()]
 })
 export class CVItemsModule { }

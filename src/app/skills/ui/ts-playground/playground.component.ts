@@ -1,25 +1,24 @@
-// src/app/features/playground/playground.component.ts
 import {
+  ChangeDetectionStrategy,
   Component,
-  OnInit,
-  OnDestroy,
-  ViewChild,
+  computed,
   ElementRef,
   inject,
-  signal,
-  ChangeDetectionStrategy,
-  computed,
   input,
+  OnDestroy,
+  OnInit,
+  signal,
+  ViewChild,
 } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 export interface PlaygroundFile {
   label: string;
@@ -32,25 +31,25 @@ export interface OutputLine {
 }
 
 @Component({
-    selector: 'app-playground',
-    imports: [
+  selector: 'app-playground',
+  imports: [
     FormsModule,
     MatButtonModule,
     MatSelectModule,
     MatFormFieldModule,
     MatIconModule,
     MatTooltipModule,
-    TranslateModule
-],
-    templateUrl: 'playground.component.html',
-    styleUrl: 'playground.component.scss',
-    changeDetection: ChangeDetectionStrategy.OnPush
+    TranslatePipe
+  ],
+  templateUrl: 'playground.component.html',
+  styleUrl: 'playground.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlaygroundComponent implements OnInit, OnDestroy {
   private readonly _http = inject(HttpClient);
 
   @ViewChild('outputEl') outputEl!: ElementRef<HTMLDivElement>;
-  @ViewChild('editorEl')     editorEl!:      ElementRef<HTMLTextAreaElement>;
+  @ViewChild('editorEl') editorEl!: ElementRef<HTMLTextAreaElement>;
   @ViewChild('lineNumbersEl') lineNumbersEl!: ElementRef<HTMLDivElement>;
 
   public readonly files = input.required<PlaygroundFile[]>();
@@ -104,10 +103,10 @@ export class PlaygroundComponent implements OnInit, OnDestroy {
             const pos =
               diag.file && diag.start != null
                 ? (() => {
-                    const { line, character } =
-                      diag.file.getLineAndCharacterOfPosition(diag.start);
-                    return ` (${line + 1}:${character + 1})`;
-                  })()
+                  const { line, character } =
+                    diag.file.getLineAndCharacterOfPosition(diag.start);
+                  return ` (${line + 1}:${character + 1})`;
+                })()
                 : '';
             const msg =
               typeof diag.messageText === 'string'

@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
-import { LangChangeEvent } from '@ngx-translate/core';
-import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
+import { Observable, combineLatest, map, shareReplay } from 'rxjs';
 import { LanguageService } from '../../shared/services';
 import { TranslatedDocWithId } from '../../shared/types/translated-coll.type';
 
@@ -13,18 +13,13 @@ export class CVService {
 
   public readonly cvItems$: Observable<{ id: string; desc: string }[]> = combineLatest({
     coll: (collectionData(this._cvColl, { idField: 'UID' }) as Observable<TranslatedDocWithId<string>[]>),
-    currLang: this._translateService.onLangChange.pipe(
-      startWith(<LangChangeEvent>{
-        lang: this._translateService.appLanguage()
-      }),
-    ),
+    currLang: toObservable(this._translateService.appLanguage),
   }).pipe(
     shareReplay({ refCount: true, bufferSize: 1 }),
     map(({ currLang, coll }) => {
-      const lang = currLang.lang as 'en' | 'es';
       return coll.map((t): { id: string; desc: string } => ({
         id: t.UID,
-        desc: t[lang]
+        desc: t[currLang]
       }));
     })
   );

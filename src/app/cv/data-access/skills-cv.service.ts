@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { Firestore, collection, collectionData, doc, orderBy, query } from '@angular/fire/firestore';
-import { LangChangeEvent } from '@ngx-translate/core';
-import { Observable, combineLatest, map, shareReplay, startWith } from 'rxjs';
+import { Observable, combineLatest, map, shareReplay } from 'rxjs';
 import { LanguageService } from '../../shared/services';
 import { TranslatedDocument } from '../../shared/types/translated-coll.type';
 
@@ -35,20 +35,14 @@ export class SkillsCvService {
 		beColl: (collectionData(query(this._backendColl, orderBy('order', 'asc')), { idField: 'UID' }) as Observable<SkillCvItemRaw[]>),
 		feColl: (collectionData(query(this._frontendColl, orderBy('order', 'asc')), { idField: 'UID' }) as Observable<SkillCvItemRaw[]>),
 		dbColl: (collectionData(query(this._dbColl, orderBy('order', 'asc')), { idField: 'UID' }) as Observable<SkillCvItemRaw[]>),
-		currLang: this._langService.onLangChange.pipe(
-			startWith(<LangChangeEvent>{
-				lang: this._langService.appLanguage()
-			}),
-		),
+		currLang: toObservable(this._langService.appLanguage),
 	}).pipe(
 		shareReplay({ refCount: true, bufferSize: 1 }),
 		map(({ currLang, beColl, feColl, dbColl }): SkillCvContainer[] => {
-			const lang = currLang.lang as 'en' | 'es';
-
 			return [
-				this._toContainerFixed(feColl, 'Frontend', lang),
-				this._toContainerFixed(beColl, 'Backend', lang),
-				this._toContainerFixed(dbColl, lang === 'en' ? 'Databases' : 'Bases de Datos', lang),
+				this._toContainerFixed(feColl, 'Frontend', currLang),
+				this._toContainerFixed(beColl, 'Backend', currLang),
+				this._toContainerFixed(dbColl, currLang === 'en' ? 'Databases' : 'Bases de Datos', currLang),
 			];
 		})
 	);

@@ -5,19 +5,19 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 import { faAtom, faBirthdayCake, faEnvelope, faGraduationCap, faMapMarker, faPlane } from '@fortawesome/free-solid-svg-icons';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-about',
-    templateUrl: 'about.page.html',
-    styleUrls: ['about.page.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [
+  selector: 'app-about',
+  templateUrl: 'about.page.html',
+  styleUrls: ['about.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
     FontAwesomeModule,
     MatProgressSpinnerModule,
     MatButtonModule,
-    TranslateModule
-]
+    TranslatePipe
+  ]
 })
 export class AboutPage {
   public readonly faBirthdayCake = faBirthdayCake;

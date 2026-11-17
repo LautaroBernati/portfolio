@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { Firestore, collection, collectionData, orderBy, query } from '@angular/fire/firestore';
-import { LangChangeEvent } from '@ngx-translate/core';
-import { Observable, combineLatest, map, startWith } from 'rxjs';
+import { Observable, combineLatest, map } from 'rxjs';
 import { TranslatedDocument } from '../types/translated-coll.type';
 import { LanguageService } from './language.service';
 
@@ -23,22 +23,16 @@ export class ToolsService {
   private readonly _query = query(this._toolsColl, orderBy('order', 'asc'));
 
   public readonly tools$: Observable<Tool[]> = combineLatest({
-    currLang: this._langService.onLangChange.pipe(
-      startWith(<LangChangeEvent>{
-        lang: this._langService.appLanguage()
-      }),
-    ),
+    currLang: toObservable(this._langService.appLanguage),
     coll: (collectionData(this._query, { idField: 'UID' }) as Observable<RawTool[]>)
   }).pipe(
     map(({ coll, currLang }) => {
-      const lang = currLang.lang as 'en' | 'es';
-      const result = coll.map(t => {
+      return coll.map(t => {
         return <Tool>{
           ...t,
-          level: t.level[lang]
+          level: t.level[currLang]
         }
-      })
-      return result;
+      });
     })
   );
 }
