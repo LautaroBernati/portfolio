@@ -1,0 +1,2 @@
+if (typeof globalThis.ngServerMode === 'undefined') globalThis.ngServerMode = typeof window === 'undefined';
+import{BidiModule as o}from"@angular/cdk/bidi";import*as e from"@angular/core";import"@angular/core";var d=(()=>{class t{static \u0275fac=function(i){return new(i||t)};static \u0275mod=e.\u0275\u0275defineNgModule({type:t});static \u0275inj=e.\u0275\u0275defineInjector({imports:[o]})}return t})();export{d as a};

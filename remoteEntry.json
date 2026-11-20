@@ -1,0 +1,267 @@
+{
+  "$version": "v4",
+  "name": "appPortfolio",
+  "shared": [
+    {
+      "requiredVersion": "^22.2.6",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.6",
+      "bundle": "browser-angular_cdk",
+      "packageName": "@angular/cdk",
+      "entries": {
+        "@angular/cdk/a11y": "_angular_cdk_a11y.6fgPU7HdS9.js",
+        "@angular/cdk/accordion": "_angular_cdk_accordion.ntsjFP0Cr7.js",
+        "@angular/cdk/bidi": "_angular_cdk_bidi._PNZqv2qIw.js",
+        "@angular/cdk/coercion": "_angular_cdk_coercion.AathvKtmSb.js",
+        "@angular/cdk/collections": "_angular_cdk_collections.CtymWJOXHr.js",
+        "@angular/cdk/dialog": "_angular_cdk_dialog.J-wfYLjhW2.js",
+        "@angular/cdk/keycodes": "_angular_cdk_keycodes.jrgn9uBZB4.js",
+        "@angular/cdk/layout": "_angular_cdk_layout.Gryi5wMWEG.js",
+        "@angular/cdk/observers": "_angular_cdk_observers.J_dDezPReq.js",
+        "@angular/cdk/observers/private": "_angular_cdk_observers_private.Co4lACPYLw.js",
+        "@angular/cdk/overlay": "_angular_cdk_overlay.HfA967TEUE.js",
+        "@angular/cdk/platform": "_angular_cdk_platform.DtrsDwmxHK.js",
+        "@angular/cdk/portal": "_angular_cdk_portal.jvUmDzc3OY.js",
+        "@angular/cdk/private": "_angular_cdk_private.ezyCD-voK3.js",
+        "@angular/cdk/scrolling": "_angular_cdk_scrolling.PgRHBGhuI_.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.5",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.5",
+      "bundle": "browser-angular_forms",
+      "packageName": "@angular/forms",
+      "entries": {
+        "@angular/forms": "_angular_forms.J0npuVe_W7.js",
+        "@angular/forms/signals": "_angular_forms_signals.RG8rRPyBoJ.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.6",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.6",
+      "bundle": "browser-angular_material",
+      "packageName": "@angular/material",
+      "entries": {
+        "@angular/material/button": "_angular_material_button.dac-ks2K_0.js",
+        "@angular/material/card": "_angular_material_card.LjU-MO3lTv.js",
+        "@angular/material/dialog": "_angular_material_dialog.FIwcKWt_wm.js",
+        "@angular/material/expansion": "_angular_material_expansion.byQ7nCCucP.js",
+        "@angular/material/form-field": "_angular_material_form_field.5yxn780_qA.js",
+        "@angular/material/icon": "_angular_material_icon.mVO0ng3pLo.js",
+        "@angular/material/progress-bar": "_angular_material_progress_bar.N7Ug2jPfQW.js",
+        "@angular/material/progress-spinner": "_angular_material_progress_spinner.w5vCfAIKEm.js",
+        "@angular/material/select": "_angular_material_select.9d6imD7vJi.js",
+        "@angular/material/tabs": "_angular_material_tabs.4slu7KBiNf.js",
+        "@angular/material/tooltip": "_angular_material_tooltip.ETy6Dl74pX.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.5",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.5",
+      "bundle": "browser-angular_router",
+      "packageName": "@angular/router",
+      "entries": {
+        "@angular/router": "_angular_router.D8PBh6hNAa.js"
+      }
+    },
+    {
+      "requiredVersion": "^0.15.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "0.15.0",
+      "bundle": "browser-fortawesome_angular_fontawesome",
+      "packageName": "@fortawesome/angular-fontawesome",
+      "entries": {
+        "@fortawesome/angular-fontawesome": "_fortawesome_angular_fontawesome.cQVsRr4n0x.js"
+      }
+    },
+    {
+      "requiredVersion": "^6.7.1",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "6.7.1",
+      "bundle": "browser-fortawesome_fontawesome_svg_core",
+      "packageName": "@fortawesome/fontawesome-svg-core",
+      "entries": {
+        "@fortawesome/fontawesome-svg-core": "_fortawesome_fontawesome_svg_core.oNa6V5xj6Y.js"
+      }
+    },
+    {
+      "requiredVersion": "^6.7.1",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "6.7.1",
+      "bundle": "browser-fortawesome_free_brands_svg_icons",
+      "packageName": "@fortawesome/free-brands-svg-icons",
+      "entries": {
+        "@fortawesome/free-brands-svg-icons": "_fortawesome_free_brands_svg_icons.01MEaytevK.js"
+      }
+    },
+    {
+      "requiredVersion": "^6.7.1",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "6.7.1",
+      "bundle": "browser-fortawesome_free_solid_svg_icons",
+      "packageName": "@fortawesome/free-solid-svg-icons",
+      "entries": {
+        "@fortawesome/free-solid-svg-icons": "_fortawesome_free_solid_svg_icons.7gLsjsxMJg.js"
+      }
+    },
+    {
+      "requiredVersion": "^18.1.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "18.1.0",
+      "bundle": "browser-ngx_translate_core",
+      "packageName": "@ngx-translate/core",
+      "entries": {
+        "@ngx-translate/core": "_ngx_translate_core.p_I52szTSt.js"
+      }
+    },
+    {
+      "requiredVersion": "~7.8.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "7.8.2",
+      "bundle": "browser-rxjs",
+      "packageName": "rxjs",
+      "entries": {
+        "rxjs": "rxjs.joDRaYzmH-.js",
+        "rxjs/operators": "rxjs_operators.COEUE-FlrX.js"
+      }
+    },
+    {
+      "requiredVersion": "^2.3.0",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "2.8.1",
+      "bundle": "browser-tslib",
+      "packageName": "tslib",
+      "entries": {
+        "tslib": "tslib.KKUV5ZoaNv.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.5",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.5",
+      "bundle": "browser-angular_core",
+      "packageName": "@angular/core",
+      "entries": {
+        "@angular/core": "_angular_core.9MQCIsWdOv.js",
+        "@angular/core/event-dispatch-contract.min.js": "_angular_core_event_dispatch_contract_min_js.r9-MvHU1Mr.js",
+        "@angular/core/primitives/di": "_angular_core_primitives_di.T_hy4jH4hg.js",
+        "@angular/core/primitives/event-dispatch": "_angular_core_primitives_event_dispatch._KthypnEpa.js",
+        "@angular/core/primitives/signals": "_angular_core_primitives_signals.bqG-ChLxJA.js",
+        "@angular/core/rxjs-interop": "_angular_core_rxjs_interop.oM35omzdr9.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.5",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.5",
+      "bundle": "browser-angular_common",
+      "packageName": "@angular/common",
+      "entries": {
+        "@angular/common": "_angular_common.bRXML75oIl.js",
+        "@angular/common/http": "_angular_common_http.ToS4S__B-b.js"
+      }
+    },
+    {
+      "requiredVersion": "^22.2.5",
+      "singleton": true,
+      "strictVersion": true,
+      "version": "22.2.5",
+      "bundle": "browser-angular_platform_browser",
+      "packageName": "@angular/platform-browser",
+      "entries": {
+        "@angular/platform-browser": "_angular_platform_browser.70-2UxUXo6.js",
+        "@angular/platform-browser/animations": "_angular_platform_browser_animations.nQoouQ93UF.js",
+        "@angular/platform-browser/animations/async": "_angular_platform_browser_animations_async.d-JJezeRZi.js"
+      }
+    }
+  ],
+  "exposes": [
+    {
+      "key": "./Routes",
+      "outFileName": "Routes-6G2AKZY6.js"
+    }
+  ],
+  "chunks": {
+    "browser-angular_cdk": [
+      "chunk-HQDETNOJ.js",
+      "chunk-JQ342ZRP.js",
+      "chunk-UBPE7N4P.js",
+      "chunk-AI57MWEZ.js",
+      "chunk-CUIIVRIW.js",
+      "chunk-JN23DLPA.js",
+      "chunk-OPDCT6FI.js",
+      "chunk-SNACBUQ5.js",
+      "chunk-INIDRL3T.js",
+      "chunk-NWKGIKDV.js",
+      "chunk-WDL5SPE5.js",
+      "chunk-XMF72XUR.js",
+      "chunk-SIU5C6P4.js",
+      "chunk-P7CQSUC3.js",
+      "chunk-XDPQNAO3.js",
+      "chunk-PTXLY4BN.js",
+      "chunk-QCTWQAMT.js",
+      "chunk-F5ILEKRU.js",
+      "chunk-CKBUFYZJ.js",
+      "chunk-WYA2BGEL.js",
+      "chunk-7J6N2SMM.js",
+      "chunk-BXKJ7O3J.js"
+    ],
+    "browser-angular_forms": [
+      "chunk-WEBWOCRI.js"
+    ],
+    "browser-angular_material": [
+      "chunk-4OKCNCO6.js",
+      "chunk-DBFJEG5J.js",
+      "chunk-XECEUOJY.js",
+      "chunk-VYZ462G7.js",
+      "chunk-UAU6UPPG.js",
+      "chunk-BXKJ7O3J.js"
+    ],
+    "browser-rxjs": [
+      "chunk-CQWIQYAC.js"
+    ],
+    "browser-angular_core": [
+      "chunk-RQFEQVFE.js",
+      "chunk-LLZJ4CKV.js",
+      "chunk-DZREYKUZ.js",
+      "chunk-H3SAO5GU.js",
+      "chunk-E3KSJ42M.js"
+    ],
+    "browser-angular_common": [
+      "chunk-SEZPLKLW.js"
+    ],
+    "browser-angular_platform_browser": [
+      "chunk-MLRNBPY5.js",
+      "chunk-Y7CPPHAY.js",
+      "browser-RKEOAPEF.js",
+      "chunk-KJJV45QA.js",
+      "chunk-E3KSJ42M.js"
+    ],
+    "mapping-or-exposed": [
+      "profile.component-DPB43MCG.js",
+      "cv-main.page-7V6GV4BN.js",
+      "chunk-3MUD7ISI.js",
+      "skills-main.page-R4SAOM74.js",
+      "chunk-HXYYSBVM.js",
+      "chunk-IWAMY556.js",
+      "chunk-FKHDEEKX.js",
+      "chunk-DFJQRVAP.js"
+    ]
+  }
+}

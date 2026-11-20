@@ -1,0 +1,2 @@
+if (typeof globalThis.ngServerMode === 'undefined') globalThis.ngServerMode = typeof window === 'undefined';
+import*as i from"@angular/core";import{inject as c,APP_ID as s}from"@angular/core";var o=new Map,r=class n{_appId=c(s);static _infix=`a${Math.floor(Math.random()*1e5).toString()}`;getId(t,a=!1){this._appId!=="ng"&&(t+=this._appId);let e=o.get(t);return e===void 0?e=0:e++,o.set(t,e),`${t}${a?n._infix+"-":""}${e}`}static \u0275fac=function(a){return new(a||n)};static \u0275prov=i.\u0275\u0275defineService({token:n,factory:n.\u0275fac})};export{r as a};

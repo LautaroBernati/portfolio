@@ -1,0 +1,2 @@
+if (typeof globalThis.ngServerMode === 'undefined') globalThis.ngServerMode = typeof window === 'undefined';
+import*as r from"@angular/core";import"@angular/core";var l=(()=>{class e{_listeners=[];notify(t,i){for(let s of this._listeners)s(t,i)}listen(t){return this._listeners.push(t),()=>{this._listeners=this._listeners.filter(i=>t!==i)}}ngOnDestroy(){this._listeners=[]}static \u0275fac=function(i){return new(i||e)};static \u0275prov=r.\u0275\u0275defineService({token:e,factory:e.\u0275fac})}return e})();export{l as a};
