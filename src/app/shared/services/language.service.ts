@@ -1,11 +1,15 @@
-import { effect, inject, Service, signal } from '@angular/core';
+import { effect, inject, Injectable, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import en from '../../../assets/i18n/en.json';
 import es from '../../../assets/i18n/es.json';
 import { LanguageValue } from '../types';
 
-@Service({ autoProvided: false })
+/**
+ * Singleton service that controls the translation layer cross-app.
+ * - Is the only one that knows the library controlling the app translations.
+ */
+@Injectable()
 export class LanguageService {
   private readonly _appLanguage = signal<LanguageValue>('en');
   private readonly _translateService = inject(TranslateService);
@@ -17,7 +21,6 @@ export class LanguageService {
   constructor() {
     this._translateService.setTranslation('en', en);
     this._translateService.setTranslation('es', es);
-    this.setAppLanguage('en');
 
     effect(() => {
       this._translateService.use(this._appLanguage());

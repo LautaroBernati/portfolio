@@ -1,32 +1,42 @@
+import { inject, Signal } from '@angular/core';
 import { Routes } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { portfolioProviders } from './app.providers';
-import { HomePage } from './home/home.page';
-import { AppComponent } from './app.component';
-import { inject, provideEnvironmentInitializer } from '@angular/core';
 import { LanguageService } from './shared/services';
 
-export const appRoutes: Routes = [
+export const routes: Routes = [
   {
     path: '',
-    providers: portfolioProviders,
+    providers: [
+      portfolioProviders,
+      {
+        provide: LanguageService, // replace so the remote version relies only on the library's references.
+        useFactory: (): LanguageService => {
+          const service = inject(TranslateService);
+
+          return {
+            appLanguage: service.currentLang as Signal<'en' | 'es'>,
+          } as unknown as LanguageService;
+        }
+      },
+    ],
     children: [
-      { path: '', component: AppComponent }
-    ],
-  },
-  {
-    path: 'cv',
-    providers: [
-      portfolioProviders,
-      provideEnvironmentInitializer(() => inject(LanguageService))
-    ],
-    loadComponent: () => import('./cv/feature/cv-main/cv-main.page').then(m => m.CVMainPage),
-  },
-  {
-    path: 'skills',
-    loadComponent: () => import('./skills/feature/skills-main/skills-main.page').then(m => m.SkillsPage),
-    providers: [
-      portfolioProviders,
-      provideEnvironmentInitializer(() => inject(LanguageService))
-    ],
+      {
+        path: 'cv',
+        title: () => {
+          const translate = inject(TranslateService);
+          return translate.currentLang() === 'en' ? 'Resume | LB' : 'CV | LB';
+        },
+        loadComponent: () => import('./cv/feature/cv-main/cv-main.page').then(m => m.CVMainPage),
+      },
+      {
+        path: 'skills',
+        title: () => {
+          const translate = inject(TranslateService);
+          return translate.currentLang() === 'en' ? 'Portfolio | LB' : 'Portafolio | LB';
+        },
+        loadComponent: () => import('./skills/feature/skills-main/skills-main.page').then(m => m.SkillsPage),
+      }
+    ]
   },
 ];
